@@ -48,7 +48,7 @@
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="login.html">분실</a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/lostBoard">분실</a>
               </li> 
               </li>
               <li class="nav-item">
