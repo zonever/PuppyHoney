@@ -42,7 +42,7 @@
                 	  커뮤니티
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownBlog">
-                  <a class="dropdown-item" href="blog-home-1.html">자랑게시판</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/memberBoast">자랑게시판</a>
                   <a class="dropdown-item" href="blog-home-2.html">모임게시판</a>
                   <a class="dropdown-item" href="blog-post.html">자유게시판</a>
                 </div>

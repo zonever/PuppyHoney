@@ -1,0 +1,53 @@
+/*!
+ * Start Bootstrap - Modern Business (https://startbootstrap.com/template-overviews/modern-business)
+ * Copyright 2013-2017 Start Bootstrap
+ * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-logomodern-business-nav/blob/master/LICENSE)
+ */
+
+body {
+  padding-top: 54px;
+}
+
+@media (min-width: 500px) {
+  body {
+    padding-top: 56px;
+  }
+}
+
+.carousel-item {
+  height: 65vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+.portfolio-item {
+  margin-bottom: 30px;
+}
+
+h4{
+  font-size: 22px !important;
+  font-weight: bold;
+}
+
+p{
+  font-size: 14px !important;
+  line-height: 30px;
+}
+.btn{
+  color: white;
+  background-color: rgb(200, 152, 152);
+  border: none;
+}
+.col-md-8>p>a{
+
+  font-size: 14px; color: #82878c;
+}
+
+.container{
+
+  max-width: 1230px;
+}
