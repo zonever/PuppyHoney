@@ -109,7 +109,8 @@
         </div>
     </ol>
     
-    <%for(LostBoard lb : list){ %>
+    <%if(list!=null){
+    for(LostBoard lb : list){ %>
     <div class="card mb-4">
       <div class="card-body">
         <div class="row">
@@ -120,7 +121,7 @@
           </div>
           <div class="col-lg-6">
             <h2 class="card-title"><%=lb.getLostBoardTitle() %></h2>
-            <p class="card-text"><%=lb.getLostBoardContent() %></p>
+            <p class="card-text"><%=lb.getLostBoardArea()%><br><%=lb.getLostBoardType()%><br><%=lb.getLostBoardPhone() %></p>
             <a href="#" class="btn btn-primary">Read More &rarr;</a>
           </div>
         </div>
@@ -130,7 +131,8 @@
       </div>
     </div>
     
-    <%} %>
+    <%} 
+    }%>
 
 
 

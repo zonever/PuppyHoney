@@ -14,7 +14,7 @@ import java.util.Properties;
 import com.lostBoard.model.vo.LostBoard;
 
 public class LostBoardDAO {
-	private Properties prop=new Properties();
+	/*private Properties prop=new Properties();
 	
 	public LostBoardDAO()
 	{
@@ -26,7 +26,7 @@ public class LostBoardDAO {
 		{
 			e.printStackTrace();
 		}
-	}
+	}*/
 	
 	public List<LostBoard> selectAll(Connection conn) {
 		PreparedStatement pstmt=null;
@@ -41,7 +41,7 @@ public class LostBoardDAO {
 			while(rs.next()) {
 				lb=new LostBoard();
 				lb.setLostBoardNum(rs.getInt("lost_board_num"));
-				lb.setLostBoardTitle(rs.getString("lost_board_title"));
+				lb.setLostBoardTitle(rs.getString("lost_board_tile"));
 				lb.setLostBoardContent(rs.getString("lost_board_content"));
 				lb.setLostBoardNick(rs.getString("lost_board_nick"));
 				lb.setLostBoardDate(rs.getDate("lost_board_date"));
@@ -60,6 +60,7 @@ public class LostBoardDAO {
 		}
 		close(rs);
 		close(pstmt);
+		System.out.println(list);
 		
 		return list;
 	}

@@ -33,7 +33,7 @@ public class LostBoardServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		List<LostBoard> list=new LostBoardSelect().selectAll();
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/lostBoard.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/board.lost/lostBoard.jsp").forward(request, response);
 	}
 
 	/**

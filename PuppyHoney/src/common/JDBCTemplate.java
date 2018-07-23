@@ -20,12 +20,14 @@ public class JDBCTemplate {
 		try
 		{
 			Properties prop=new Properties();
-			/*prop.load(new FileReader(JDBCTemplate.class.getResource("/common/driver.properties").getPath()));*/
-			/*Class.forName(prop.getProperty("driver"));*/
-			Class.forName(prop.getProperty("oracle.jdbc.driver.OracleDriver"));
-			/*conn=DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user"),prop.getProperty("password"));*/
-			conn=DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE","lost","lost");
+			prop.load(new FileReader(JDBCTemplate.class.getResource("/common/driver.properties").getPath()));
+			Class.forName(prop.getProperty("driver"));
+			conn=DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user1"),prop.getProperty("password1"));
+			
 			conn.setAutoCommit(false);
+		}
+		catch(IOException e) {
+			e.printStackTrace();
 		}
 		catch(ClassNotFoundException e)
 		{
