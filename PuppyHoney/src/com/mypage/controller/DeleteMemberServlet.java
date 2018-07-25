@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class UpdateMemberServlet
+ * Servlet implementation class DeleteMemberServlet
  */
-@WebServlet("/updateMemberPage")
-public class UpdateMemberServlet extends HttpServlet {
+@WebServlet("/deleteMemberPage")
+public class DeleteMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateMemberServlet() {
+    public DeleteMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class UpdateMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/mypage/updateMemberPage.jsp").forward(request, response);
+		request.getRequestDispatcher("views/mypage/deleteMemberPage.jsp").forward(request, response);
 	}
 
 	/**

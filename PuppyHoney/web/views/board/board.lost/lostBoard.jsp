@@ -10,6 +10,10 @@
 		function fn_write(){
 			location.href="<%=request.getContextPath()%>/write.do"
 		}
+		
+		$('#readMore').on('click',function(){
+			location.href="<%=request.getContextPath()%>/detailPage"
+		})
 	})
 </script>
 <div class="container mb-5">
@@ -122,7 +126,7 @@
           <div class="col-lg-6">
             <h2 class="card-title"><%=lb.getLostBoardTitle() %></h2>
             <p class="card-text"><%=lb.getLostBoardArea()%><br><%=lb.getLostBoardType()%><br><%=lb.getLostBoardPhone() %></p>
-            <a href="#" class="btn btn-primary">Read More &rarr;</a>
+            <button class="btn btn-primary">더 읽기 &rarr;</button>
           </div>
         </div>
       </div>
@@ -139,7 +143,7 @@
 
 
 
-   <!--  <div class="card mb-4">
+    <div class="card mb-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6">
@@ -150,7 +154,7 @@
                 <div class="col-lg-6">
                     <h2 class="card-title">분실</h2>
                     <p class="card-text">분실................</p>
-                    <a href="#" class="btn btn-primary">Read More &rarr;</a>
+                    <button id="readMore" class="btn btn-primary">더 읽기 &rarr;</button>
                 </div>
             </div>
         </div>
@@ -159,7 +163,7 @@
         </div>
     </div>
 
-    <div class="card mb-4">
+    <!--  <div class="card mb-4">
         <div class="card-body">
             <div class="row">
                 <div class="col-lg-6">

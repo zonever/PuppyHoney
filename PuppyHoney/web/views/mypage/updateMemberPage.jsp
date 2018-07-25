@@ -40,20 +40,20 @@
   	
   	$(function(){
         $('#updatePage').on('click',function(){
-          location.href="<%=request.getContextPath()%>"/updateMemberPage;
-        })
+          location.href="<%=request.getContextPath()%>/updateMemberPage";
+        });
         $('#message').on('click',function(){
-          window.open('views/message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
-        })
-        $('#findPage').on('click',function(){
-          location.href="sidebar.html";
-        })
+          window.open('views/mypage/message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
+        });
+        $('#bookmarkPage').on('click',function(){
+          location.href="<%=request.getContextPath()%>/bookmarkPage";
+        });
         $('#deleteMember').on('click',function(){
-          location.href="write.html";
-        })
+          location.href="<%=request.getContextPath()%>/deleteMemberPage";
+        });
         $('#myHomepage').on('click',function(){
           location.href="testpage.html";
-        }) 
+        });
     })
   </script>
   <style>
@@ -76,13 +76,15 @@
         <div class="btn-group m-2" style="display: inline-block;">
             <button id="updatePage" type="button" class="btn btn-outline-secondary">정보 수정</button>
             <button id="message" type="button" class="btn btn-outline-secondary">쪽지 함</button>
-            <button id="findPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
+            <button id="bookmarkPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
             <button id="deleteMember" type="button" class="btn btn-outline-secondary">회원 탈퇴</button>
             <button id="myHomepage" type="button" class="btn btn-outline-secondary">HOME</button>
         </div>
         <div class="p-3 pb-3">
-            <div class="container">
-     		<div class="container col-sm-7 p-4 rounded" style="text-align: left;">
+            <div class="container col-sm-7">
+            <h1 class="mt-3">정보 수정</h1>
+            <hr>
+     		<div class="container p-4 rounded" style="text-align: left;">
 		        <form action="" method="post">
 		          <div class="form-group">
 		            <label for="memberId">ID</label><label id="idResult" class="float-right"></label>

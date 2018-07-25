@@ -5,19 +5,19 @@
       $(function(){
           $('#updatePage').on('click',function(){
             location.href="<%=request.getContextPath()%>/updateMemberPage";
-          })
+          });
           $('#message').on('click',function(){
-            window.open('message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
-          })
-          $('#findPage').on('click',function(){
-            location.href="sidebar.html";
-          })
+            window.open('views/mypage/message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
+          });
+          $('#bookmarkPage').on('click',function(){
+            location.href="<%=request.getContextPath()%>/bookmarkPage";
+          });
           $('#deleteMember').on('click',function(){
-            location.href="write.html";
-          })
+            location.href="<%=request.getContextPath()%>/deleteMemberPage";
+          });
           $('#myHomepage').on('click',function(){
             location.href="testpage.html";
-          }) 
+          });
       })
   </script>
   <style>
@@ -40,7 +40,7 @@
         <div class="btn-group m-2" style="display: inline-block;">
             <button id="updatePage" type="button" class="btn btn-outline-secondary">정보 수정</button>
             <button id="message" type="button" class="btn btn-outline-secondary">쪽지 함</button>
-            <button id="findPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
+            <button id="bookmarkPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
             <button id="deleteMember" type="button" class="btn btn-outline-secondary">회원 탈퇴</button>
             <button id="myHomepage" type="button" class="btn btn-outline-secondary">HOME</button>
         </div>
