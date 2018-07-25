@@ -22,7 +22,7 @@ public class JDBCTemplate {
 			Properties prop=new Properties();
 			prop.load(new FileReader(JDBCTemplate.class.getResource("/common/driver.properties").getPath()));
 			Class.forName(prop.getProperty("driver"));
-			conn=DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user1"),prop.getProperty("password1"));
+			conn=DriverManager.getConnection(prop.getProperty("url"),prop.getProperty("user"),prop.getProperty("password"));
 			
 			conn.setAutoCommit(false);
 		}

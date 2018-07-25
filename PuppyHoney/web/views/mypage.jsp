@@ -4,7 +4,7 @@
 	<script>
       $(function(){
           $('#updatePage').on('click',function(){
-            location.href="asdfg.html";
+            location.href="<%=request.getContextPath()%>/updateMemberPage";
           })
           $('#message').on('click',function(){
             window.open('message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
