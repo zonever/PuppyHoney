@@ -10,14 +10,15 @@
     <title>PuppyHoney</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gloria+Hallelujah" rel="stylesheet">
+    <link rel="stylesheet" href="<%=request.getContextPath()%>/css/style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 </head>
 
- <body style="background:#f1f1f1">
+ <body >
       <div class="container mt-5 p-5">
-      <div class="p-4"align="center"><label><a class="navbar-brand" href="<%=request.getContextPath() %>/index.jsp" style="text-decoration: none; color:black; font-family:'Gloria Hallelujah', cursive;  font-size: 30px; "><img src="<%=request.getContextPath() %>/images/dog.png" style="width:40px;"> PuppyHoney</a></label></div>
+      <div class="p-4"align="center"><label><a id="logo" class="navbar-brand" href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/images/dog.png" > PuppyHoney</a></label></div>
         <div class="container col-sm-5 shadow p-4 rounded" style="background:white;">
 	         <form action="" method="post">
             <div class="form-group">
@@ -36,8 +37,8 @@
 	           <div class="form-group">
 	             <button type="submit" class="btn w-25 "  align="center" style="background: rgb(200, 152, 152);" >로그인</button>
 	             <div class="float-right">
-	             <a href="<%=request.getContextPath() %>/views/member/register.jsp" style="text-decoration: none;" class="p-2">회원가입</a>
-	             <a href="#" style="text-decoration: none;" class="p-2">비밀번호찾기</a>
+		             <a href="<%=request.getContextPath() %>/views/member/register.jsp"  class="p-2">회원가입</a>
+		             <a href="#"  class="p-2">비밀번호찾기</a>
 	             </div>
 	           </div>
 	           
