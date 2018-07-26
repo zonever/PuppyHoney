@@ -1,7 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
+<!-- Smart Editor -->
+<script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
+<script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 
+<style>
+	img{max-width: 700px};
+</style>
 <div class="panel panel-default"> 
             <!-- Default panel contents --> 
             <div class="panel-heading"><h2>Write</h2></div> 
@@ -10,47 +16,65 @@
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action="#" method="post" role="form">  
+                    <form action='<%=request.getContextPath()%>/test.do' method="post">
             
-                        
-                            
-           
-                        
-                            <!-- //글제목 입력 폼 -->
-                            <div class="form-group"> 
-                                <label for="subject">Title</label> 
-                                <input type="text" class="form-control" name ="subject" id="subject" placeholder="제목을 입력하세요."> 
-                            </div> 
-                        
-                            <!-- //글내용 입력 폼  -->
-                            <div class="form-group"> 
-                                <label for="content">content:</label> 
-                                <!-- //글 내용이 많으므로 <textarea>태그를 쓴다 rows는 textarea의 높이 조절  -->
-                                  <textarea name="content" id="summernote" cols="30" rows="10"></textarea>
-                                  <script>
-                                    $('#summernote').summernote({
-                                      placeholder: 'Hello bootstrap 4',
-                                      tabsize: 2,
-                                      height: 500
-                                    });
-                                  </script>
-                            </div>
-                            <!--//파일 첨부 폼 (나중에 쓸거 생각해서 만들어 봄 )   -->
-                            <!-- <div class="form-group"> 
-                                <label for="File">File input</label> 
-                                <input type="file" id="File"> 
-                            </div>  -->
-                            <!-- //버튼 저장하기, 다시쓰기, 되돌아가기 -->
-                            <div class="center-block ">      
-                                <input type="submit" value="등록" class="btn btn-outline-secondary" style="width: 100px; height: 50px">
-                                <input type="reset" value="취소" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px"> 
-                                <!-- //되돌아가기에서 onclick이벤트로 history.back(1) 왔던곳에서 1만큼 back (-1을 써도 된다)  -->
-                                <!-- <br><br>
-                                <input type="button" value="Back" onclick="history.back(1)"> -->
-                            </div> 
-                        </form>
-               
-                </div> 
-            </div> <!--panel end--> 
-        </div> 
+                         <!-- //글제목 입력 폼 -->
+                         <div class="form-group"> 
+                             <label for="subject">Title</label> 
+                             <input type="text" class="form-control" name ="subject" id="subject" placeholder="제목을 입력하세요."> 
+                         </div> 
+                     
+                         <!-- //글내용 입력 폼  -->
+                         <div class="form-group"> 
+                         	<label for="textAreaContent">Content</label>
+                             <textarea style="width: 100%" rows="25" name="content" id="textAreaContent" cols="80"></textarea>
+                         </div>
+                         
+                         <!--버튼능력-->
+                         <div class="center-block ">      
+                             <input type="button" value="등록" class="btn btn-outline-secondary" style="width: 100px; height: 50px" onclick="submitContents(this)">
+                             <input type="reset" value="목록" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px"> 
+                             <!-- //되돌아가기에서 onclick이벤트로 history.back(1) 왔던곳에서 1만큼 back (-1을 써도 된다)  -->
+                             <!-- <br><br>
+                             <input type="button" value="Back" onclick="history.back(1)"> -->
+                         </div> 
+                         
+                     </form>
+                 
+             </div> 
+         </div> <!--panel end--> 
+     </div> 
+    
+    <!-- Smart Editor -->
+	<script type="text/javascript">
+	var oEditors = [];
+	nhn.husky.EZCreator.createInIFrame({
+	    oAppRef: oEditors,
+	    elPlaceHolder: "textAreaContent",
+	    sSkinURI: "<%=request.getContextPath()%>/se2/SmartEditor2Skin.html",
+	    fCreator: "createSEditor2"
+	});
+	 
+	//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
+	function submitContents(elClickedObj) {
+	    // 에디터의 내용이 textarea에 적용된다.
+	    oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", []);
+	 
+	    // 에디터의 내용에 대한 값 검증은 이곳에서
+	    // document.getElementById("textAreaContent").value를 이용해서 처리한다.
+	  
+	    try {
+	        elClickedObj.form.submit();
+	    } catch(e) {
+	     
+	    }
+	}
+	 
+	// textArea에 이미지 첨부
+	function pasteHTML(filepath){
+	    var sHTML = '<img src="<%=request.getContextPath()%>/uploadFolder/'+filepath+'">';
+	    oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
+	}
+ 
+</script>
 <%@ include file="/views/common/footer.jsp" %>

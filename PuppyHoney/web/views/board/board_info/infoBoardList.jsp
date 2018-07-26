@@ -2,26 +2,16 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
 <script>
-//검색창 분류선택시 스크립트문
-$(document).ready(function(e){
-    
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
-		e.preventDefault();
-		var param = $(this).attr("href").replace("#",""); //분류
-		var concept = $(this).text(); //분류(한국말)   
-		$('.search-panel span#search_concept').text(concept);
-		$('.input-group #searchType').val(param);
-	});
-});
+
 
 //검색창에 빈값 확인
 function check() {
 
-if(fr.search_key.value == "") {
+if(fr.inputText.value == "") {
 
   alert("검색어를 입력해 주세요.");
 
-  fr.search_key.focus();
+  fr.inputText.focus();
 
   return false;
 
@@ -29,27 +19,38 @@ if(fr.search_key.value == "") {
  return true;
     }
 }
+
+$(function(){
+    $('.btnCheck').click(function(){
+    	var option = $('select#sel1 option:selected').val();
+    	if(option=="no"){
+        	alert("분류를 선택해 주세요");
+        	return false;
+    	}
+    });
+    
+});
 </script>
 <div class="container">
 	<div class="mt-4 form-group">
 		<label><h3>정보게시판</h3></label>
         <div class="float-right pt-2 ml-4">
-            <button class="btn " onclick="fn_write()">글쓰기</button>
+            <button class="btn " onclick="location.href='<%=request.getContextPath()%>/infoBoard/write'">글쓰기</button>
         </div>
         <div class="float-right pt-2">
-            <form>
+             <form name="fr" action="#" onsubmit="return check()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <select class="form-control" id="sel1">
-                            <option>선택</option>
-                            <option value="content">내용</option>
-                            <option value="title">제목</option>
+                        <select class="form-control" id="sel1" name="searchType">
+                            <option value=no>선택</option>
+                            <option value="content" >내용</option>
+                            <option value="title" >제목</option>
                             <option value="nickName">닉네임</option>
                         </select>
                     </div>
                     <div class="input-group-append">
-                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력">
-                        <button class="btn " type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
+                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력" value="">
+                        <button class="btn btnCheck" type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
                     </div>
                 </div>
             </form>
