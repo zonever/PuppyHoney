@@ -42,15 +42,15 @@
                 </div>
               </li>
               <li class="nav-item">
-<<<<<<< HEAD
+
 
     
 
-                <a class="nav-link" href="<%=request.getContextPath()%>/lostBoard"><strong>분실</strong></a>
+            
 
-=======
+
                 <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_lost/lostBoardList.jsp"><strong>분실</strong></a>
->>>>>>> master
+
               </li> 
               </li>
               <li class="nav-item">
