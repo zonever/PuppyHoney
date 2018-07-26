@@ -2,10 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
 	<div class="container mb-5">
-        <div class="mt-4 form-gruop">
-            <label><h1>분실</h1></label>
+        <div class="mt-4 form-group">
+            <label><h3>분실게시판</h3></label>
             <div class="float-right pt-2 ml-4">
-                <button class="btn btn-outline-secondary" onclick="fn_write()">글쓰기</button>
+                <button class="btn " onclick="fn_write()">글쓰기</button>
             </div>
             <div class="float-right pt-2">
                 <form>
@@ -18,9 +18,9 @@
                                 <option value="nickName">닉네임</option>
                             </select>
                         </div>
-                        <input type="text" class="form-control" name="inputText" placeholder="검색어 입력">
                         <div class="input-group-append">
-                            <button class="btn btn-success" type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
+                        	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력">
+                            <button class="btn " type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
                         </div>
                     </div>
                 </form>
@@ -29,8 +29,8 @@
         </div>      
 
         <ol class="breadcrumb">
-            <button type="button" class="btn btn-info" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="collapseExample">
-                    지역을 선택하세요
+            <button type="button" class="btn btn-dark" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="collapseExample">
+                    필터
             </button> 
             <div id="demo" class="collapse mb-0">
                 <div class="btn-group mb-0" data-toggle="buttons" style="display: inline-block;">
@@ -93,7 +93,7 @@
                             <input type="checkbox" autocomplete="off"> 전체선택
                         </button>
                     </div>
-                    <button type="button" class="btn btn-outline-success" style="float: right;" onclick="fn_submit">확인</button>                
+                    <button type="button" class="btn btn-dark" style="float: right;" onclick="fn_submit">확인</button>                
                 </div>
             </div>
         </ol>
