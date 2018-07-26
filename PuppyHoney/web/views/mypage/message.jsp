@@ -37,43 +37,78 @@
             <h3>받은 쪽지함</h3>
             <table class="table table-hover">
             	<tr style="background: rgb(200, 152, 152)">
-            		<th><input type="checkbox" id="check"/></th>
+            		<th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+					    <label class="custom-control-label" for="customCheck"></label>
+					    </div>
+				    </th>
             		<th>제목</th>
             		<th>닉네임</th>
             		<th>날짜</th>
             	</tr>
                 <tr>
-                	<th><input type="checkbox" id="check"/></th>
+                	<th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck1" name="example1">
+					    <label class="custom-control-label" for="customCheck1"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
                 </tr>
                 <tr>
-					<th><input type="checkbox" id="check"/></th>
+					<th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck2" name="example1">
+					    <label class="custom-control-label" for="customCheck2"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="check"/></th>
+                    <th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck3" name="example1">
+					    <label class="custom-control-label" for="customCheck3"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="check"/></th>
+                    <th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck4" name="example1">
+					    <label class="custom-control-label" for="customCheck4"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="check"/></th>
+                    <th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck5" name="example1">
+					    <label class="custom-control-label" for="customCheck5"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
                 </tr>
                 <tr>
-                    <th><input type="checkbox" id="check"/></th>
+                    <th> 
+	            		<div class="custom-control custom-checkbox">
+					    <input type="checkbox" class="custom-control-input" id="customCheck6" name="example1">
+					    <label class="custom-control-label" for="customCheck6"></label>
+					    </div>
+				    </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>

@@ -35,7 +35,7 @@
         <div class="btn-group m-2" style="display: inline-block;">
             <button id="updatePage" type="button" class="btn btn-outline-secondary">정보 수정</button>
             <button id="message" type="button" class="btn btn-outline-secondary">쪽지 함</button>
-            <button id="findPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
+            <button id="bookmarkPage" type="button" class="btn btn-outline-secondary">즐겨찾기</button>
             <button id="deleteMember" type="button" class="btn btn-outline-secondary">회원 탈퇴</button>
             <button id="myHomepage" type="button" class="btn btn-outline-secondary">HOME</button>
          </div>

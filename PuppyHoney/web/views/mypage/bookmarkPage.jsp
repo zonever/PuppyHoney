@@ -57,26 +57,51 @@
 								</thead>
 									<tbody>
 									<tr>
-										<td><input type="checkbox" id="check" name="check"/></td>
+										<td> 
+						            		<div class="custom-control custom-checkbox">
+										    <input type="checkbox" class="custom-control-input" id="customCheck" name="example1">
+										    <label class="custom-control-label" for="customCheck"></label>
+										    </div>
+									    </td>
 										<td>John</td>
 										<td>Doe</td>
 									</tr>
 									<tr>
-										<td><input type="checkbox" id="check" name="check"/></td>
+										<td> 
+						            		<div class="custom-control custom-checkbox">
+										    <input type="checkbox" class="custom-control-input" id="customCheck1" name="example1">
+										    <label class="custom-control-label" for="customCheck1"></label>
+										    </div>
+									    </td>
 										<td>Mary</td>
 										<td>Moe</td>
 									</tr>
 									<tr>
-										<td><input type="checkbox" id="check" name="check"/></td>
+										<td> 
+						            		<div class="custom-control custom-checkbox">
+										    <input type="checkbox" class="custom-control-input" id="customCheck2" name="example1">
+										    <label class="custom-control-label" for="customCheck2"></label>
+										    </div>
+									    </td>
+										<td>July</td>
+										<td>Dooley</td>
+									</tr>
+									<tr>
+										<td> 
+						            		<div class="custom-control custom-checkbox">
+										    <input type="checkbox" class="custom-control-input" id="customCheck3" name="example1">
+										    <label class="custom-control-label" for="customCheck3"></label>
+										    </div>
+									    </td>
 										<td>July</td>
 										<td>Dooley</td>
 									</tr>
 								</tbody>
 							</table>
-							<div class="btn-group" style="display: inline-block; float:right;">
+							<div class="btn-group" style="display: inline-block; float:left;">
 								<button type="button" id="checkAll" class="btn btn-outline-secondary">전체 선택</button>
 								<button type="button" id="uncheckAll" class="btn btn-outline-secondary">전체선택 해제</button>
-								<button type="submit" id="deleteSubmit" name="deleteSubmit" class="btn btn-outline-secondary">선택사항 삭제</button>
+								<button type="submit" id="deleteSubmit" name="deleteSubmit" class="btn btn-outline-secondary">즐겨찾기 삭제</button>
 							</div> 
 						</div>
 	                </form>
