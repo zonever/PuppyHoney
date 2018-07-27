@@ -51,6 +51,48 @@
             </div> 
             <div>
               <h6 class="alert alert-danger">연락처</h6>
+<div class="container p-5" style="background:white;">
+     
+            <blockquote class="blockquote text-center">
+                <h2>글제목(title)</h2>
+            </blockquote>
+            <table class="table text-center" >
+              <tr>
+                <th class="table-active">작성자</th>
+                <th class="table-active">날짜</th>
+                <th class="table-active">조회수</th>
+              </tr>
+              <tr>
+               
+              </tr>
+            </table>
+            <div align='center'>
+              <p>내용입력 ~~</p>
+              <p>내용입력 ~~</p>
+              <p>내용입력 ~~</p>
+              <p>내용입력 ~~</p>
+              <p>내용입력 ~~</p>
+              <p>내용입력 ~~</p>
+              <br>
+              <button class="btn btn-outline-warning">추천 20</button>
+            </div>
+            <hr>
+            <div class="alert alert-danger">
+                <table>
+                    <tr>
+                        <th>입장 :</th>
+                        <th><span class="badge badge-warning">소형</span></th>
+                        <th><span class="badge badge-warning">중형</span></th>
+                        <th><span class="badge badge-warning">대형</span></th>
+                      </tr>
+                  <tr>
+                    <th>종류 :</th>
+                    <th><span class="badge badge-warning">병원</span></th>
+                  </tr>
+                </table>
+                </div>
+            <div class="alert alert-danger">
+              <h5>연락처</h5>
               <ul>
                 <li><h6>대표번호 : 02-3033-2032</h6></li>
               </ul>
@@ -71,6 +113,7 @@
                 <ul>
                   <li><h6>경기도 수원시 팔달구 권광로317번길 15</h6></li>
                 </ul>
+
                 <div id="map" style="width:290px;height:200px;"></div>
               </div>
                    
@@ -80,8 +123,7 @@
 
         <!-- ./Sidebar -->
         
-        
-        
+             
         
         <div class="col-lg-8">
           <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
@@ -137,6 +179,9 @@
                   <h5 class="mt-0">답글</h5>
                   답글 내용
                 </div>
+
+                <div id="map" style="width:200px;height:200px;"></div>
+
               </div>
 
               <div class="media mt-4">

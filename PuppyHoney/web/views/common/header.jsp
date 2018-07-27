@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.ph.user.model.vo.User"%>
+<%
+	User userLoggedIn=(User)session.getAttribute("userLoggedIn");
+%>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -32,11 +35,12 @@
                 <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_news/newsBoardList.jsp"><strong>News</strong></a>
               </li> 
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownPortfolio" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <a class="nav-link dropdown-toggle" href="#" id="community" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  	<strong>커뮤니티</strong>
                 </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdownPortfolio">
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">정보</a>
+
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_info/infoBoardList.jsp">정보</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_image/imageBoardList.jsp">사진</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
                 </div>
@@ -47,10 +51,22 @@
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_place/placeBoardList.jsp"><strong>장소</strong></a>
-              </li> 
-              <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/member/login.jsp"><strong>로그인</strong></a>
               </li>
+              <%if(userLoggedIn==null){ %> 
+              <li class="nav-item">
+                <a class="nav-link" href="<%=request.getContextPath()%>/user/login"><strong>로그인</strong></a>
+              </li>
+              <%}else{ %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="myPage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 	<strong>MyPage</strong>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="myPage">
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/user/myPage">내정보</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/user/logout">로그아웃</a>
+                </div>
+              </li>
+              <%} %>
             </ul>
           </div>
         </div>
