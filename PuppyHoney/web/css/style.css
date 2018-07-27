@@ -17,3 +17,4 @@ a{text-decoration: none;}
 button{background: rgb(200, 152, 152);}
 .sortMenu{font-size: 12px; float: left; line-height: 17.6px; text-align: left; color: black; text-decoration: none;}
 .sortMenuBar{float: left; font-size: 12px; margin-left:4px; margin-right:4px; line-height: 17.6px; text-align: left; color: #bbb;}
+.required{color:red;}
