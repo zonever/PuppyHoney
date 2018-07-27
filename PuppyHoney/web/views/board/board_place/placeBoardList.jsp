@@ -8,7 +8,13 @@
         display: none;
     }
 </style>
-
+<script>
+	function fn_placeBoardWrite()
+	{
+		location.href="<%=request.getContextPath()%>/board/placeBoardForm";
+		
+	}
+</script>
   <script>
          $(function(){
           $(".pp").slice(0, 18).show(); // select the first ten
@@ -22,7 +28,7 @@
     });
 });
     </script>
-      <!-- ㅂ바디부분 -->
+      <!-- 바디부분 -->
       <div class="container">
          
           <div class="mt-4">
@@ -31,14 +37,15 @@
     
           
           <div class="form-group" align='right'>
-              <button class="btn col-md-1" onclick="location.href='prpage.html'">글쓰기</button>
+              <button type="button" class="btn btn-dark m-1" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="collapseExample">
+                    필 터
+                  </button>
+              <button class="btn col-md-1" onclick="fn_placeBoardWrite()">글쓰기</button>
             </div>
             
             
             <div class="col-lg-12 p-1">
-                <button type="button" class="btn btn-dark m-3" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="collapseExample">
-                    필 터
-                  </button>
+                
             <div id="demo" class="collapse m-3">
               <form action="test.html" method="get">
                 <span class="badge badge-secondary col-md-2"><h4>지역</h4></span>
@@ -49,49 +56,49 @@
                 <label for='kyeong' class="btn btn-dark">
                   <input type="checkbox" name="addr" id='kyeong' value="경기"> 경기
                 </label>
-                <label class="btn btn-dark">
+                <label for='incheon' class="btn btn-dark">
                   <input type="checkbox"name="addr" id='incheon' value="인천"> 인천
                 </label>
-                <label class="btn btn-dark">
+                <label for='busan' class="btn btn-dark">
                   <input type="checkbox" name="addr" id='busan' value="부산">부산 
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='daegu' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='daegu' value="대구"> 대구
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='daejeon' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='daejeon' value="대전"> 대전
                 </label>        
-                <label for='seoul' class="btn btn-dark ">
+                <label for='ulsan' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='ulsan' value="울산"> 울산
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='gangwon' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='gangwon' value="강원"> 강원
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='kyeongnam' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='kyeongnam' value="경남"> 경남
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='kyeongbuk' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='kyeongbuk' value="경북"> 경북
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='gwangju' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='gwangju' value="광주"> 광주
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='jeonnam' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='jeonnam' value="전남"> 전남
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='jeonbuk' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='jeonbuk' value="전북"> 전북
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='chungnam' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='chungnam' value="충남"> 충남
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='chungbuk' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='chungbuk' value="충북"> 충북
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='jeju' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='jeju' value="제주"> 제주
                 </label>
-                <label for='seoul' class="btn btn-dark ">
+                <label for='sejong' class="btn btn-dark ">
                   <input type="checkbox" name="addr" id='sejong' value="세종"> 세종
                 </label>
 
@@ -107,7 +114,7 @@
                 <label for='hosiptal' class="btn btn-dark">
                     <input type="checkbox" name="business" id='hosiptal' value="병원"> 병원
                   </label>  
-                  <input type="submit" value='검색' class="btn col-md-2"style="float:right;">
+                  <input type="submit" value='검색' class="btn col-md-2 "style="float:right;">
 
               </form>
             </div>
@@ -125,15 +132,15 @@
    <div id='test1'class="row">
       <div class="col-lg-4 col-sm-6 petCard pp">
           <div class="card h-80 pp">
-            <a href="#"><img class="card-img-top" src="http://blogfiles9.naver.net/MjAxNzA4MDlfMjIy/MDAxNTAyMjg0NjIwMTk3.r5_I7z0kljQ28-YxUJU_7dzAHIHzCuUR7MAmRKgner4g.c16Xutpi19uob68JQu6v2Y514RQXll6b6bN_HBYaqHAg.JPEG.yuwlsfks/IMG_0516.jpg" width="700" height="230"></a>
+            <a href="#"><img class="card-img-top" src="http://cafefiles.naver.net/20160420_158/tys0816_1461122286773KuN4w_PNG/%C0%CE%C3%B5%BE%D6%B0%DF%BA%D0%BE%E71.PNG" width="700" height="230"></a>
             <div class="card-body pp">
               <h4 class="card-title">
-                <p class="text-center"><a href="#">1.버디펫</a></p>
+                <p class="text-center"><a href="#">1.(타이틀제목)</a></p>
               </h4>
               <table>
                   <tr>
-                    <th>업종 : </th>
-                    <th>미용</th>
+                    <th>상호 : </th>
+                    <th>중구네미용실</th>
                   </tr>
                   <hr>
                   <tr>
@@ -142,14 +149,15 @@
                   </tr>
   
                   <tr>
-                    <th>입장 : </th>
-                    <th>중형,대형 </th>
+                    <th>업종 : </th>
+                    <th>미용 </th>
                   </tr>
                 </table>
                 <hr>
             </div>
           </div>
         </div>
+       
         <div class="col-lg-4 col-sm-6 petCard pp">
               <div class="card h-80 pp">
                 <a href="#"><img class="card-img-top" src="http://blogfiles9.naver.net/MjAxNzA4MDlfMjIy/MDAxNTAyMjg0NjIwMTk3.r5_I7z0kljQ28-YxUJU_7dzAHIHzCuUR7MAmRKgner4g.c16Xutpi19uob68JQu6v2Y514RQXll6b6bN_HBYaqHAg.JPEG.yuwlsfks/IMG_0516.jpg" width="700" height="230"></a>
@@ -159,8 +167,8 @@
                   </h4>
                   <table>
                       <tr>
-                        <th>업종 : </th>
-                        <th>미용</th>
+                        <th>상호 : </th>
+                        <th></th>
                       </tr>
                       <hr>
                       <tr>
@@ -169,8 +177,8 @@
                       </tr>
       
                       <tr>
-                        <th>입장 : </th>
-                        <th>중형,대형 </th>
+                        <th>업종 : </th>
+                        <th>미용 </th>
                       </tr>
                     </table>
                     <hr>
@@ -317,7 +325,7 @@
                        </div>
                               <br>
     <div class="form-group mt-5" align="center">
-		<button type="button" class="btn w-50">더보기</button>
+		<button  id='load' type="button" class="btn w-50">더보기</button>
 	</div>
 
 <%@ include file="/views/common/footer.jsp" %>
