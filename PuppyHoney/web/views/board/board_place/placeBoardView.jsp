@@ -3,16 +3,11 @@
 <%@ include file="/views/common/header.jsp" %>
 
 <!-- 지도 api -->
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=7cacd89ae2cc92f860bec15bea912cb9"></script>
-<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=APIKEY&libraries=services,clusterer,drawing"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=29d28c77afa06b8d3797cd516b310f0f&libraries=services"></script>
+<script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=29d28c77afa06b8d3797cd516b310f0f"></script>
 
 <div class="container p-5" style="background:white;">
-          <!--   <div class='col-sm-15'>
-                <h1 class="mt-4 mb-3 "style="margin-top: 5rem!important;"><a href="placeBoard.html">장소게시판</a>
-                <small>All dogs go to heaven</small>
-                </h1>
-            </div> -->
-
+     
             <blockquote class="blockquote text-center">
                 <h2>글제목(title)</h2>
             </blockquote>
@@ -74,7 +69,7 @@
                 <ul>
                   <li><h6 id='aa'>경기도 수원시 팔달구 권광로317번길 15</h6></li>
                 </ul>
-                <div id="map" style="width:300px;height:200px;"></div>
+                <div id="map" style="width:200px;height:200px;"></div>
               </div>
 
  <script>
@@ -91,8 +86,8 @@ var map = new daum.maps.Map(mapContainer, mapOption);
 var geocoder = new daum.maps.services.Geocoder();
 
 //주소로 좌표를 검색합니다
-var address_start=$('#aa').val();
-geocoder.addressSearch(address_start, function(result, status) {
+
+geocoder.addressSearch('경기도 수원시 팔달구 권광로317번길 15', function(result, status) {		//주소값에 저장된 주소 넣기(name ="address" id="address2" placeholder="주소" 값으로)
 
  // 정상적으로 검색이 완료됐으면 
   if (status === daum.maps.services.Status.OK) {
