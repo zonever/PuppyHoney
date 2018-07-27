@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class InfoBoardWriteServlet
+ * Servlet implementation class InfoBoardWriteEndServlet
  */
-@WebServlet("/infoBoard/write")
-public class InfoBoardWriteServlet extends HttpServlet {
+@WebServlet("/infoBoard/writeEnd")
+public class InfoBoardWriteEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InfoBoardWriteServlet() {
+    public InfoBoardWriteEndServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,9 +26,11 @@ public class InfoBoardWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//세션값 가져오면됌
+		String writer = request.getParameter("writer");
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
 		
-		response.sendRedirect("/PuppyHoney/views/board/board_info/infoBoardWrite.jsp");
+		
 	}
 
 	/**

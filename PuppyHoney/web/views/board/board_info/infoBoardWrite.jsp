@@ -16,12 +16,12 @@
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action='<%=request.getContextPath()%>/test.do' method="post">
-            
+                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd' method="post">
+            			<input type="hidden" name="writer" value="세션값넣어줭.겟아이디"/>
                          <!-- //글제목 입력 폼 -->
                          <div class="form-group"> 
-                             <label for="subject">Title</label> 
-                             <input type="text" class="form-control" name ="subject" id="subject" placeholder="제목을 입력하세요."> 
+                             <label for="title">Title</label> 
+                             <input type="text" class="form-control" name ="title" id="title" placeholder="제목을 입력하세요."> 
                          </div> 
                      
                          <!-- //글내용 입력 폼  -->

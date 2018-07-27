@@ -72,14 +72,20 @@ $(function(){
   
 
 });
+
+function fn_goWrite(){
+	location.href="<%=request.getContextPath()%>/infoBoard/write";
+}
+
 </script>
+
 <div class="container row">
 	<div class="col-sm-12">
 		<table>
 			<tbody>
 				<tr>
-					<td class="align-middle" style="width: 400px" >
-						<font style="color: rgb(194, 142, 46)" >[분류]</font>한국에서 더워 죽을수도 있나요?<font style="color: rgb(236, 111, 111)">[50]</font>
+					<td class="align-middle" style="width: 400px">
+						한국에서 더워 죽을수도 있나요?<font style="color: rgb(236, 111, 111);">[50]</font>
 					</td>
 				</tr>
 				<tr>
@@ -283,11 +289,14 @@ $(function(){
       <div class=" form-group pt-4 pl-4 "> 
         
           <!-- //글 내용이 많으므로 <textarea>태그를 쓴다 rows는 textarea의 높이 조절  -->
-          
-          <textarea style= "width: 100%" rows="3" name="comment" id="textAreaContent" cols="143"></textarea>
+          <div class="pr-3">
+          	<textarea style= "width: 100%" rows="3" name="comment" id="textAreaContent"></textarea>
+          </div>
           <!--나중에 히든으로  넣어야함-->
           <input type="hidden" name="commentWriter" value="???"><!--나중에 헤더에서 가져올 세션값.id를 넣어야함-->
-          <input type="submit" class="btn pull-right float-right" style="width: 80px;" value="등록" onclick="submitContents()">
+          <div class="pr-3">
+          	<input type="submit" class="btn pull-right float-right" style="width: 80px;" value="등록" onclick="submitContents()">
+      	  </div>
       </div>
     </form>
    <br><br>
@@ -297,7 +306,7 @@ $(function(){
 <div class="container pt-3">
 	<div class="form-group">
 		<button class="btn">목록</button>
-		<button class="btn float-right"><img src="<%=request.getContextPath() %>/images/pencil.png" alt="연필사진" width="20">글쓰기</button>
+		<button class="btn float-right" onclick="fn_goWrite()"><img src="<%=request.getContextPath() %>/images/pencil.png" alt="연필사진" width="20">글쓰기</button>
 	</div>
 </div>
 
@@ -321,7 +330,7 @@ $(function(){
         <form name="gonggamFrm">
           <input type="hidden" name="replayNum"> 
         </form>
-      </div>
+      
       
     <!-- Smart Editor -->
 <script type="text/javascript">
@@ -355,6 +364,5 @@ function pasteHTML(filepath){
 }
  
 </script>
-
 
 <%@ include file="/views/common/footer.jsp" %>
