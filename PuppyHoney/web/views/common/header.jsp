@@ -38,6 +38,7 @@
                 <a class="nav-link dropdown-toggle" href="#" id="community" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                  	<strong>커뮤니티</strong>
                 </a>
+
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_info/infoBoardList.jsp">정보</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_image/imageBoardList.jsp">사진</a>
