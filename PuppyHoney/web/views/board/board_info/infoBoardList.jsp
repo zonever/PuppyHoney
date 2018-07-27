@@ -1,27 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*, com.ph.infoBoard.model.vo.InfoBoard"%>
 <%@ include file="/views/common/header.jsp" %>
-<script>
-//검색창 분류선택시 스크립트문
-$(document).ready(function(e){
-    
-    $('.search-panel .dropdown-menu').find('a').click(function(e) {
-		e.preventDefault();
-		var param = $(this).attr("href").replace("#",""); //분류
-		var concept = $(this).text(); //분류(한국말)   
-		$('.search-panel span#search_concept').text(concept);
-		$('.input-group #searchType').val(param);
-	});
-});
+<%
+	List<InfoBoard> list=(List<InfoBoard>)request.getAttribute("list");
+	String pageBar = (String)request.getAttribute("pageBar");
 
+%>
+
+<script>
 //검색창에 빈값 확인
 function check() {
 
-if(fr.search_key.value == "") {
+if(fr.inputText.value == "") {
 
   alert("검색어를 입력해 주세요.");
 
-  fr.search_key.focus();
+  fr.inputText.focus();
 
   return false;
 
@@ -29,27 +23,45 @@ if(fr.search_key.value == "") {
  return true;
     }
 }
+
+$(function(){
+    $('.btnCheck').click(function(){
+    	var option = $('select#sel1 option:selected').val();
+    	if(option=="no"){
+        	alert("분류를 선택해 주세요");
+        	return false;
+    	}
+    });
+    
+});
 </script>
+<style>
+@media(max-width:450px){
+        #info{
+            display: none;
+        }
+    }
+</style>
 <div class="container">
 	<div class="mt-4 form-group">
 		<label><h3>정보게시판</h3></label>
         <div class="float-right pt-2 ml-4">
-            <button class="btn " onclick="fn_write()">글쓰기</button>
+            <button class="btn " onclick="location.href='<%=request.getContextPath()%>/infoBoard/write'">글쓰기</button>
         </div>
         <div class="float-right pt-2">
-            <form>
+             <form name="fr" action="#" onsubmit="return check()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
-                        <select class="form-control" id="sel1">
-                            <option>선택</option>
-                            <option value="content">내용</option>
-                            <option value="title">제목</option>
+                        <select class="form-control" id="sel1" name="searchType">
+                            <option value=no>선택</option>
+                            <option value="content" >내용</option>
+                            <option value="title" >제목</option>
                             <option value="nickName">닉네임</option>
                         </select>
                     </div>
                     <div class="input-group-append">
-                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력">
-                        <button class="btn " type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
+                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력" value="">
+                        <button class="btn btnCheck" type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
                     </div>
                 </div>
             </form>
@@ -74,111 +86,29 @@ if(fr.search_key.value == "") {
 	</div>
 	<table class="table table-hover ">
 		<tbody>
+		<%for(InfoBoard ib : list){
+			%>
 		<tr>
 			<td class="align-middle">
-				<a href="#">
-					한국에서 더워 죽을수도 있나요?
+				<a href='<%=request.getContextPath()%>/infoBoard/boardView?no=<%=ib.getBoardNumber()%>'>
+					<%=ib.getBoardTitle() %>
 				</a>
 			</td>
-			<!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-			<td class="align-middle">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px">5
+			<td class="align-middle" id="info">
+				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">1&nbsp;
+				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px"><%=ib.getBoardgood()%>&nbsp;
+				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px"><%=ib.getBoardHit()%>
 			</td>
 			<td>
 				<div class="block">
-					오상현
+					<%=ib.getBoardId()%>
 				</div>
 				<div style="color: #ccc; font-size: 12px;">
-					2016.12.02 18:16:25
+					<%=ib.getBoardDate() %>
 				</div>
 			</td>
 		</tr>
-		<tr>
-			<td class="align-middle">
-				<a href="#">
-					한국에서 더워 죽을수도 있나요?
-				</a>
-			</td>
-			<!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-			<td class="align-middle">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px">5
-			</td>
-			<td>
-				<div class="block">
-					오상현
-				</div>
-				<div style="color: #ccc; font-size: 12px;">
-					2016.12.02 18:16:25
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle">
-				<a href="#">
-					한국에서 더워 죽을수도 있나요?
-				</a>
-			</td>
-			<!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-			<td class="align-middle">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px">5
-			</td>
-			<td>
-				<div class="block">
-					오상현
-				</div>
-				<div style="color: #ccc; font-size: 12px;">
-					2016.12.02 18:16:25
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle">
-				<a href="#">
-					한국에서 더워 죽을수도 있나요?
-				</a>
-			</td>
-			<!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-			<td class="align-middle">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px">5
-			</td>
-			<td>
-				<div class="block">
-					오상현
-				</div>
-				<div style="color: #ccc; font-size: 12px;">
-					2016.12.02 18:16:25
-				</div>
-			</td>
-		</tr>
-		<tr>
-			<td class="align-middle">
-				<a href="#">
-					한국에서 더워 죽을수도 있나요?
-				</a>
-			</td>
-			<!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-			<td class="align-middle">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px">3&nbsp;
-				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px">5
-			</td>
-			<td>
-				<div class="block">
-					오상현
-				</div>
-				<div style="color: #ccc; font-size: 12px;">
-					2016.12.02 18:16:25
-				</div>
-			</td>
-		</tr>
+		<%} %>
 		</tbody>
 	</table>        
 	<hr>
@@ -187,17 +117,7 @@ if(fr.search_key.value == "") {
 		<div class="form-group">
 			<nav class="align-content-center">
 				<ul class="pagination justify-content-center">
-					<li class="page-item disabled">
-						<a class="page-link" href="#" tabindex="-1">Previous</a>
-					</li>
-					<li class="page-item"><a class="page-link" href="#">1</a></li>
-					<li class="page-item"><a class="page-link" href="#">2</a></li>
-					<li class="page-item"><a class="page-link" href="#">3</a></li>
-					<li class="page-item"><a class="page-link" href="#">4</a></li>
-					<li class="page-item"><a class="page-link" href="#">5</a></li>
-					<li class="page-item">
-						<a class="page-link" href="#">Next</a>
-					</li>
+					<%=pageBar%>
 				</ul>     
 			</nav>
 		</div>
