@@ -40,7 +40,7 @@
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_info/infoBoardList.jsp">정보</a>
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_image/imageBoardList.jsp">사진</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/board/imageBoardList">사진</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
                 </div>
               </li>
