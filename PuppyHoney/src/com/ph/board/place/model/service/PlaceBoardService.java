@@ -6,6 +6,7 @@ import static common.JDBCTemplate.getConnection;
 import static common.JDBCTemplate.rollback;
 
 import java.sql.Connection;
+import java.util.List;
 
 import com.ph.board.place.model.dao.PlaceBoardDAO;
 import com.ph.board.place.model.vo.PlaceBoard;
@@ -25,5 +26,14 @@ public class PlaceBoardService {
 		close(conn);
 		
 		return result;
+	}
+
+	public List<PlaceBoard> selectPlaceBoardList() 
+	{
+		Connection conn=getConnection();
+		List<PlaceBoard> pList=new PlaceBoardDAO().selectPlaceBoard(conn);
+		close(conn);
+		
+		return pList;
 	}
 }

@@ -49,7 +49,7 @@
               </li> 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_place/placeBoardList.jsp"><strong>장소</strong></a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/board/placeBoardList"><strong>장소</strong></a>
               </li>
               <%if(userLoggedIn==null){ %> 
               <li class="nav-item">
