@@ -28,6 +28,8 @@ public class ImageBoardListServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		
+		
+		
 		request.getRequestDispatcher("/views/board/board_image/imageBoardList.jsp").forward(request, response);
 	}
 
