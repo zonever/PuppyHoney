@@ -31,6 +31,7 @@ public class InfoBoardListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		 
 		//페이징 처리
 		int numPerPage=10;
 		int cPage;
@@ -75,6 +76,8 @@ public class InfoBoardListServlet extends HttpServlet {
 			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/boardList?cPage="+(pageNo)+"'>Next</a></li>";
 		}
 		//페이지바 구성 끝!
+		
+		
 		request.setAttribute("list", list);
 		request.setAttribute("cPage", cPage);
 		request.setAttribute("pageBar", pageBar);
