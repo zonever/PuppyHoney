@@ -14,7 +14,6 @@
 <body>
 	<script>
 		alert("<%= msg %>");
-		
 		<%= script!=null?script:""%>;
 		location.href="<%=loc%>";
 	</script>

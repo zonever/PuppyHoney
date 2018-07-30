@@ -1,6 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
+<% 
+	int boardNum = Integer.parseInt(request.getAttribute("boardNum").toString());
+	String boardTitle = request.getAttribute("boardTitle").toString();
+	String boardContent = request.getAttribute("boardContent").toString();
+	int cPage = Integer.parseInt(request.getAttribute("cPage").toString());
+	String searchType = request.getAttribute("searchType").toString();
+	String inputText = request.getAttribute("inputText").toString();
+	String sort = request.getAttribute("sort").toString();
+
+%>
 <!-- Smart Editor -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
@@ -15,13 +25,6 @@ if(<%=userLoggedIn==null%>){
 	alert("잘못된 경로로 접근했습니다.");
 	location.href="/PuppyHoney/index.jsp";
 }
-
-function check(){
-	alert("막아뒀따!!");
-	return false;
-}
-
-
 </script>
 <div class="panel panel-default"> 
             <!-- Default panel contents --> 
@@ -31,28 +34,32 @@ function check(){
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd' method="post" id="fr">
+                    <form action='<%=request.getContextPath()%>/infoBoard/ReviseEnd' method="post" id="fr">
             			<!-- 원래는 벨류값에 세션아이디가 들어갈거임 -->
-            			<input type="hidden" name="id" value="<%=userLoggedIn.getUserId() %>"/>
+            			<input type="hidden" name="boardNum" value="<%=boardNum%>"/>
+            			<input type="hidden" name="cPage" value="<%=cPage%>"/>
+            			<input type="hidden" name="searchType" value="<%=searchType%>"/>
+            			<input type="hidden" name="inputText" value="<%=inputText%>"/>
+            			<input type="hidden" name="sort" value="<%=sort%>"/>
                          <!-- //글제목 입력 폼 -->
                          <div class="form-group"> 
                              <label for="title">Title</label> 
-                             <input type="text" class="form-control" name ="title" id="title" placeholder="제목을 입력하세요."/> 
+                             <input type="text" class="form-control" name ="title" id="title" placeholder="제목을 입력하세요." value="<%=boardTitle%>"> 
                          </div> 
                      
                          <!-- //글내용 입력 폼  -->
                          <div class="form-group"> 
                          	<label for="textAreaContent">Content</label>
-                             <textarea style="width: 100%" rows="25" name="content" id="textAreaContent" cols="80"></textarea>
+                             <textarea style="width: 100%" rows="25" name="content" id="textAreaContent" cols="80"><%=boardContent%></textarea>
                          </div>
                          
                          <!--버튼능력-->
                          <div class="center-block ">      
-                             <input type="button" value="등록" class="btn btn-outline-secondary" style="width: 100px; height: 50px" onclick="submitContents(this);" >
-                             <input type="reset" value="목록" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px" onclick="history.back(1)"> 
+                             <input type="button" value="수정" class="btn btn-outline-secondary" style="width: 100px; height: 50px" onclick="submitContents(this)">
+                             
                              <!-- //되돌아가기에서 onclick이벤트로 history.back(1) 왔던곳에서 1만큼 back (-1을 써도 된다)  -->
-                             <!-- <br><br>
-                             <input type="button" value="Back" onclick="history.back(1)"> -->
+                          
+                             <input type="button" value="뒤로" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px" onclick="history.back(1)">
                          </div> 
                          
                      </form>
@@ -74,15 +81,13 @@ function check(){
 	//‘저장’ 버튼을 누르는 등 저장을 위한 액션을 했을 때 submitContents가 호출된다고 가정한다.
 	function submitContents(elClickedObj) {
 	    // 에디터의 내용이 textarea에 적용된다.
+	    
 		if(fr.title.value.trim()==''){
 	    	alert("제목을 입력하세요.");
 	    	return;
 	    }
-	   
-	   
-	    oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", []);
 	    
-	   
+	    oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", []);
 	 
 	    // 에디터의 내용에 대한 값 검증은 이곳에서
 	    // document.getElementById("textAreaContent").value를 이용해서 처리한다.
