@@ -1,18 +1,14 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" %>
 <%@ include file="/views/common/header.jsp" %>
+
 
 <!-- Smart Editor -->
 <script src="https://ssl.daumcdn.net/dmaps/map_js_init/postcode.v2.js"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 
-<script>
-	function fn_back()
-	{
-		location.href="views/board/board_place/placeBoardList.jsp";
-	}
-</script>
+
 <script>
           //주소api 스크립트
           function test1() {
@@ -60,32 +56,34 @@
           }
       </script>
       
+      
+      
      <div class="container col-sm-8 mt-5">
 
     <h1 class="mt-4 mb-3">글쓰기</h1>  
 
     <div class="ml-5 mr-5">
-		<form action="<%=request.getContextPath()%>/board/placeBoardFormEnd" method="post">
+		<form name="placeform"action="<%=request.getContextPath()%>/board/placeBoardFormEnd?userId=<%=userLoggedIn.getUserId()%>" method="post" enctype="multipart/form-data">
         <div>
             <div class="form-group"> 
                 <label for="title">제목</label> 
-                <input type="text" class="form-control" name="title" id="title" placeholder="제목 입력"> 
+                <input type="text" class="form-control" name="title" id="title" placeholder="제목 입력" required> 
             </div> 
         </div>  
         
          <div>
             <div class="form-group"> 
                 <label for="storeName">업소명</label>
-                <input type="text" class="form-control" name ="storeName" id="storeName" placeholder="상호입력"> 
+                <input type="text" class="form-control" name ="storeName" id="storeName" placeholder="상호입력" required> 
             </div>
         </div>  
         <div>
             <div class="form-group">
-                    <label for="placeCate">업종</label>
-                    <select name="placeCate" class="custom-select">
-                        <option id="placeCate" value="미용">미용</option>
-                        <option id="placeCate" value="카페">카페</option>
-                        <option id="placeCate" value="병원">병원</option>
+                    <label for="businessType">업종</label>
+                    <select name="businessType" class="custom-select">
+                        <option id="businessType" value="미용">미용</option>
+                        <option id="businessType" value="카페">카페</option>
+                        <option id="businessType" value="병원">병원</option>
                     </select>
             </div>
         </div>
@@ -129,9 +127,9 @@
         <div>
            <label for="phone">연락처</label> 
             <div class="form-group row pl-3"> 
-                <input type="text" class="form-control col-md-2" name ="phone1" id="phone1" placeholder="지역번호"> -   
-                <input type="text" class="form-control col-md-3" name ="phone2" id="phone2" placeholder="xxxx"> -
-                <input type="text" class="form-control col-md-3" name ="phone3" id="phone3" placeholder="xxxx"> 
+                <input type="text" class="form-control col-md-2" name ="phone1" id="phone1" placeholder="지역번호" required> -   
+                <input type="text" class="form-control col-md-3" name ="phone2" id="phone2" placeholder="xxxx" required> -
+                <input type="text" class="form-control col-md-3" name ="phone3" id="phone3" placeholder="xxxx" required> 
             </div> 
         </div>  
         
@@ -142,33 +140,41 @@
             </div> 
         </div>  
         
-        <div>
+         <div>
             <div class="form-group"> 
                 <label for="type">주소</label> 
 	                <div class="row m-0">
-	                    <input type="text" class="form-control col-md-4" name ="address1" id="address1" placeholder="우편번호">
+	                    <input type="text" onclick="test1()" class="form-control col-md-4" name ="address1" id="address1" placeholder="우편번호" required>
 	                    <input type="button" onclick="test1()" value="우편번호 찾기" class="btn btn-danger">
                 	</div>
-	                 <input type="text" class="form-control col-md-12" name ="address2" id="address2" placeholder="주소">
-	                 <input type="text" class="form-control col-md-12" name ="address3" id="address3" placeholder="상세주소">
+	                 <input type="text" onclick="test1()" class="form-control col-md-12" name ="address2" id="address2" placeholder="주소" required>
+	                 <input type="text" class="form-control col-md-12" name ="address3" id="address3" placeholder="상세주소" required>
             </div>
         </div>  
+        
+        <div class="form-group">
+	          <label>대표이미지</label>
+	          	<input type="file" name="Image">
+         </div>
+         
         <div>
             <div class="form-group"> 
-                <label for="textAreaContent">상세 내용</label> 
-                <textarea style="width: 100%" rows="25" name="content" id="textAreaContent" cols="80"></textarea>
+                <label>상세 내용</label> 
+                <textarea style="width: 100%" rows="25" name="content" id="textAreaContent" cols="80" required></textarea>
             </div>
         </div>
         <div class="form-group" align='right'>
-              <input class="btn btn-danger" type="button" name="add" id="add" value="등록" onclick="submitContents(this)" >
+              <input class="btn btn-danger"	type="submit" value="등록" onclick="submitContents(this);"/>
               <input class="btn btn-danger" type="reset" value="이전"/>
             </div>
         
         </form>
     </div>
 </div>    
+
 <!-- Smart Editor -->
    <script type="text/javascript">
+  
    var oEditors = [];
    nhn.husky.EZCreator.createInIFrame({
        oAppRef: oEditors,
@@ -181,10 +187,11 @@
    function submitContents(elClickedObj) {
        // 에디터의 내용이 textarea에 적용된다.
        oEditors.getById["textAreaContent"].exec("UPDATE_CONTENTS_FIELD", []);
+     	var a=document.getElementById("textAreaContent").val();
+        alert(a);
     
        // 에디터의 내용에 대한 값 검증은 이곳에서
-       // document.getElementById("textAreaContent").value를 이용해서 처리한다.
-     
+     	
        try {
            elClickedObj.form.submit();
        } catch(e) {
@@ -197,7 +204,11 @@
        var sHTML = '<img src="<%=request.getContextPath()%>/uploadFolder/'+filepath+'">';
        oEditors.getById["textAreaContent"].exec("PASTE_HTML", [sHTML]);
    }
- 
+ 	
+  
+
+  
 </script>
+		
 <br>
 <%@ include file="/views/common/footer.jsp" %>
