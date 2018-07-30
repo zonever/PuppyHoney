@@ -1,23 +1,28 @@
-package com.mypage.controller;
+package com.ph.board.lost.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.ph.board.lost.model.vo.LostBoard;
+import com.ph.board.lost.service.LostBoardService;
+
 /**
- * Servlet implementation class UpdateMemberServlet
+ * Servlet implementation class LostBoardDetailpage
  */
-@WebServlet("/updateMemberPage")
-public class UpdateMemberServlet extends HttpServlet {
+@WebServlet("/detailPage")
+public class LostBoardDetailpage extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public UpdateMemberServlet() {
+    public LostBoardDetailpage() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +31,11 @@ public class UpdateMemberServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/mypage/updateMemberPage.jsp").forward(request, response);
+		String userId=request.getParameter("userId");
+		LostBoard lb=new LostBoardService().selectDetail(userId);
+		request.setAttribute("lb", lb);
+		request.getRequestDispatcher("/views/board/board_lost/lostBoardView.jsp").forward(request, response);
+		
 	}
 
 	/**

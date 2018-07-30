@@ -1,4 +1,4 @@
-package com.lostBoard.controller;
+package com.ph.board.lost.controller;
 
 import java.io.IOException;
 import java.util.List;
@@ -9,8 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.lostBoard.model.vo.LostBoard;
-import com.lostBoard.service.LostBoardSelect;
+import com.ph.board.lost.model.vo.LostBoard;
+import com.ph.board.lost.service.LostBoardService;
 
 /**
  * Servlet implementation class LostBoardServlet
@@ -31,9 +31,10 @@ public class LostBoardServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		List<LostBoard> list=new LostBoardSelect().selectAll();
+		
+		List<LostBoard> list=new LostBoardService().selectAll();
 		request.setAttribute("list", list);
-		request.getRequestDispatcher("/views/board/board.lost/lostBoard.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/board/board_lost/lostBoardList.jsp").forward(request, response);
 	}
 
 	/**

@@ -1,4 +1,4 @@
-package com.mypage.controller;
+package com.ph.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class BookmarkServlet
+ * Servlet implementation class UpdateMemberServlet
  */
-@WebServlet("/bookmarkPage")
-public class BookmarkServlet extends HttpServlet {
+@WebServlet("/updateMemberPage")
+public class UpdateMemberServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public BookmarkServlet() {
+    public UpdateMemberServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class BookmarkServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/mypage/bookmarkPage.jsp").forward(request, response);
+		request.getRequestDispatcher("/views/mypage/updateMemberPage.jsp").forward(request, response);
 	}
 
 	/**

@@ -16,6 +16,19 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script>
+    	$(function() {
+    		$('#myPage').on('click',function(){
+    			var userId=userLoggedIn.getUserId();
+    			var url=href="<%=request.getContextPath()%>/myHomepage";
+    			this.attr("value",userId);
+    			this.attr("action",url);
+    			this.method("post");
+    			this.submit();
+    		})
+			
+		})
+    </script>
 </head>
 <body>
   <!-- 전체 div -->
@@ -41,12 +54,12 @@
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">정보</a>
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_image/imageBoardList.jsp">사진</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/board/imageBoardList">사진</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
                 </div>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_lost/lostBoardList.jsp"><strong>분실</strong></a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/lostBoard"><strong>분실</strong></a>
               </li> 
               </li>
               <li class="nav-item">
@@ -62,7 +75,7 @@
                  	<strong>MyPage</strong>
                 </a>
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="myPage">
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/user/myPage">내정보</a>
+                  <a id="myPage" class="dropdown-item" href="<%=request.getContextPath()%>/myPage">내정보</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/user/logout">로그아웃</a>
                 </div>
               </li>

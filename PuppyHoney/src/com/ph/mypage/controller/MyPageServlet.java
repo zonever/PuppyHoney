@@ -1,4 +1,4 @@
-package com.mypage.controller;
+package com.ph.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class MyHomepageServlet
+ * Servlet implementation class MyPageServlet
  */
-@WebServlet("/myHomepage")
-public class MyHomepageServlet extends HttpServlet {
+@WebServlet("/myPage")
+public class MyPageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public MyHomepageServlet() {
+    public MyPageServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class MyHomepageServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/mypage/myHomepage.jsp").forward(request, response);
+		
 	}
 
 	/**

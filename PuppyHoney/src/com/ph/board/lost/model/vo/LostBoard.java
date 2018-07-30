@@ -1,4 +1,4 @@
-package com.lostBoard.model.vo;
+package com.ph.board.lost.model.vo;
 
 import java.sql.Date;
 
@@ -7,12 +7,12 @@ public class LostBoard {
 	private int lostBoardNum;
 	private String lostBoardTitle;
 	private String lostBoardContent;
-	private String lostBoardNick;
+	private String lostBoardId;
 	private Date lostBoardDate;
 	private int lostBoardHits;
 	private int lostBoardGood;
-	private String lostBoardImageOrigin;
-	private String lostBoardImageRename;
+	/*private String lostBoardImageOrigin;
+	private String lostBoardImageRename;*/
 	private String lostBoardArea;
 	private String lostBoardPhone;
 	private String lostBoardType;
@@ -20,18 +20,18 @@ public class LostBoard {
 	public LostBoard() {}
 
 	public LostBoard(int lostBoardNum, String lostBoardTitle, String lostBoardContent, String lostBoardNick,
-			Date lostBoardDate, int lostBoardHits, int lostBoardGood, String lostBoardImageOrigin,
-			String lostBoardImageRename, String lostBoardArea, String lostBoardPhone, String lostBoardType) {
+			Date lostBoardDate, int lostBoardHits, int lostBoardGood,
+			String lostBoardArea, String lostBoardPhone, String lostBoardType) {
 		super();
 		this.lostBoardNum = lostBoardNum;
 		this.lostBoardTitle = lostBoardTitle;
 		this.lostBoardContent = lostBoardContent;
-		this.lostBoardNick = lostBoardNick;
+		this.lostBoardId = lostBoardNick;
 		this.lostBoardDate = lostBoardDate;
 		this.lostBoardHits = lostBoardHits;
 		this.lostBoardGood = lostBoardGood;
-		this.lostBoardImageOrigin = lostBoardImageOrigin;
-		this.lostBoardImageRename = lostBoardImageRename;
+		/*this.lostBoardImageOrigin = lostBoardImageOrigin;
+		this.lostBoardImageRename = lostBoardImageRename;*/
 		this.lostBoardArea = lostBoardArea;
 		this.lostBoardPhone = lostBoardPhone;
 		this.lostBoardType = lostBoardType;
@@ -61,12 +61,12 @@ public class LostBoard {
 		this.lostBoardContent = lostBoardContent;
 	}
 
-	public String getLostBoardNick() {
-		return lostBoardNick;
+	public String getLostBoardId() {
+		return lostBoardId;
 	}
 
-	public void setLostBoardNick(String lostBoardNick) {
-		this.lostBoardNick = lostBoardNick;
+	public void setLostBoardId(String lostBoardNick) {
+		this.lostBoardId = lostBoardNick;
 	}
 
 	public Date getLostBoardDate() {
@@ -93,7 +93,7 @@ public class LostBoard {
 		this.lostBoardGood = lostBoardGood;
 	}
 
-	public String getLostBoardImageOrigin() {
+	/*public String getLostBoardImageOrigin() {
 		return lostBoardImageOrigin;
 	}
 
@@ -107,7 +107,7 @@ public class LostBoard {
 
 	public void setLostBoardImageRename(String lostBoardImageRename) {
 		this.lostBoardImageRename = lostBoardImageRename;
-	}
+	}*/
 
 	public String getLostBoardArea() {
 		return lostBoardArea;
@@ -136,9 +136,8 @@ public class LostBoard {
 	@Override
 	public String toString() {
 		return "LostBoard [lostBoardNum=" + lostBoardNum + ", lostBoardTitle=" + lostBoardTitle + ", lostBoardContent="
-				+ lostBoardContent + ", lostBoardNick=" + lostBoardNick + ", lostBoardDate=" + lostBoardDate
-				+ ", lostBoardHits=" + lostBoardHits + ", lostBoardGood=" + lostBoardGood + ", lostBoardImageOrigin="
-				+ lostBoardImageOrigin + ", lostBoardImageRename=" + lostBoardImageRename + ", lostBoardArea="
+				+ lostBoardContent + ", lostBoardNick=" + lostBoardId + ", lostBoardDate=" + lostBoardDate
+				+ ", lostBoardHits=" + lostBoardHits + ", lostBoardGood=" + lostBoardGood + ", lostBoardArea="
 				+ lostBoardArea + ", lostBoardPhone=" + lostBoardPhone + ", lostBoardType=" + lostBoardType + "]";
 	}
 	

@@ -1,4 +1,4 @@
-package com.lostBoard.controller;
+package com.ph.mypage.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LostBoardDetailpage
+ * Servlet implementation class BookmarkServlet
  */
-@WebServlet("/detailPage")
-public class LostBoardDetailpage extends HttpServlet {
+@WebServlet("/bookmarkPage")
+public class BookmarkServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LostBoardDetailpage() {
+    public BookmarkServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class LostBoardDetailpage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("views/board/board_lost/lostBoardView.jsp").forward(request, response);
+		request.getRequestDispatcher("views/mypage/bookmarkPage.jsp").forward(request, response);
 	}
 
 	/**
