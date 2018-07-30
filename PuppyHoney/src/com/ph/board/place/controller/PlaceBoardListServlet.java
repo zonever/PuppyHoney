@@ -1,25 +1,28 @@
-package com.ph.infoBoard.controller;
+package com.ph.board.place.controller;
 
 import java.io.IOException;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ph.user.model.vo.User;
+import com.ph.board.place.model.service.PlaceBoardService;
+import com.ph.board.place.model.vo.PlaceBoard;
 
 /**
- * Servlet implementation class InfoBoardWriteServlet
+ * Servlet implementation class PlaceBoardListServlet
  */
-@WebServlet("/infoBoard/write")
-public class InfoBoardWriteServlet extends HttpServlet {
+@WebServlet("/board/placeBoardList")
+public class PlaceBoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InfoBoardWriteServlet() {
+    public PlaceBoardListServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,17 +31,11 @@ public class InfoBoardWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-			//세션값이 null (로그인이 안되어있으면 알림창발생후 로그인창으로)
-		User u=(User)request.getSession().getAttribute("userLoggedIn");
-		if(u==null) {
-			request.setAttribute("msg", "로그인후 이용해 주세요.");
-			request.setAttribute("loc","/views/user/login.jsp");
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
-			return;
-		}else {
-		response.sendRedirect("/PuppyHoney/views/board/board_info/infoBoardWrite.jsp");
 		
-		}
+			
+			List<PlaceBoard> pList = new PlaceBoardService().selectPlaceBoardList();
+			request.setAttribute("pList", pList);
+			request.getRequestDispatcher("/views/board/board_place/placeBoardList.jsp").forward(request, response);
 	}
 
 	/**

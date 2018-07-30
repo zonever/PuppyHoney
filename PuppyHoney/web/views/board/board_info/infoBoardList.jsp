@@ -4,10 +4,15 @@
 <%
 	List<InfoBoard> list=(List<InfoBoard>)request.getAttribute("list");
 	String pageBar = (String)request.getAttribute("pageBar");
-
+	String searchType = (String)request.getAttribute("searchType");
+	String inputText = (String)request.getAttribute("inputText");
+	String sort = (String)request.getAttribute("sort");
+	int cPage = Integer.parseInt(request.getAttribute("cPage").toString()); 
 %>
 
 <script>
+
+
 //검색창에 빈값 확인
 function check() {
 
@@ -33,6 +38,62 @@ $(function(){
     	}
     });
     
+  //조회순 정렬 의 반응
+    $('.sortHits').on('click',function(){
+      var sort = "INFO_BOARD_HITS";
+      var searchType = "<%=searchType%>";
+      var inputText = "<%=inputText%>";
+      sortFrm.sort.value=sort;
+      sortFrm.searchType.value=searchType;
+      sortFrm.inputText.value=inputText;
+      var url="<%=request.getContextPath()%>/infoBoard/search";
+      sortFrm.action=url
+      sortFrm.method="get";
+      sortFrm.submit();
+    });
+  
+  //최신순 정렬 의 반응
+    $('.sortDate').on('click',function(){
+      var sort = "INFO_BOARD_DATE";
+      var searchType = "<%=searchType%>";
+      var inputText = "<%=inputText%>";
+      sortFrm.sort.value=sort;
+      sortFrm.searchType.value=searchType;
+      sortFrm.inputText.value=inputText;
+      var url="<%=request.getContextPath()%>/infoBoard/search";
+      sortFrm.action=url
+      sortFrm.method="get";
+      sortFrm.submit();
+    });
+  
+  // 댓글순 정렬 의 반응
+    $('.sortReply').on('click',function(){
+      var sort = "REPLYNUM";
+      var searchType = "<%=searchType%>";
+      var inputText = "<%=inputText%>";
+      sortFrm.sort.value=sort;
+      sortFrm.searchType.value=searchType;
+      sortFrm.inputText.value=inputText;
+      var url="<%=request.getContextPath()%>/infoBoard/search";
+      sortFrm.action=url
+      sortFrm.method="get";
+      sortFrm.submit();
+    });
+  
+ // 추찬순 정렬 의 반응
+    $('.sortGood').on('click',function(){
+      var sort = "INFO_BOARD_GOOD";
+      var searchType = "<%=searchType%>";
+      var inputText = "<%=inputText%>";
+      sortFrm.sort.value=sort;
+      sortFrm.searchType.value=searchType;
+      sortFrm.inputText.value=inputText;
+      var url="<%=request.getContextPath()%>/infoBoard/search";
+      sortFrm.action=url
+      sortFrm.method="get";
+      sortFrm.submit();
+    });
+  
 });
 </script>
 <style>
@@ -49,18 +110,19 @@ $(function(){
             <button class="btn " onclick="location.href='<%=request.getContextPath()%>/infoBoard/write'">글쓰기</button>
         </div>
         <div class="float-right pt-2">
-             <form name="fr" action="#" onsubmit="return check()">
+             <form name="fr" action="<%=request.getContextPath()%>/infoBoard/search" onsubmit="return check()">
+             	<input type="hidden" name="sort" value="<%=sort%>">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <select class="form-control" id="sel1" name="searchType">
                             <option value=no>선택</option>
-                            <option value="content" >내용</option>
-                            <option value="title" >제목</option>
-                            <option value="nickName">닉네임</option>
+                            <option value="INFO_BOARD_CONTENT" >내용</option>
+                            <option value="INFO_BOARD_TITLE" >제목</option>
+                            <option value="USER_NICK">닉네임</option>
                         </select>
                     </div>
                     <div class="input-group-append">
-                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력" value="">
+                    	<input type="text" class="form-control" name="inputText" placeholder="검색어 입력" id=inputText2>
                         <button class="btn btnCheck" type="submit"><img src="<%=request.getContextPath() %>/images/search.png"/></button> 
                     </div>
                 </div>
@@ -70,33 +132,81 @@ $(function(){
 	</div>      
 	
 </div>
+<script>
 
+<%if(searchType!=null){%>
+var type = '<%=searchType%>';
+var text = '<%=inputText%>';
+document.getElementById('sel1').value=type;
+document.getElementById('inputText2').value=text;
+
+<%}%>
+</script>
 	
 	
 <div class="container mt-5 col-sm-11">
 <!-- Page Heading -->
-	<div class="pb-4">                                                                                           <!-- 선택이 되있으면 #555, text-decoration: underline; -->
-		<a href="#"><font class="sortMenu">최신순</font></a>
-		<font class="sortMenuBar" >|</font>
-		<a  href="#"><font class="sortMenu">조회순</font></a>
-		<font class="sortMenuBar" >|</font>
-		<a  href="#"><font class="sortMenu">댓글순</font></a>
-		<font class="sortMenuBar" >|</font>
-		<a href="#"><font class="sortMenu">추천순</font></a>
+	<div class="pb-4">                                                                                  <!-- 선택이 되있으면 #555, text-decoration: underline; -->
+		<%if(sort!=null){ %>
+			<%if(sort.equals("INFO_BOARD_DATE")){ %>
+				<b><a href="#"><font class="sortMenu sortDate" style="color: #555; text-decoration: underline;">최신순</font></a></b>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortHits" style="color: #bbb;">조회순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortReply" style="color: #bbb;">댓글순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a href="#"><font class="sortMenu sortGood" style="color: #bbb;">추천순</font></a>
+			<%}else if(sort.equals("INFO_BOARD_HITS")){ %>
+				<a href="#"><font class="sortMenu sortDate" style="color: #bbb;">최신순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<b><a  href="#"><font class="sortMenu sortHits" style="color: #555; text-decoration: underline;">조회순</font></a></b>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortReply" style="color: #bbb;">댓글순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a href="#"><font class="sortMenu sortGood" style="color: #bbb;">추천순</font></a>
+			<%}else if(sort.equals("REPLYNUM")){ %>
+				<a href="#"><font class="sortMenu sortDate" style="color: #bbb;">최신순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortHits" style="color: #bbb;">조회순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<b><a  href="#"><font class="sortMenu sortReply" style="color: #555; text-decoration: underline;">댓글순</font></a></b>
+				<font class="sortMenuBar" >|</font>
+				<a href="#"><font class="sortMenu sortGood" style="color: #bbb;">추천순</font></a>
+			<%}else if(sort.equals("INFO_BOARD_GOOD")){ %>
+				<a href="#"><font class="sortMenu sortDate" style="color: #bbb;">최신순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortHits" style="color: #bbb;">조회순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<a  href="#"><font class="sortMenu sortReply" style="color: #bbb;">댓글순</font></a>
+				<font class="sortMenuBar" >|</font>
+				<b><a href="#"><font class="sortMenu sortGood" style="color: #555; text-decoration: underline;">추천순</font></a></b>
+			<%} %>
+		<%}else{ %>
+			<b><a href="#"><font class="sortMenu sortDate" style="color: #555; text-decoration: underline;">최신순</font></a></b>
+			<font class="sortMenuBar" >|</font>
+			<a  href="#"><font class="sortMenu sortHits" style="color: #bbb;">조회순</font></a>
+			<font class="sortMenuBar" >|</font>
+			<a  href="#"><font class="sortMenu sortReply" style="color: #bbb;">댓글순</font></a>
+			<font class="sortMenuBar" >|</font>
+			<a href="#"><font class="sortMenu sortGood" style="color: #bbb;">추천순</font></a>
+		<%} %>
+		
+		
+	
 	</div>
-	<table class="table table-hover ">
+	<table class="table table-hover" style="table-layout:fixed; word-break:break-all;">
 		<tbody>
 		<%for(InfoBoard ib : list){
 			%>
 		<tr>
 			<td class="align-middle">
-				<a href='<%=request.getContextPath()%>/infoBoard/boardView?no=<%=ib.getBoardNumber()%>'>
+				<a href='<%=request.getContextPath()%>/infoBoard/boardView?no=<%=ib.getBoardNumber()%>&cPage=<%=cPage%>&searchType=<%=searchType%>&inputText=<%=inputText%>&sort=<%=sort%>'>
 					<%=ib.getBoardTitle() %>
 				</a>
 			</td>
 			<td class="align-middle" id="info">
-				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px">1&nbsp;
-				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px"><%=ib.getBoardgood()%>&nbsp;
+				<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px"><%=ib.getBoardReplyNum() %>&nbsp;&nbsp;&nbsp;&nbsp;
+				<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px"><%=ib.getBoardgood()%>&nbsp;&nbsp;&nbsp;&nbsp;
 				<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px"><%=ib.getBoardHit()%>
 			</td>
 			<td>
@@ -123,4 +233,10 @@ $(function(){
 		</div>
 	</div>
 </div>
+<!-- 댓글삭제를 적용시키기 위한 폼 -->
+     	<form name="sortFrm">
+     	  <input type="hidden" name="sort">
+     	  <input type="hidden" name="searchType">
+     	  <input type="hidden" name="inputText">
+     	</form>
 <%@ include file="/views/common/footer.jsp" %>

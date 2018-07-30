@@ -1,14 +1,15 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
+
 <style>
  
    
 .side-bar {
    position: fixed; 
-   right: 400px;
+   right: 390px;
    display: inline-block;
-   width: 370px;
+   width: 400px;
 }
    
  /* 모바일로 바꿨을 때 */   
@@ -26,18 +27,30 @@
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=29d28c77afa06b8d3797cd516b310f0f&libraries=services"></script>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=29d28c77afa06b8d3797cd516b310f0f"></script>
 
-
+<script>
+	$(function()
+	{
+		//답글버튼 반응
+		$('.btn-reply').on('click',function()
+		{
+			var form=$("<form action='<%=request.getContextPath()%>'/board/boardCommentInsert' method='post'></form>");
+			var html="<div class='row form-group pl-5'>";
+			html+="<textarea rows='2' cols='70' name='replay' id='replay' style='resize: none;' ></textarea>"
+			html+="&nbsp;&nbsp;<input type='submit' class='btn float-rigt btn-sm' value='등록'>";
+			form.html(html);
+			form.insertAfter($(this).parent().parent().parent()).slideDown(800);
+			$(this).off('click');
+		})
+		
+		
+	});
+			
+</script>
    <div class="container">
+      <h1 class="mt-4 mb-3">장소 페이지</h1>
 
-      
-      <h1 class="mt-4 mb-3">분실 페이지</h1>
-
-
-     
      <div class="row">
       <!-- Sidebar Widgets Column -->
-      
-      
         <div class="side-bar col-lg-3">
           <!-- Search Widget -->
           <div id="side" class="card mb-4">
@@ -46,96 +59,57 @@
             <div>
 	            <h6 class="alert alert-danger">입장가능</h6>
 	            <ul>
-	              <li><span class="badge badge-info">소형</span>&nbsp;&nbsp;&nbsp;<span class="badge badge-info">중형</span></li>
+	              <li><span class="badge badge-light">소형</span></li>
 	            </ul>
             </div> 
+          
             <div>
               <h6 class="alert alert-danger">연락처</h6>
-<div class="container p-5" style="background:white;">
-     
-            <blockquote class="blockquote text-center">
-                <h2>글제목(title)</h2>
-            </blockquote>
-            <table class="table text-center" >
-              <tr>
-                <th class="table-active">작성자</th>
-                <th class="table-active">날짜</th>
-                <th class="table-active">조회수</th>
-              </tr>
-              <tr>
-               
-              </tr>
-            </table>
-            <div align='center'>
-              <p>내용입력 ~~</p>
-              <p>내용입력 ~~</p>
-              <p>내용입력 ~~</p>
-              <p>내용입력 ~~</p>
-              <p>내용입력 ~~</p>
-              <p>내용입력 ~~</p>
-              <br>
-              <button class="btn btn-outline-warning">추천 20</button>
-            </div>
-            <hr>
-            <div class="alert alert-danger">
-                <table>
-                    <tr>
-                        <th>입장 :</th>
-                        <th><span class="badge badge-warning">소형</span></th>
-                        <th><span class="badge badge-warning">중형</span></th>
-                        <th><span class="badge badge-warning">대형</span></th>
-                      </tr>
-                  <tr>
-                    <th>종류 :</th>
-                    <th><span class="badge badge-warning">병원</span></th>
-                  </tr>
-                </table>
-                </div>
-            <div class="alert alert-danger">
-              <h5>연락처</h5>
               <ul>
-                <li><h6>대표번호 : 02-3033-2032</h6></li>
+                <li><h6>02-3033-2032</h6></li>
               </ul>
             </div>
               <div>
               <h6 class="alert alert-danger">영업시간 (Open - Close)</h6>
               <ul>
                 <li>
-               		<span class="badge badge-info">오전 9:30</span>&nbsp; - &nbsp;
-                    <span class="badge badge-info">오후 10:00</span>
+               		<span class="badge badge-light">오전 9:30</span>&nbsp; - &nbsp;
+                    <span class="badge badge-light">오후 10:00</span>
                 </li>
 
               </ul>
             </div>
            
-            <div>
-                <h6  class="alert alert-danger">주소</h6>
+            <h6  class="alert alert-danger">주소</h6>
+            <div align='center'>
                 <ul>
                   <li><h6>경기도 수원시 팔달구 권광로317번길 15</h6></li>
                 </ul>
-
-                <div id="map" style="width:290px;height:200px;"></div>
+                <div id="map" style="width:250px;height:180px;"></div>
               </div>
                    
             </div>
           </div>
         </div>
-
+		</div>
         <!-- ./Sidebar -->
         
              
         
         <div class="col-lg-8">
           <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
-         <hr>
-           <table class="table  text-center" >
+    		
+    		<br><br>
+           <table class="table text-center" >
+           	  <tr>
+           	  	<th class="table-active" colspan='3'>오늘은 날씨가 너무 덥네요</th>
+           	  </tr>
               <tr>
-                <th class="table-active">작성자</th>
-                <th class="table-active">날짜</th>
-                <th class="table-active">조회수</th>
+                <th class="table-Light">작성자</th>
+                <th class="table-Light">날짜</th>
+                <th class="table-Light">조회수</th>
               </tr>
 		 	</table>
-		 <hr>
           <blockquote align='center'class="blockquote">
           <p>내용 페이지</p>
           <br><br><br><br><br><br><br><br><br><br><br><br>
@@ -144,79 +118,91 @@
 
           <hr>
           
+          
+          
+          <!-- 댓글 답글부분 -->
           <!-- Comments Form -->
           <div class="card my-4">
             <h5 class="card-header alert-danger">댓글</h5>
             <div class="card-body">
               <form>
                 <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>
+                  <textarea class="form-control" rows="3"></textarea>		<!-- 댓글 적는 부분 -->
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
               </form>
             </div>
           </div>
-
-          <!-- Single Comment -->
+		  <hr>
+		  
+		  
+		  
+		  
+          <!-- 댓글 list Comment -->
+          <div class="media mb-4">
+            <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <!-- 답글부분(운영자,본인) 밸류값안에 코멘트 넘버를 가지고 있기 -->
+            <div class="media-body">
+              <h5 class="mt-0"><b>아이디1</b>&nbsp;<small style="font-size: 10px;">2018-07-21 01:00</small>&nbsp;<button style="float:right;  padding: 2px 4px;"class='btn btn-danger btn-sm'>삭제</button><button style="padding: 2px 4px;"class='btn btn-outline-warning btn-sm'>추천</button>&nbsp; </h5>
+	              <div>
+		              <span class="pl-2" style="font-size: 14px">
+		              	댓글 내용1(레벨이 2일때만 보여주기)
+		              </span>
+						<button style="float:right;"class='badge badge-light btn btn-sm btn-reply'>답글</button>              
+	              </div>
+              
+            </div>
+          </div>
+		  <hr>
+		  
+		  
+          <!-- 댓글부분 -->
           <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
             <div class="media-body">
-              <h5 class="mt-0">댓글</h5>
-              댓글 내용
+           	 <h5 class="mt-0"><b>아이디2</b>&nbsp;<small style="font-size: 10px;">2018-07-21 01:00</small>&nbsp;<button style="float:right;  padding: 2px 4px;"class='btn btn-danger btn-sm'>삭제</button><button style="padding: 2px 4px;"class='btn btn-outline-warning btn-sm'>추천</button>&nbsp; </h5>
+              <div>
+		            <span class="pl-2" style="font-size: 14px">
+            		댓글 내용2(레벨이 2일때만 보여주기)
+		            </span>
+					<button style="float:right;"class='badge badge-light btn btn-sm btn-reply'>답글</button>              
+              </div>
+			<hr>
+			<!-- 답글부분(운영자,본인) 밸류값안에 코멘트 넘버를 가지고 있기 -->
+              <div class="media mt-4">
+                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+                <div class="media-body">
+                  <h5 class="mt-0"><b>답아이디1</b>&nbsp;<small style="font-size: 10px;">2018-07-21 01:00</small>&nbsp;<button style="float:right;  padding: 2px 4px;"class='btn btn-danger btn-sm'>삭제</button><button style="padding: 2px 4px;"class='btn btn-outline-warning btn-sm'>추천</button>&nbsp; </h5>
+                  <span class="pl-2" style="font-size: 14px">
+            		답글 내용1(레벨이 2일때만 보여주기)
+	              </span>
+                </div>
+              </div>
             </div>
-          </div>
-
-          <!-- Comment with nested comments -->
-          <div class="media mb-4">
+          </div>		
+          <hr>
+          
+          
+           <!-- 댓글부분 -->
+		  <div class="media mb-4">
             <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
+            <!-- 답글부분(운영자,본인) 밸류값안에 코멘트 넘버를 가지고 있기 -->
             <div class="media-body">
-              <h5 class="mt-0">댓글</h5>
-              댓글 내용
-
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">답글</h5>
-                  답글 내용
-                </div>
-
-                <div id="map" style="width:200px;height:200px;"></div>
-
-              </div>
-
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">답글</h5>
-                  답글 내용
-                </div>
-              </div>
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">답글</h5>
-                  답글 내용
-                </div>
-              </div>
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">답글</h5>
-                  답글 내용
-                </div>
-              </div>
-              <div class="media mt-4">
-                <img class="d-flex mr-3 rounded-circle" src="http://placehold.it/50x50" alt="">
-                <div class="media-body">
-                  <h5 class="mt-0">답글</h5>
-                  답글 내용
-                </div>
+              <h5 class="mt-0"><b>아이디3</b>&nbsp;<small style="font-size: 10px;">2018-07-21 01:00</small>&nbsp;<button style="float:right;  padding: 2px 4px;"class='btn btn-danger btn-sm'>삭제</button><button style="padding: 2px 4px;"class='btn btn-outline-warning btn-sm'>추천</button>&nbsp; </h5>
+              <div>
+	              <span class="pl-2" style="font-size: 14px">
+	              	댓글 내용3(레벨이 2일때만 보여주기)
+	              </span>
+					<button style="float:right;"class='badge badge-light btn btn-sm btn-reply'>답글</button>              
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
+          <hr>
+          <!-- 댓글 답글 끝 -->
+          
+        </div>			<!-- 본문내용 -->
+      </div>			<!-- 전체컨테이너 -->
+    
 <script>
  var mapContainer = document.getElementById('map'), // 지도를 표시할 div 
  mapOption = {
@@ -252,7 +238,7 @@ geocoder.addressSearch('경기도 수원시 팔달구 권광로317번길 15', fu
 
      // 인포윈도우로 장소에 대한 설명을 표시합니다
      var infowindow = new daum.maps.InfoWindow({
-         content: '<div style="width:150px;text-align:center;padding:6px 0;">우리회사</div>'
+         content: '<div style="width:150px;text-align:center;padding:6px 0;">우리집</div>'
      });
      infowindow.open(map, marker);
 

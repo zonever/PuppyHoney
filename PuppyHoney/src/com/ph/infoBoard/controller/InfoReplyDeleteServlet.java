@@ -8,19 +8,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ph.infoBoard.model.service.InfoBoardService;
-import com.ph.infoBoard.model.vo.InfoBoard;
 
 /**
- * Servlet implementation class InfoBoardWriteEndServlet
+ * Servlet implementation class InfoReplyDeleteServlet
  */
-@WebServlet("/infoBoard/writeEnd")
-public class InfoBoardWriteEndServlet extends HttpServlet {
+@WebServlet("/infoReply/infoReplyDelete")
+public class InfoReplyDeleteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InfoBoardWriteEndServlet() {
+    public InfoReplyDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -29,23 +28,21 @@ public class InfoBoardWriteEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String id = request.getParameter("id");
-		String title = request.getParameter("title");
-		String content = request.getParameter("content");
+		int replyNum = Integer.parseInt(request.getParameter("replyNum"));
+		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
+		int cPage=Integer.parseInt(request.getParameter("cPage"));
+		String searchType=request.getParameter("searchType");
+		String inputText=request.getParameter("inputText");
+		String sort=request.getParameter("sort");
 		
-		InfoBoard ib = new InfoBoard();
-		ib.setBoardId(id);
-		ib.setBoardTitle(title);
-		ib.setBoardContent(content);
+		int result = new InfoBoardService().deleteInfoReply(replyNum);
 		
-		int result = new InfoBoardService().insertInfoBoard(ib);
-
 		String msg="";
-		String loc="/infoBoard/boardList";
+		String loc="/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		if(result>0) {
-			msg="게시물이 등록되었습니다.";
+			msg="댓글이 삭제되었습니다.";
 		}else {
-			msg="게시물 등록에 실패했습니다.";
+			msg="댓글 삭제에 실패했습니다.";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
