@@ -8,11 +8,12 @@ package com.ph.freeBoard.model.vo;
 		private String boardDate;
 		private int boardHit;
 		private int boardgood;
+		private int boardReplyNum;
 		
 		public FreeBoard(){}
 
 		public FreeBoard(int boardNumber, String boardTitle, String boardContent, String boardId, String boardDate,
-				int boardHit, int boardgood) {
+				int boardHit, int boardgood, int boardReplyNum) {
 			super();
 			this.boardNumber = boardNumber;
 			this.boardTitle = boardTitle;
@@ -21,6 +22,7 @@ package com.ph.freeBoard.model.vo;
 			this.boardDate = boardDate;
 			this.boardHit = boardHit;
 			this.boardgood = boardgood;
+			this.boardReplyNum = boardReplyNum;
 		}
 
 		public int getBoardNumber() {
@@ -79,12 +81,21 @@ package com.ph.freeBoard.model.vo;
 			this.boardgood = boardgood;
 		}
 
+		public int getBoardReplyNum() {
+			return boardReplyNum;
+		}
+
+		public void setBoardReplyNum(int boardReplyNum) {
+			this.boardReplyNum = boardReplyNum;
+		}
+
 		@Override
 		public String toString() {
-			return "FreeBoard [boardNumber=" + boardNumber + ", boardTitle=" + boardTitle + ", boardContent=" + boardContent
-					+ ", boardId=" + boardId + ", boardDate=" + boardDate + ", boardHit=" + boardHit + ", boardgood="
-					+ boardgood + "]";
+			return "FreeBoard [boardNumber=" + boardNumber + ", boardTitle=" + boardTitle + ", boardContent="
+					+ boardContent + ", boardId=" + boardId + ", boardDate=" + boardDate + ", boardHit=" + boardHit
+					+ ", boardgood=" + boardgood + ", boardReplyNum=" + boardReplyNum + "]";
 		}
+
 		
 		
 		

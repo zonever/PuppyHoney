@@ -53,7 +53,7 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_info/infoBoardList.jsp">정보</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">정보</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/board/imageBoardList">사진</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
                 </div>
@@ -80,6 +80,19 @@
                 </div>
               </li>
               <%} %>
+              <%if(userLoggedIn!=null){%>
+              <%if(userLoggedIn.getUserId().equals("admin")){ %>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="adminPage" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                 	<strong>ADMIN</strong>
+                </a>
+                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="adminPage">
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/admin/userList">회원 리스트</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/user/logout">영업승인 게시판</a>
+                </div>
+              </li>
+              <%} 
+              }%>
             </ul>
           </div>
         </div>
