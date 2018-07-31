@@ -402,15 +402,10 @@ public class InfoBoardDAO {
 			String inputText) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-<<<<<<< HEAD
 		System.out.println("첫번쨰 : "+((cPage-1)*numPerPage+1));
 		System.out.println("두번째 : "+cPage*numPerPage);
 		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE "+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY INFO_BOARD_DATE DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
-=======
-		System.out.println("泥ル쾲夷� : "+((cPage-1)*numPerPage+1));
-		System.out.println("�몢踰덉㎏ : "+cPage*numPerPage);
-		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE I."+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY INFO_BOARD_DATE DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
->>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
+
 		ArrayList<InfoBoard> list=new ArrayList();
 		InfoBoard ib=null;
 		
@@ -501,15 +496,11 @@ public class InfoBoardDAO {
 			String inputText, String sort) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-<<<<<<< HEAD
+
 		System.out.println("첫번쨰 : "+((cPage-1)*numPerPage+1));
 		System.out.println("두번째 : "+cPage*numPerPage);
 		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE "+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY "+sort+" DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
-=======
-		System.out.println("泥ル쾲夷� : "+((cPage-1)*numPerPage+1));
-		System.out.println("�몢踰덉㎏ : "+cPage*numPerPage);
-		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE I."+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY "+sort+" DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
->>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
+
 		ArrayList<InfoBoard> list=new ArrayList();
 		InfoBoard ib=null;
 		

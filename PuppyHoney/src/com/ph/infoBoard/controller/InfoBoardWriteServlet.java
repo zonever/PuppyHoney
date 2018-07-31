@@ -35,7 +35,7 @@ public class InfoBoardWriteServlet extends HttpServlet {
 		String inputText = request.getParameter("inputText");
 		String sort = request.getParameter("sort");
 		if(u==null) {
-<<<<<<< HEAD
+
 			request.setAttribute("free", "free");
 			request.setAttribute("cPage", cPage);
 			request.setAttribute("searchType", searchType);
@@ -44,11 +44,8 @@ public class InfoBoardWriteServlet extends HttpServlet {
 			request.setAttribute("msg", "로그인후 이용해 주세요.");
 			
 			request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
-=======
-			request.setAttribute("msg", "로그인 후 이용해주세요");
-			request.setAttribute("loc","/views/user/login.jsp");
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
->>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
+
+		
 			return;
 		}else {
 		response.sendRedirect("/PuppyHoney/views/board/board_info/infoBoardWrite.jsp");

@@ -63,16 +63,12 @@ public class UserService {
 		return result;
 	}
 	
-<<<<<<< HEAD
-	public int updateUser(User u) {
-		Connection conn=getConnection();
-		int result=new UserDAO().updateUser(conn, u);
-=======
+
 	public int updateUser(User user)
 	{
 		Connection conn=getConnection();
 		int result=new UserDAO().updateUser(conn,user);
->>>>>>> master
+
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);
