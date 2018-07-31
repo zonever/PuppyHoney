@@ -18,7 +18,7 @@ import com.ph.user.model.vo.User;
 /**
  * Servlet implementation class InfoBoardViewServlet
  */
-@WebServlet("/infoBoard/boardView")
+@WebServlet("/freeBoard/boardView")
 public class InfoBoardViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -65,7 +65,7 @@ public class InfoBoardViewServlet extends HttpServlet {
 			else
 			{
 				request.setAttribute("msg", "조회한 게시물이 없습니다.");
-				request.setAttribute("loc", "/infoBoard/boardList");
+				request.setAttribute("loc", "/freeBoard/boardList");
 				view="/views/common/msg.jsp";
 			}
 			request.getRequestDispatcher(view).forward(request, response);
@@ -119,7 +119,7 @@ public class InfoBoardViewServlet extends HttpServlet {
 			else
 			{
 				request.setAttribute("msg", "조회한 게시물이 없습니다.");
-				request.setAttribute("loc", "/infoBoard/boardList");
+				request.setAttribute("loc", "/freeBoard/boardList");
 				view="/views/common/msg.jsp";
 			}
 			request.getRequestDispatcher(view).forward(request, response);

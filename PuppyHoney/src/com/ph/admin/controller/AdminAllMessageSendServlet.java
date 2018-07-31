@@ -1,4 +1,4 @@
-package com.ph.infoBoard.controller;
+package com.ph.admin.controller;
 
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -7,19 +7,19 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ph.infoBoard.model.service.InfoBoardService;
+import com.ph.admin.model.service.AdminService;
 
 /**
- * Servlet implementation class InfoBoardDeleteServlet
+ * Servlet implementation class AdminAllMessageSendServlet
  */
-@WebServlet("/freeBoard/boardDelete")
-public class InfoBoardDeleteServlet extends HttpServlet {
+@WebServlet("/admin/AllMessageSend")
+public class AdminAllMessageSendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public InfoBoardDeleteServlet() {
+    public AdminAllMessageSendServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -28,24 +28,40 @@ public class InfoBoardDeleteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int boardNum = Integer.parseInt(request.getParameter("boardNum"));
-		int cPage=Integer.parseInt(request.getParameter("cPage"));
-		String searchType=request.getParameter("searchType");
-		String inputText=request.getParameter("inputText");
-		String sort=request.getParameter("sort");
 		
-		int result = new InfoBoardService().deleteInfoBoard(boardNum);
+		String title = request.getParameter("title");
+		String content = request.getParameter("content");
+		String admin = request.getParameter("admin");
+		System.out.println("받은 admin :" +admin);
+		
+		int result = new AdminService().allUserCount();
+		int sendCount = 0;
+		int allCount = 0;
+		
+		for(int i=1; i<=result; i++) {
+			String userId = new AdminService().countUserId(i);
+			if(userId.equals("admin")) {
+				continue;
+			}
+			sendCount = new AdminService().allMessageSend(userId,title,content,admin);
+			allCount+=sendCount;
+		}
 		
 		String msg="";
-		String loc="/freeBoard/boardList?cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
-		if(result>0) {
-			msg="게시물이 삭제되었습니다.";
+		String loc="/views/admin/AllMessage.jsp";
+		String script="self.close()";
+		if(allCount>0) {
+			msg="총 "+allCount+"명에게 메세지를 보냈습니다.";
+			request.setAttribute("script", script);
 		}else {
-			msg="게시물 삭제에 실패했습니다.";
+			msg="회원이 없거나 메세지 발송에 실패했습니다.";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+		
+		
+		
 	}
 
 	/**

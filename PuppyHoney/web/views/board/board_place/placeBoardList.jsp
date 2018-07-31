@@ -149,7 +149,7 @@
 	  			{ %>
 	      <div class="col-lg-4 col-sm-6 petCard pp">
 	          <div class="card h-80 pp">
-	            <a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><img class="card-img-top" src="<%=request.getContextPath()%>/upload/placeboard/아자루4.png" width="700" height="230"></a>
+	            <a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><img class="card-img-top" src="<%=request.getContextPath()%>/upload/placeboard/<%=pb.getPlBoardImgRename() %>" width="700" height="230"></a>
 	            <div class="card-body pp">
 	              <h4 class="card-title">
 	                <p class="text-center alert alert-secondary"><a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><%=pb.getPlBoardTitle() %></a></p>
@@ -157,15 +157,15 @@
 	              <table class='text-center'>
 	                  <tr>
 	                    
-	                   	   <th><%=pb.getPlBoardStoreName()%></th>
+	                   	   <th><b class='text-muted '><%=pb.getPlBoardStoreName()%></b></th>
 	                  </tr>
 	                  <hr>
 	                  <tr>
-	            		   <th><%=pb.getPlBoardBusinessType() %></th>
+	            		   <th><center><span class='badge badge-primary'><%=pb.getPlBoardBusinessType() %></span></center></th>
 	                  </tr>
 	  
 	                  <tr>        
-	                       <th><small class='alert-light'><%=pb.getPlBoardAddr() %></small></th>
+	                       <th><small class='alert-light '><%=pb.getPlBoardAddr() %></small></th>
 	                  </tr>
 	                </table>
 	                <hr>

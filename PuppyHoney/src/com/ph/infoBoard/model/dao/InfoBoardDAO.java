@@ -404,7 +404,7 @@ public class InfoBoardDAO {
 		ResultSet rs=null;
 		System.out.println("첫번쨰 : "+((cPage-1)*numPerPage+1));
 		System.out.println("두번째 : "+cPage*numPerPage);
-		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE I."+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY INFO_BOARD_DATE DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
+		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE "+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY INFO_BOARD_DATE DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
 		ArrayList<InfoBoard> list=new ArrayList();
 		InfoBoard ib=null;
 		
@@ -438,7 +438,7 @@ public class InfoBoardDAO {
 	public int searchInfoBoardCount(Connection conn, String searchType, String inputText) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
-		String sql="SELECT COUNT(*) AS CNT FROM INFO_BOARD WHERE "+searchType+" LIKE "+"'%"+inputText+"%'";
+		String sql="SELECT COUNT(*) AS CNT FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE "+searchType+" LIKE "+"'%"+inputText+"%'";
 		int result=0;
 		try
 		{
@@ -497,7 +497,7 @@ public class InfoBoardDAO {
 		ResultSet rs=null;
 		System.out.println("첫번쨰 : "+((cPage-1)*numPerPage+1));
 		System.out.println("두번째 : "+cPage*numPerPage);
-		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE I."+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY "+sort+" DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
+		String sql="SELECT * FROM (SELECT ROWNUM AS RNUM, A.* FROM (SELECT I.*,P.USER_NICK,TO_CHAR(I.INFO_BOARD_DATE,'yyyy-mm-dd hh24:mi:ss')AS INFO_BOARD_DATE2,(select count(*) from info_reply b where b.INFO_BOARD_REF = i.info_board_num)as REPLYNUM  FROM INFO_BOARD I INNER JOIN PH_USER P ON(I.INFO_BOARD_ID = P.USER_ID) WHERE "+searchType+" LIKE "+"'%"+inputText+"%' ORDER BY "+sort+" DESC)A)WHERE RNUM BETWEEN "+((cPage-1)*numPerPage+1)+" AND "+cPage*numPerPage;
 		ArrayList<InfoBoard> list=new ArrayList();
 		InfoBoard ib=null;
 		

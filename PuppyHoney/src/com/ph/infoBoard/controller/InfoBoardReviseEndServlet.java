@@ -12,7 +12,7 @@ import com.ph.infoBoard.model.service.InfoBoardService;
 /**
  * Servlet implementation class InfoBoardReviseEndServlet
  */
-@WebServlet("/infoBoard/ReviseEnd")
+@WebServlet("/freeBoard/ReviseEnd")
 public class InfoBoardReviseEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +41,7 @@ public class InfoBoardReviseEndServlet extends HttpServlet {
 		int result = new InfoBoardService().reviseInfoBoard(boardNum,title,content);
 		
 		String msg="";
-		String loc="/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
+		String loc="/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		if(result>0) {
 			msg="게시물이 수정되었습니다.";
 		}else {

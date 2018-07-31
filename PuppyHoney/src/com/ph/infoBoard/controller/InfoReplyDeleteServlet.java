@@ -38,7 +38,7 @@ public class InfoReplyDeleteServlet extends HttpServlet {
 		int result = new InfoBoardService().deleteInfoReply(replyNum);
 		
 		String msg="";
-		String loc="/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
+		String loc="/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		if(result>0) {
 			msg="댓글이 삭제되었습니다.";
 		}else {

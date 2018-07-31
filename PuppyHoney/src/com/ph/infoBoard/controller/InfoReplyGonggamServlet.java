@@ -43,18 +43,18 @@ public class InfoReplyGonggamServlet extends HttpServlet {
 			
 			if(result>=1) {
 				request.setAttribute("msg", "이미 공감한 게시물입니다.");
-				request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+				request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			}else {
 				int result2 = new InfoBoardService().insertInfoReplyGood(replyNum,userId);
 				int result3 = new InfoBoardService().countInfoReplyGonggam(replyNum);
 				if(result3>=1) {
-					request.setAttribute("msg", "추천이 완료되었습니다.");
-					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+					request.setAttribute("msg", "공감이 완료되었습니다.");
+					request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}else {
-					request.setAttribute("msg", "추천에 실패했습니다..");
-					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+					request.setAttribute("msg", "공감에 실패했습니다..");
+					request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}
 			}

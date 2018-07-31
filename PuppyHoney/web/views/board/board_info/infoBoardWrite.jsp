@@ -16,10 +16,7 @@ if(<%=userLoggedIn==null%>){
 	location.href="/PuppyHoney/index.jsp";
 }
 
-function check(){
-	alert("막아뒀따!!");
-	return false;
-}
+
 
 
 </script>
@@ -31,7 +28,7 @@ function check(){
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd' method="post" id="fr">
+                    <form action='<%=request.getContextPath()%>/freeBoard/writeEnd' method="post" id="fr">
             			<!-- 원래는 벨류값에 세션아이디가 들어갈거임 -->
             			<input type="hidden" name="id" value="<%=userLoggedIn.getUserId() %>"/>
                          <!-- //글제목 입력 폼 -->
@@ -48,8 +45,8 @@ function check(){
                          
                          <!--버튼능력-->
                          <div class="center-block ">      
-                             <input type="button" value="등록" class="btn btn-outline-secondary" style="width: 100px; height: 50px" onclick="submitContents(this);" >
-                             <input type="reset" value="목록" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px" onclick="history.back(1)"> 
+                             <input type="reset" value="이전" class="btn btn-outline-secondary " style="width: 100px; height: 50px" onclick="history.back(1)"> 
+                             <input type="button" value="등록" class="btn btn-outline-secondary float-right" style="width: 100px; height: 50px" onclick="submitContents(this);" >
                              <!-- //되돌아가기에서 onclick이벤트로 history.back(1) 왔던곳에서 1만큼 back (-1을 써도 된다)  -->
                              <!-- <br><br>
                              <input type="button" value="Back" onclick="history.back(1)"> -->

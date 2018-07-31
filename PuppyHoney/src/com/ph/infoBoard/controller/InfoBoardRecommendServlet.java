@@ -13,7 +13,7 @@ import com.ph.user.model.vo.User;
 /**
  * Servlet implementation class InfoBoardRecommendServlet
  */
-@WebServlet("/infoBoard/boardRecommend")
+@WebServlet("/freeBoard/boardRecommend")
 public class InfoBoardRecommendServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,18 +41,18 @@ public class InfoBoardRecommendServlet extends HttpServlet {
 			
 			if(result>=1) {
 				request.setAttribute("msg", "이미 추천한 게시물입니다.");
-				request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+				request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			}else {
 				int result2 = new InfoBoardService().insertInfoBoardGood(boardNum,userId);
 				int result3 = new InfoBoardService().countInfoBoardRecommend(boardNum);
 				if(result3>=1) {
 					request.setAttribute("msg", "추천이 완료되었습니다.");
-					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+					request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}else {
 					request.setAttribute("msg", "추천에 실패했습니다..");
-					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
+					request.setAttribute("loc","/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}
 			}

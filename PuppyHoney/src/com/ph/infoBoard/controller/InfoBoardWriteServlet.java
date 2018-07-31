@@ -12,7 +12,7 @@ import com.ph.user.model.vo.User;
 /**
  * Servlet implementation class InfoBoardWriteServlet
  */
-@WebServlet("/infoBoard/write")
+@WebServlet("/freeBoard/write")
 public class InfoBoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -30,10 +30,19 @@ public class InfoBoardWriteServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 			//세션값이 null (로그인이 안되어있으면 알림창발생후 로그인창으로)
 		User u=(User)request.getSession().getAttribute("userLoggedIn");
+		int cPage = Integer.parseInt(request.getParameter("cPage"));
+		String searchType = request.getParameter("searchType");
+		String inputText = request.getParameter("inputText");
+		String sort = request.getParameter("sort");
 		if(u==null) {
+			request.setAttribute("free", "free");
+			request.setAttribute("cPage", cPage);
+			request.setAttribute("searchType", searchType);
+			request.setAttribute("inputText", inputText);
+			request.setAttribute("sort", sort);
 			request.setAttribute("msg", "로그인후 이용해 주세요.");
-			request.setAttribute("loc","/views/user/login.jsp");
-			request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
+			
+			request.getRequestDispatcher("/views/user/login.jsp").forward(request, response);
 			return;
 		}else {
 		response.sendRedirect("/PuppyHoney/views/board/board_info/infoBoardWrite.jsp");

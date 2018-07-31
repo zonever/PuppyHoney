@@ -62,7 +62,7 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
 		else {
 			msg="댓글등록이 실패했습니다.";
 		}
-		loc="/infoBoard/boardView?no="+infoBoardRef+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
+		loc="/freeBoard/boardView?no="+infoBoardRef+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher(view).forward(request, response);
