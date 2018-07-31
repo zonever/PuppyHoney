@@ -46,7 +46,7 @@
 	
 	
 	<%if(!newsList.isEmpty()){
-		for(int i=newsList.size()-1;i>=0;i--)
+		for(int i=0;i<newsList.size();i++)
 		{ %>
 		<div class="row ">
 			<div class="col-md-6 boardList_image">

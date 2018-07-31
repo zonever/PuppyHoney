@@ -25,8 +25,8 @@ ImgExtract ie=new ImgExtract();
 
 		<!-- slideshow 내용 -->
 		<div class="carousel-inner container pl-0 pr-0">
-		<%for (int i=newsList.size()-1;i>=newsList.size()-3;i--)
-		{  if(i==newsList.size()-1)
+		<%for (int i=0;i<newsList.size();i++)
+		{  if(i==0)
 			{%>
 			
 			
@@ -34,7 +34,7 @@ ImgExtract ie=new ImgExtract();
 					<a href="<%=request.getContextPath() %>/board/newsBoardView?num="<%=newsList.get(i).getNewsBoardNum()%>>
 						<img src="<%=ie.imgExtract(newsList.get(i).getNewsBoardContent()) %>">
 						<div class="carousel-caption">
-							<h3 class="text-dark"><%=newsList.get(i).getNewsBoardTitle() %></h3>
+							<h3 ><%=newsList.get(i).getNewsBoardTitle() %></h3>
 						</div>
 					</a>
 				</div>
@@ -46,7 +46,7 @@ ImgExtract ie=new ImgExtract();
 					<a href="<%=request.getContextPath() %>/board/newsBoardView?num="<%=newsList.get(i).getNewsBoardNum()%>>
 						<img src="<%=ie.imgExtract(newsList.get(i).getNewsBoardContent()) %>">
 						<div class="carousel-caption ">
-							<h3 class="text-dark"><%=newsList.get(i).getNewsBoardTitle() %></h3>
+							<h3 ><%=newsList.get(i).getNewsBoardTitle() %></h3>
 						</div>
 					</a>
 				</div>
@@ -97,7 +97,7 @@ ImgExtract ie=new ImgExtract();
 				<%for(int i=0; i<5; i++)
 				{ %>
 				    <li class="list-group-item">
-				    	<a href="<%=request.getContextPath()%>/infoBoard/boardView?no=<%=infoHitsList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=INFO_BOARD_HITS">
+				    	<a href="<%=request.getContextPath()%>/freeBoard/boardView?no=<%=infoHitsList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=INFO_BOARD_HITS">
 				    		<%=infoHitsList.get(i).getBoardTitle() %>&nbsp;[<%=infoHitsList.get(i).getBoardReplyNum() %>]
 				    	</a>
 				    </li>
@@ -109,7 +109,7 @@ ImgExtract ie=new ImgExtract();
 				    <%for(int i=0; i<5; i++)
 					{ %>
 				    <li class="list-group-item">
-				    	<a href="<%=request.getContextPath()%>/infoBoard/boardView?no=<%=infoReplyList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=REPLYNUM">
+				    	<a href="<%=request.getContextPath()%>/freeBoard/boardView?no=<%=infoReplyList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=REPLYNUM">
 				    		<%=infoReplyList.get(i).getBoardTitle() %>&nbsp;[<%=infoReplyList.get(i).getBoardReplyNum() %>]
 				    	</a>
 				    </li>
@@ -143,7 +143,7 @@ ImgExtract ie=new ImgExtract();
 				     <%for(int i=0; i<5; i++)
 				     { %>
 				     <li class="list-group-item">
-				    	 <a href="<%=request.getContextPath()%>/infoBoard/boardView?no=<%=infoList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=null">
+				    	 <a href="<%=request.getContextPath()%>/freeBoard/boardView?no=<%=infoList.get(i).getBoardNumber() %>&cPage=1&searchType=null&inputText=null&sort=null">
 				    		 <%=infoList.get(i).getBoardTitle() %>&nbsp;[<%=infoList.get(i).getBoardReplyNum() %>]
 				    	 </a>
 				    </li>

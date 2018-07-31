@@ -217,7 +217,15 @@ document.getElementById('inputText2').value=text;
 			</td>
 			<td>
 				<div class="block">
-					<%=ib.getBoardId()%>
+					<li class="nav-item dropdown">
+		                <a class="nav-link dropdown-toggle" href="#" id="<%=ib.getBoardId() %>" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+		                 	
+		                </a>
+		
+		                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="<%=ib.getBoardId()%>">
+		                  <a class="dropdown-item" href="<%=request.getContextPath()%>/freeBoard/boardList"><%=ib.getBoardId() %></a>
+		                </div>
+	             	</li>
 				</div>
 				<div style="color: #ccc; font-size: 12px;">
 					<%=ib.getBoardDate() %>
