@@ -33,7 +33,9 @@
    		location.href="<%=request.getContextPath()%>/board/placeBoardForm";
    		
    	}
-    </script>
+    
+    
+</script>
       <!-- 바디부분 -->
       
     	  

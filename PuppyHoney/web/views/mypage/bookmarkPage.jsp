@@ -7,7 +7,7 @@
 	      location.href="<%=request.getContextPath()%>/updateMemberPage";
 	    });
 	    $('#message').on('click',function(){
-	      window.open('views/mypage/message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
+	      window.open('<%=request.getContextPath() %>/message?userId=userId','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
 	    });
 	    $('#bookmarkPage').on('click',function(){
           location.href="<%=request.getContextPath()%>/bookmarkPage";

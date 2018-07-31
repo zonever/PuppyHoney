@@ -8,6 +8,12 @@ public class MypageService {
 	public void selectMypage() {
 		Connection conn=getConnection();
 		
+<<<<<<< HEAD
+	}
+	
+	
+=======
 	} 
+>>>>>>> master
 
 }

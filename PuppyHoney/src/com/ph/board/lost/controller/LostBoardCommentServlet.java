@@ -8,16 +8,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
- * Servlet implementation class LostBoardWriteServlet
+ * Servlet implementation class LostBoardCommentServlet
  */
-@WebServlet("/board/LostBoardWrite")
-public class LostBoardWriteServlet extends HttpServlet {
+@WebServlet("/board/lostBoardComment")
+public class LostBoardCommentServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /** 
+    /**
      * @see HttpServlet#HttpServlet()
      */
-    public LostBoardWriteServlet() {
+    public LostBoardCommentServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -26,7 +26,7 @@ public class LostBoardWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/board/board_lost/lostBoardWrite.jsp").forward(request, response);
+		
 	}
 
 	/**
