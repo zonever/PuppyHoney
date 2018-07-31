@@ -10,7 +10,7 @@ import javax.servlet.http.HttpServletResponse;
 /**
  * Servlet implementation class LostBoardWriteServlet
  */
-@WebServlet("/write.do")
+@WebServlet("/board/LostBoardWrite")
 public class LostBoardWriteServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -26,7 +26,7 @@ public class LostBoardWriteServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/views/common/write").forward(request, response);
+		request.getRequestDispatcher("/views/board/board_lost/lostBoardWrite.jsp").forward(request, response);
 	}
 
 	/**

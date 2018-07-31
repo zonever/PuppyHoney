@@ -1,5 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="com.ph.message.model.vo.Message, java.util.List"%>
+    <%
+    	List<Message> list=(List)request.getAttribute("list");
+    %>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,24 +74,30 @@
                   <th>닉네임</th>
                   <th>날짜</th>
                </tr>
+               <%if(list!=null){
+            	   for(Message m : list){ %>
+               
                 <tr>
                    <th> 
-                   <div class="custom-control custom-checkbox">
-                   <input type="checkbox" class="custom-control-input" id="customCheck1" name="example1">
-                   <label class="custom-control-label" for="customCheck1"></label>
-                   </div>
-                </th>
-                    <td>제..........목</td>
-                    <td>닉네임</td>
-                    <td>날짜</td>
+	                   <div class="custom-control custom-checkbox">
+		                   <input type="checkbox" class="custom-control-input" id="customCheck<%=m.getMessageNum() %>" name="example1">
+		                   <label class="custom-control-label" for="customCheck1"></label>
+	                   </div>
+                   </th>
+                   <td><%=m.getMessageTitle() %></td>
+                   <td><%=m.getMessageWriter() %></td>
+                   <td><%=m.getMessageDate() %></td>
                 </tr>
-                <tr>
-               <th> 
-                     <div class="custom-control custom-checkbox">
-                   <input type="checkbox" class="custom-control-input" id="customCheck2" name="example1">
-                   <label class="custom-control-label" for="customCheck2"></label>
-                   </div>
-                </th>
+                
+                <%}
+            	}%>
+                <!-- <tr>
+               	   <th> 
+	                   <div class="custom-control custom-checkbox">
+	                   <input type="checkbox" class="custom-control-input" id="customCheck2" name="example1">
+	                   <label class="custom-control-label" for="customCheck2"></label>
+	                   </div>
+                   </th>
                     <td>제..........목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
@@ -136,7 +145,7 @@
                     <td>제……….목</td>
                     <td>닉네임</td>
                     <td>날짜</td>
-                </tr>
+                </tr> -->
             </table>
             </div>
 

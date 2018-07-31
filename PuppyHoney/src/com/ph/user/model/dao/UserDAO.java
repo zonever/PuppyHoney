@@ -191,4 +191,25 @@ public class UserDAO {
 		close(pstmt);
 		return result;
 	}
+	
+	public int updateUser(Connection conn, User u) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("updateUser");
+		
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, u.getUserPw());
+			pstmt.setString(2, u.getUserNick());
+			pstmt.setString(3, u.getUserEmail());
+			pstmt.setString(4, u.getUserId());
+			result=pstmt.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(pstmt);
+		return result;
+	}
 }

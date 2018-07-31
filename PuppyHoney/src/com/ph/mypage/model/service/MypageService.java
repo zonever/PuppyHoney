@@ -9,5 +9,7 @@ public class MypageService {
 		Connection conn=getConnection();
 		
 	}
+	
+	
 
 }

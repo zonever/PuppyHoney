@@ -43,7 +43,7 @@
           location.href="<%=request.getContextPath()%>/updateMemberPage";
         });
         $('#message').on('click',function(){
-          window.open('views/mypage/message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
+          window.open('<%=request.getContextPath() %>/message?userId=userId','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
         });
         $('#bookmarkPage').on('click',function(){
           location.href="<%=request.getContextPath()%>/bookmarkPage";
@@ -85,10 +85,10 @@
             <h1 class="mt-3">정보 수정</h1>
             <hr>
      		<div class="container p-4 rounded" style="text-align: left;">
-		        <form action="" method="post">
+		        <form action="<%=request.getContextPath() %>/updateMemberPageEnd?userId=<%=userLoggedIn.getUserId() %>" method="post">
 		          <div class="form-group">
 		            <label for="memberId">ID</label><label id="idResult" class="float-right"></label>
-		            <input type="text" class="form-control" id="memberId" name="memberId" value="아이디" readonly="readonly">
+		            <input type="text" class="form-control" id="memberId" name="memberId" value="<%=userLoggedIn.getUserId() %>" readonly="readonly">
 		          </div>
 		          <div class="form-group">
 		            <label for="password">Password</label>

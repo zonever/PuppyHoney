@@ -1,13 +1,16 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
+
 	<script>
+	
+	
       $(function(){
           $('#updatePage').on('click',function(){
             location.href="<%=request.getContextPath()%>/updateMemberPage";
           });
           $('#message').on('click',function(){
-        	 window.open('message.jsp','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
+        	 window.open('<%=request.getContextPath() %>/message?userId=userId','message','top=50px, left=100px, height=600px, width=800px, resizable=no');
           });
           $('#bookmarkPage').on('click',function(){
             location.href="<%=request.getContextPath()%>/bookmarkPage";

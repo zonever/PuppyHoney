@@ -1,7 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.List, com.ph.board.lost.model.vo.LostBoard"%>
+    pageEncoding="UTF-8" import="java.util.List, com.ph.board.lost.model.vo.LostBoard, common.*"%>
     <%
-		LostBoard lb=(LostBoard)request.getAttribute("lb");    	
+		LostBoard lb=(LostBoard)request.getAttribute("lb");
+    	ImgExtract ie=new ImgExtract();
     	
     %>
 <%@ include file="/views/common/header.jsp" %>
@@ -23,7 +24,8 @@
 		width: 100%;
 	}
 }
-
+.boardImg{background-size: contain;}
+/* .img>img{max-height:300px; width:100%;} */
 	
 </style>
 
@@ -73,15 +75,15 @@
           </div>
         </div>
         <!-- ./Sidebar -->
-        <div class="col-lg-8">
-          <img class="img-fluid rounded" src="http://placehold.it/900x300" alt="">
+        <div class="col-lg-8 img">
+          <h2><%=lb.getLostBoardTitle() %></h2>
           <hr>
          	 <p><%=lb.getLostBoardDate() %></p>
           <hr>
 
           <blockquote class="blockquote">
           	<p><%=lb.getLostBoardContent() %></p>
-          <br><br><br><br><br><br><br><br><br><br><br><br>
+          
           </blockquote>
 
           <hr>
@@ -96,9 +98,14 @@
           <div class="card my-4">
             <h5 class="card-header alert-danger">댓글</h5>
             <div class="card-body">
-              <form>
+              <form action="<%-- <%=request.getContextPath()%>/board/lostBoardComment --%>">
                 <div class="form-group">
-                  <textarea class="form-control" rows="3"></textarea>		<!-- 댓글 적는 부분 -->
+                	<%-- <input type="hidden" name="boardRef" value="<%=lb.getLostBoardNum()%>"/> <!-- 위에 게시판의 번호 -->
+	    			<input type="hidden" name="boardCommentWriter" value="<%=userLoggedIn.getUserId()%>"/>
+	    			<input type="hidden" name="boardCommentLevel" value="1"/>
+	    			 <!-- 댓글의 번호 --> --%>
+                    
+                    <textarea class="form-control" rows="3"></textarea>		<!-- 댓글 적는 부분 -->
                 </div>
                 <button type="submit" class="btn btn-primary" style="float: right;">등록</button>
               </form>
