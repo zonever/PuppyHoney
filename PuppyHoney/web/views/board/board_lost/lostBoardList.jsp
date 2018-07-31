@@ -9,10 +9,29 @@
 
 <script>
 	$(function(){
+<<<<<<< HEAD
 		$('#write').click(function(){
 			location.href="<%=request.getContextPath()%>/board/LostBoardWrite"
 		});
 	});	
+=======
+		function fn_write(){
+			location.href="<%=request.getContextPath()%>/write.do"
+		}
+		 
+		$('#readMore').on('click',function(){
+			var read
+			var userId=userLoggedIn.getUserId();
+			var url="<%=request.getContextPath()%>/detailPage";
+			
+			
+			/* selectDetail.userId.value=userId;
+			selectDetail.action=url;
+			selectDetail.method="post";
+			selectDetail.submit(); */
+		})
+	});
+>>>>>>> master
 	
 	$(function(){
 		

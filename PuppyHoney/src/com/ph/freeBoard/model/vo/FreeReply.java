@@ -8,7 +8,7 @@ public class FreeReply {
 	private String replyContent;
 	private int replyGood;
 	private int replyLevel;
-	private int replyRef;
+	private int replyRef; 
 	
 	public FreeReply() {}
 	

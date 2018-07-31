@@ -8,14 +8,7 @@
 	String searchType = request.getAttribute("searchType").toString();
 	String inputText = request.getAttribute("inputText").toString();
 	String sort = request.getAttribute("sort").toString();
-	
-	System.out.println(cPage);
-	System.out.println(searchType);
-	System.out.println(inputText);
-	System.out.println(sort);
-
-	
-	
+	 
 %>
 <%@ include file="/views/common/header.jsp" %>
 	<style>

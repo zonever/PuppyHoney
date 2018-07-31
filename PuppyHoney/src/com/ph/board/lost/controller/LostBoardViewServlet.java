@@ -17,7 +17,7 @@ import com.ph.board.lost.service.LostBoardService;
 @WebServlet("/board/lostBoardView")
 public class LostBoardViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+        
     /**
      * @see HttpServlet#HttpServlet()
      */

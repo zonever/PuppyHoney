@@ -18,7 +18,7 @@ public class LostBoardDAO {
 	
 	public LostBoardDAO()
 	{
-		try
+		try 
 		{
 			prop.load(new FileReader(LostBoardDAO.class.getResource("/sql/lostBoard/lostboard_query.properties").getPath()));
 		}

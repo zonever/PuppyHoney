@@ -6,7 +6,7 @@
 	int cPage = Integer.parseInt(request.getAttribute("cPage").toString());
 	String pageBar = request.getAttribute("pageBar").toString();
 
-
+ 
 %>
 <script>
 $(document).ready(function(e){

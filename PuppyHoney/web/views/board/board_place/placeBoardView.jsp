@@ -11,7 +11,7 @@
    display: inline-block;
    width: 400px;
 }
-   
+    
  /* 모바일로 바꿨을 때 */   
 @media (max-width:450px) {
    .side-bar {

@@ -11,7 +11,7 @@ import com.ph.user.model.dao.UserDAO;
 import com.ph.user.model.vo.User;
 
 public class UserService {
-
+ 
 	public int insertUser(User user)
 	{
 		Connection conn=getConnection();
@@ -63,9 +63,16 @@ public class UserService {
 		return result;
 	}
 	
+<<<<<<< HEAD
 	public int updateUser(User u) {
 		Connection conn=getConnection();
 		int result=new UserDAO().updateUser(conn, u);
+=======
+	public int updateUser(User user)
+	{
+		Connection conn=getConnection();
+		int result=new UserDAO().updateUser(conn,user);
+>>>>>>> master
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);

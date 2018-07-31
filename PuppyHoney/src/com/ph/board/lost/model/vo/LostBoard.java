@@ -9,7 +9,7 @@ public class LostBoard {
 	private String lostBoardContent;
 	private String lostBoardId;
 	private Date lostBoardDate;
-	private int lostBoardHits;
+	private int lostBoardHits; 
 	private int lostBoardGood;
 	/*private String lostBoardImageOrigin;
 	private String lostBoardImageRename;*/
