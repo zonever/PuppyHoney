@@ -5,9 +5,10 @@ import java.util.regex.Pattern;
 
 public class ImgExtract {
 
-   
+
    public String imgExtract(String img) {
       
+
         Pattern pattern = Pattern.compile("<img[^>]*src=[\"']?([^>\"']+)[\"']?[^>]*>"); //img �±� src ���� ����ǥ����
 
         Matcher matcher = pattern.matcher(img);
@@ -15,13 +16,14 @@ public class ImgExtract {
         
          
         while(matcher.find()){
-           src=matcher.group(1);
 
+           src=matcher.group(1);
         }
         return src;
-   }
 
-
+	}
 
 }
+
+
 

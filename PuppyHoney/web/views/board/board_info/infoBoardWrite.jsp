@@ -31,7 +31,7 @@ function check(){
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd' method="post" id="fr">
+                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd?user' method="post" id="fr">
             			<!-- 원래는 벨류값에 세션아이디가 들어갈거임 -->
             			<input type="hidden" name="id" value="<%=userLoggedIn.getUserId() %>"/>
                          <!-- //글제목 입력 폼 -->
