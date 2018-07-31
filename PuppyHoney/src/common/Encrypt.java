@@ -6,7 +6,7 @@ import java.security.NoSuchAlgorithmException;
 import java.util.Base64;
 
 public class Encrypt {
-
+ 
 	public static String getSha512(String key)
 	{
 		String encPwd=null;

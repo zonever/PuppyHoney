@@ -42,7 +42,7 @@ public class InfoBoardService {
 	public InfoBoard selectOne(int no, boolean hasRead) {
 		Connection conn = getConnection();
 		InfoBoard ib = new InfoBoardDAO().selectOne(conn,no);
-		int result=0; //조회수1증가처리
+		int result=0; //議고쉶�닔1利앷�泥섎━
 		if(ib!=null) {
 			if(!hasRead) {
 				result = new InfoBoardDAO().insertBoardCount(conn, no);

@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_news/newsBoardList.jsp"><strong>News</strong></a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/board/newsBoardList"><strong>News</strong></a>
               </li> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="community" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -55,7 +55,7 @@
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">정보</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/board/imageBoardList">사진</a>
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">자유</a>
                 </div>
               </li>
               <li class="nav-item">

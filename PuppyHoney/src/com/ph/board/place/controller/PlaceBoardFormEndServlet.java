@@ -14,7 +14,7 @@ import com.ph.board.place.model.vo.PlaceBoard;
 /**
  * Servlet implementation class PlaceBoardFormEndServlet
  */
-@WebServlet("/board/placeBoardFormEnd")
+@WebServlet("/board/placeBoardFormEnd") 
 
 public class PlaceBoardFormEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -31,9 +31,9 @@ public class PlaceBoardFormEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				request.setCharacterEncoding("UTF-8");
-				response.setCharacterEncoding("UTF-8");
-				
+
+			 
+
 				
 				String userId=request.getParameter("userId");
 				String title=request.getParameter("title");
@@ -65,10 +65,10 @@ public class PlaceBoardFormEndServlet extends HttpServlet {
 				String loc="/board/placeBoardList";
 				if(result>0)
 				{
-					msg="게시판 등록 성공";
+					msg="寃뚯떆�뙋 �벑濡� �꽦怨�";
 				}else
 				{
-					msg="게시판 등록 실패";
+					msg="寃뚯떆�뙋 �벑濡� �떎�뙣";
 				}
 				
 				request.setAttribute("msg", msg);

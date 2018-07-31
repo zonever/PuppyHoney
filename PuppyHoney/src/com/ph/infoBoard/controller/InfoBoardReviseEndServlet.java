@@ -18,7 +18,7 @@ public class InfoBoardReviseEndServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoBoardReviseEndServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -43,9 +43,9 @@ public class InfoBoardReviseEndServlet extends HttpServlet {
 		String msg="";
 		String loc="/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		if(result>0) {
-			msg="게시물이 수정되었습니다.";
+			msg="寃뚯떆臾쇱씠 �닔�젙�릺�뿀�뒿�땲�떎.";
 		}else {
-			msg="게시물 수정에 실패했습니다.";
+			msg="寃뚯떆臾� �닔�젙�뿉 �떎�뙣�뻽�뒿�땲�떎.";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

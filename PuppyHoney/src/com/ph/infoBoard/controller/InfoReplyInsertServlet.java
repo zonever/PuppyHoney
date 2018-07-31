@@ -20,7 +20,7 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoReplyInsertServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -30,11 +30,11 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		int infoBoardRef=Integer.parseInt(request.getParameter("infoBoardRef"));	//게시글번호
-		String infoReplyWriter=request.getParameter("infoReplyWriter");	//작성자
-		String infoReplyContent=request.getParameter("infoReplyContent");	//댓글내용
-		int infoReplyLevel=Integer.parseInt(request.getParameter("infoReplyLevel"));	//답글구분 1은댓글 2는답글
-		int infoReplyRef=Integer.parseInt(request.getParameter("infoReplyRef"));	//댓글번호
+		int infoBoardRef=Integer.parseInt(request.getParameter("infoBoardRef"));	//寃뚯떆湲�踰덊샇
+		String infoReplyWriter=request.getParameter("infoReplyWriter");	//�옉�꽦�옄
+		String infoReplyContent=request.getParameter("infoReplyContent");	//�뙎湲��궡�슜
+		int infoReplyLevel=Integer.parseInt(request.getParameter("infoReplyLevel"));	//�떟湲�援щ텇 1���뙎湲� 2�뒗�떟湲�
+		int infoReplyRef=Integer.parseInt(request.getParameter("infoReplyRef"));	//�뙎湲�踰덊샇
 		int cPage=Integer.parseInt(request.getParameter("cPage"));
 		String searchType=request.getParameter("searchType");
 		String inputText=request.getParameter("inputText");
@@ -48,7 +48,7 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
 		ir.setReplyLevel(infoReplyLevel);
 		ir.setReplyRef(infoReplyRef);
 		
-		//비지니스로직 수행
+		//鍮꾩��땲�뒪濡쒖쭅 �닔�뻾
 		int result=new InfoBoardService().insertInfoReply(ir);
 		
 		String msg="";
@@ -57,10 +57,10 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
 		
 		if(result>0)
 		{
-			msg="댓글이 등록되었습니다.";
+			msg="�뙎湲��씠 �벑濡앸릺�뿀�뒿�땲�떎.";
 		}
 		else {
-			msg="댓글등록이 실패했습니다.";
+			msg="�뙎湲��벑濡앹씠 �떎�뙣�뻽�뒿�땲�떎.";
 		}
 		loc="/infoBoard/boardView?no="+infoBoardRef+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		request.setAttribute("msg", msg);

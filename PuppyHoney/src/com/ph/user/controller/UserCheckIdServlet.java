@@ -17,7 +17,7 @@ import com.ph.user.model.service.UserService;
 @WebServlet("/user/checkId")
 public class UserCheckIdServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+        
    
     public UserCheckIdServlet() {
        

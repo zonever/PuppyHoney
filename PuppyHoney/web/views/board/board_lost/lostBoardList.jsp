@@ -11,7 +11,7 @@
 		function fn_write(){
 			location.href="<%=request.getContextPath()%>/write.do"
 		}
-		
+		 
 		$('#readMore').on('click',function(){
 			var read
 			var userId=userLoggedIn.getUserId();

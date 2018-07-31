@@ -8,7 +8,7 @@ footer{background: rgb(200, 152, 152); border-top: 1px solid}
 #menu_bar{background: rgb(200, 152, 152); border-bottom: 1px solid;}
 #main-news{width:90%;border: 1px solid;position:relative;}
 #main-news div div img{position:relative;width:100%;max-height:450px;}
-.sortMenu button{}
+.sortMenu button{} 
 .nav-tabs li a{color:rgb(200, 152, 152);}
 .tab-content div ul li a{color:black;}
 #contentarea{background:white;}

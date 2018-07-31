@@ -20,7 +20,7 @@ public class AdminService {
 		Connection conn = getConnection();
 		List<User> list = new AdminDAO().allMemberList(conn, cPage, numPerPage);
 		close(conn);
-		return list;
+		return list; 
 	}
 
 	public int allUserCount() {

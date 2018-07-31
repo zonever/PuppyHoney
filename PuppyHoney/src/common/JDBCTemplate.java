@@ -12,7 +12,7 @@ import java.util.Properties;
 
 
 public class JDBCTemplate {
-
+ 
 	
 	public static Connection getConnection()
 	{

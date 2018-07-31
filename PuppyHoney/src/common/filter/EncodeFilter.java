@@ -14,7 +14,7 @@ public class EncodeFilter implements Filter {
 
     
     public EncodeFilter() {
-    
+     
     }
 
 	

@@ -14,7 +14,7 @@
 if(<%=userLoggedIn==null%>){
 	alert("잘못된 경로로 접근했습니다.");
 	location.href="/PuppyHoney/index.jsp";
-}
+} 
 
 function check(){
 	alert("막아뒀따!!");

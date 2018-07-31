@@ -3,14 +3,14 @@ package com.ph.board.place.model.vo;
 import java.sql.Date;
 
 public class PlaceBoardComment {
-	private int plBoardReplyNo;	//댓글번호
-	private int plBoardRef;	//부모게시물 번호
+	private int plBoardReplyNo;	//�뙎湲�踰덊샇
+	private int plBoardRef;	//遺�紐④쾶�떆臾� 踰덊샇
 	private String plBoardReplyId;
 	private Date plBoardReplyDate;
 	private String plBoardReplyContent;
 	private String plBoardReplyGood;
-	private String plBoardReplyLevel;
-	private String plBoardReplyRef;	//부모댓글번호 
+	private String plBoardReplyLevel; 
+	private String plBoardReplyRef;	//遺�紐⑤뙎湲�踰덊샇 
 	private String plBoardReplyImgOrigin;
 	private String plBoardReplyImgRename;
 	

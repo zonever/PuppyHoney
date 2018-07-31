@@ -3,7 +3,7 @@ package com.ph.user.model.vo;
 import java.sql.Date;
 
 public class User {
-
+ 
 	private String userId;
 	private String userPw;
 	private String userNick;

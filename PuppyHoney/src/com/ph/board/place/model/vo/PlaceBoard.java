@@ -6,7 +6,7 @@ public class PlaceBoard {
 	private int plBoardNum;
 	private String plBoardTitle;
 	private String plBoardContent;
-	private String plBoardId;
+	private String plBoardId; 
 	private Date plBoardDate;
 	private int plBoardHits;
 	private int plBoardGood;
