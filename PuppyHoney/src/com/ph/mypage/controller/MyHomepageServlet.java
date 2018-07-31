@@ -12,7 +12,7 @@ import com.ph.mypage.model.service.MypageService;
 
 /**
  * Servlet implementation class MyHomepageServlet
- */
+ */ 
 @WebServlet("/myHomepage")
 public class MyHomepageServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;

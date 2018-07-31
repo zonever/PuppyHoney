@@ -13,13 +13,13 @@ import com.ph.infoBoard.model.vo.InfoBoard;
 /**
  * Servlet implementation class InfoBoardWriteEndServlet
  */
-@WebServlet("/infoBoard/writeEnd")
+@WebServlet("/freeBoard/writeEnd")
 public class InfoBoardWriteEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoBoardWriteEndServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -41,11 +41,11 @@ public class InfoBoardWriteEndServlet extends HttpServlet {
 		int result = new InfoBoardService().insertInfoBoard(ib);
 
 		String msg="";
-		String loc="/infoBoard/boardList";
+		String loc="/freeBoard/boardList";
 		if(result>0) {
-			msg="게시물이 등록되었습니다.";
+			msg="寃뚯떆臾쇱씠 �벑濡앸릺�뿀�뒿�땲�떎.";
 		}else {
-			msg="게시물 등록에 실패했습니다.";
+			msg="寃뚯떆臾� �벑濡앹뿉 �떎�뙣�뻽�뒿�땲�떎.";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

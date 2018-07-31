@@ -1,6 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%
+	String free = "";
+	int cPage = 1;
+	String searchType = "";
+	String inputText = "";
+	String sort = "";
+	if(request.getAttribute("free")!=null){
+		free="free";
+		cPage = Integer.parseInt(request.getAttribute("cPage").toString());
+		searchType =(String)request.getAttribute("searchType");
+		inputText =(String)request.getAttribute("inputText");
+		sort =(String)request.getAttribute("sort");
+	}
 	Cookie[] cookies=request.getCookies();
 	String saveId=null;
 	if(cookies!=null)
@@ -34,6 +46,13 @@
       <div class="p-4"align="center"><label><a id="logo" class="navbar-brand" href="<%=request.getContextPath() %>/index.jsp"><img src="<%=request.getContextPath() %>/images/dog.png" > PuppyHoney</a></label></div>
         <div class="container col-sm-5 shadow p-4 rounded" style="background:white;">
 	         <form action="<%=request.getContextPath() %>/user/loginEnd" method="post">
+	         <%if(free.equals("free")){ %>
+	         	<input type="hidden" name="free" value="free" >
+	         	<input type="hidden" name="cPage" value="<%=cPage %>">
+				  <input type="hidden" name="searchType" value="<%=searchType %>">
+				  <input type="hidden" name="inputText" value="<%=inputText %>">
+				  <input type="hidden" name="sort" value="<%=sort %>">
+	         <%} %>
             <div class="form-group">
               <label for="userId">ID </label>
               <div class="form-group form-check-inline float-right">
@@ -51,7 +70,7 @@
 	             <button type="submit" class="btn w-25 "  align="center">로그인</button>
 	             <div class="float-right">
 		             <a href="<%=request.getContextPath() %>/user/register"  class="p-2">회원가입</a>
-		             <a href="#"  class="p-2">비밀번호찾기</a>
+		             <a href="<%=request.getContextPath() %>/user/findPwd"  class="p-2">비밀번호찾기</a>
 	             </div>
 	           </div>
 	           

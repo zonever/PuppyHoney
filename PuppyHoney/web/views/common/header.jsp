@@ -45,7 +45,7 @@
           <div class="collapse navbar-collapse" id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_news/newsBoardList.jsp"><strong>News</strong></a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/board/newsBoardList"><strong>News</strong></a>
               </li> 
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="#" id="community" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -53,9 +53,12 @@
                 </a>
 
                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="community">
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">정보</a>
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/freeBoard/boardList">자유</a>
                   <a class="dropdown-item" href="<%=request.getContextPath()%>/board/imageBoardList">사진</a>
-                  <a class="dropdown-item" href="<%=request.getContextPath()%>/views/board/board_free/freeBoardList.jsp">자유</a>
+<<<<<<< HEAD
+=======
+                  <a class="dropdown-item" href="<%=request.getContextPath()%>/infoBoard/boardList">자유</a>
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
                 </div>
               </li>
               <li class="nav-item">
@@ -63,7 +66,7 @@
               </li> 
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="<%=request.getContextPath()%>/views/board/board_place/placeBoardList.jsp"><strong>장소</strong></a>
+                <a class="nav-link" href="<%=request.getContextPath()%>/board/placeBoardList"><strong>장소</strong></a>
               </li>
               <%if(userLoggedIn==null){ %> 
               <li class="nav-item">

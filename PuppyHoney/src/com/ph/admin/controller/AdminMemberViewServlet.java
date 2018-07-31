@@ -1,28 +1,26 @@
-package com.ph.board.lost.controller;
+package com.ph.admin.controller;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ph.board.lost.model.vo.LostBoard;
-import com.ph.board.lost.service.LostBoardService;
+import com.ph.admin.model.service.AdminService;
+import com.ph.user.model.vo.User;
 
 /**
- * Servlet implementation class LostBoardDetailpage
+ * Servlet implementation class AdminMemberViewServlet
  */
-@WebServlet("/detailPage")
-public class LostBoardDetailpage extends HttpServlet {
+@WebServlet("/admin/memberView")
+public class AdminMemberViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LostBoardDetailpage() {
+    public AdminMemberViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -32,10 +30,12 @@ public class LostBoardDetailpage extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String userId=request.getParameter("userId");
-		LostBoard lb=new LostBoardService().selectDetail(userId);
-		request.setAttribute("lb", lb);
-		request.getRequestDispatcher("/views/board/board_lost/lostBoardView.jsp").forward(request, response);
+		User user = new AdminService().selectUser(userId);
+		System.out.println(user);
 		
+		request.setAttribute("user", user);
+		request.getRequestDispatcher("/views/admin/adminMemberView.jsp").forward(request, response);
+	
 	}
 
 	/**

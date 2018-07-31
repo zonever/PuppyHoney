@@ -46,7 +46,7 @@ $(function(){
       sortFrm.sort.value=sort;
       sortFrm.searchType.value=searchType;
       sortFrm.inputText.value=inputText;
-      var url="<%=request.getContextPath()%>/infoBoard/search";
+      var url="<%=request.getContextPath()%>/freeBoard/search";
       sortFrm.action=url
       sortFrm.method="get";
       sortFrm.submit();
@@ -60,7 +60,7 @@ $(function(){
       sortFrm.sort.value=sort;
       sortFrm.searchType.value=searchType;
       sortFrm.inputText.value=inputText;
-      var url="<%=request.getContextPath()%>/infoBoard/search";
+      var url="<%=request.getContextPath()%>/freeBoard/search";
       sortFrm.action=url
       sortFrm.method="get";
       sortFrm.submit();
@@ -74,7 +74,7 @@ $(function(){
       sortFrm.sort.value=sort;
       sortFrm.searchType.value=searchType;
       sortFrm.inputText.value=inputText;
-      var url="<%=request.getContextPath()%>/infoBoard/search";
+      var url="<%=request.getContextPath()%>/freeBoard/search";
       sortFrm.action=url
       sortFrm.method="get";
       sortFrm.submit();
@@ -88,7 +88,7 @@ $(function(){
       sortFrm.sort.value=sort;
       sortFrm.searchType.value=searchType;
       sortFrm.inputText.value=inputText;
-      var url="<%=request.getContextPath()%>/infoBoard/search";
+      var url="<%=request.getContextPath()%>/freeBoard/search";
       sortFrm.action=url
       sortFrm.method="get";
       sortFrm.submit();
@@ -107,10 +107,16 @@ $(function(){
 	<div class="mt-4 form-group">
 		<label><h3>정보게시판</h3></label>
         <div class="float-right pt-2 ml-4">
-            <button class="btn " onclick="location.href='<%=request.getContextPath()%>/infoBoard/write'">글쓰기</button>
+        	<form action="<%=request.getContextPath()%>/freeBoard/write" method="post">
+            <button type="submit" class="btn ">글쓰기</button>
+		     	  <input type="hidden" name="cPage" value="<%=cPage %>">
+				  <input type="hidden" name="searchType" value="<%=searchType %>">
+				  <input type="hidden" name="inputText" value="<%=inputText %>">
+				  <input type="hidden" name="sort" value="<%=sort %>">
+            </form>
         </div>
         <div class="float-right pt-2">
-             <form name="fr" action="<%=request.getContextPath()%>/infoBoard/search" onsubmit="return check()">
+             <form name="fr" action="<%=request.getContextPath()%>/freeBoard/search" onsubmit="return check()">
              	<input type="hidden" name="sort" value="<%=sort%>">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
@@ -200,7 +206,7 @@ document.getElementById('inputText2').value=text;
 			%>
 		<tr>
 			<td class="align-middle">
-				<a href='<%=request.getContextPath()%>/infoBoard/boardView?no=<%=ib.getBoardNumber()%>&cPage=<%=cPage%>&searchType=<%=searchType%>&inputText=<%=inputText%>&sort=<%=sort%>'>
+				<a href='<%=request.getContextPath()%>/freeBoard/boardView?no=<%=ib.getBoardNumber()%>&cPage=<%=cPage%>&searchType=<%=searchType%>&inputText=<%=inputText%>&sort=<%=sort%>'>
 					<%=ib.getBoardTitle() %>
 				</a>
 			</td>

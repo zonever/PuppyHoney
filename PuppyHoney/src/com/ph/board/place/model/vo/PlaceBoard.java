@@ -6,12 +6,10 @@ public class PlaceBoard {
 	private int plBoardNum;
 	private String plBoardTitle;
 	private String plBoardContent;
-	private String plBoardId;
+	private String plBoardId; 
 	private Date plBoardDate;
 	private int plBoardHits;
 	private int plBoardGood;
-	private String plBoardImgOrigin;
-	private String plBoardImgRename;
 	private String plBoardArea;
 	private String plBoardDogSize;
 	private String plBoardBusinessType;
@@ -19,13 +17,15 @@ public class PlaceBoard {
 	private String plBoardTime;
 	private String plBoardPhone;
 	private String plBoardAddr;
+	private String plBoardAcept_yn;
+	
 	
 	public PlaceBoard() {}
 
 	public PlaceBoard(int plBoardNum, String plBoardTitle, String plBoardContent, String plBoardId, Date plBoardDate,
-			int plBoardHits, int plBoardGood, String plBoardImgOrigin, String plBoardImgRename, String plBoardArea,
-			String plBoardDogSize, String plBoardBusinessType, String plBoardStoreName, String plBoardTime,
-			String plBoardPhone, String plBoardAddr) {
+			int plBoardHits, int plBoardGood, String plBoardArea, String plBoardDogSize, String plBoardBusinessType,
+			String plBoardStoreName, String plBoardTime, String plBoardPhone, String plBoardAddr,
+			String plBoardAcept_yn) {
 		super();
 		this.plBoardNum = plBoardNum;
 		this.plBoardTitle = plBoardTitle;
@@ -34,8 +34,6 @@ public class PlaceBoard {
 		this.plBoardDate = plBoardDate;
 		this.plBoardHits = plBoardHits;
 		this.plBoardGood = plBoardGood;
-		this.plBoardImgOrigin = plBoardImgOrigin;
-		this.plBoardImgRename = plBoardImgRename;
 		this.plBoardArea = plBoardArea;
 		this.plBoardDogSize = plBoardDogSize;
 		this.plBoardBusinessType = plBoardBusinessType;
@@ -43,6 +41,7 @@ public class PlaceBoard {
 		this.plBoardTime = plBoardTime;
 		this.plBoardPhone = plBoardPhone;
 		this.plBoardAddr = plBoardAddr;
+		this.plBoardAcept_yn = plBoardAcept_yn;
 	}
 
 	public int getPlBoardNum() {
@@ -101,22 +100,6 @@ public class PlaceBoard {
 		this.plBoardGood = plBoardGood;
 	}
 
-	public String getPlBoardImgOrigin() {
-		return plBoardImgOrigin;
-	}
-
-	public void setPlBoardImgOrigin(String plBoardImgOrigin) {
-		this.plBoardImgOrigin = plBoardImgOrigin;
-	}
-
-	public String getPlBoardImgRename() {
-		return plBoardImgRename;
-	}
-
-	public void setPlBoardImgRename(String plBoardImgRename) {
-		this.plBoardImgRename = plBoardImgRename;
-	}
-
 	public String getPlBoardArea() {
 		return plBoardArea;
 	}
@@ -172,5 +155,27 @@ public class PlaceBoard {
 	public void setPlBoardAddr(String plBoardAddr) {
 		this.plBoardAddr = plBoardAddr;
 	}
+
+	public String getPlBoardAcept_yn() {
+		return plBoardAcept_yn;
+	}
+
+	public void setPlBoardAcept_yn(String plBoardAcept_yn) {
+		this.plBoardAcept_yn = plBoardAcept_yn;
+	}
+
+
+	@Override
+	public String toString() {
+		return "PlaceBoard [plBoardNum=" + plBoardNum + ", plBoardTitle=" + plBoardTitle + ", plBoardContent="
+				+ plBoardContent + ", plBoardId=" + plBoardId + ", plBoardDate=" + plBoardDate + ", plBoardHits="
+				+ plBoardHits + ", plBoardGood=" + plBoardGood + ", plBoardArea=" + plBoardArea + ", plBoardDogSize="
+				+ plBoardDogSize + ", plBoardBusinessType=" + plBoardBusinessType + ", plBoardStoreName="
+				+ plBoardStoreName + ", plBoardTime=" + plBoardTime + ", plBoardPhone=" + plBoardPhone
+				+ ", plBoardAddr=" + plBoardAddr + ", plBoardAcept_yn=" + plBoardAcept_yn + ", plBoardImgOrigin="
+				 + ", plBoardImgRename=]";
+	}
+
+
 	
 }

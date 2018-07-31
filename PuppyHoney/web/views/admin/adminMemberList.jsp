@@ -5,20 +5,45 @@
 	List<User> list = (List<User>)request.getAttribute("list");
 	int cPage = Integer.parseInt(request.getAttribute("cPage").toString());
 	String pageBar = request.getAttribute("pageBar").toString();
+<<<<<<< HEAD
+	String searchType = "no";
+	String inputText ="";
+	if( request.getAttribute("searchType")!=null&&request.getAttribute("inputText")!=null){
+		searchType = request.getAttribute("searchType").toString();
+		inputText = request.getAttribute("inputText").toString();
+	}
+	int allUserCount = 0;
+	if(request.getAttribute("allUserCount") !=null){
+		allUserCount = Integer.parseInt(request.getAttribute("allUserCount").toString());
+	}
+	int searchCount = 0;
+	if(request.getAttribute("searchCount")!=null){
+		searchCount = Integer.parseInt(request.getAttribute("searchCount").toString());
+	}
 
+=======
 
+ 
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
 %>
 <script>
+
 $(document).ready(function(e){
 
     //상세보기 버튼 정보가지고 팝업창 오픈하기. 
-    $('.btnc').on("click",function(){
-        $(this).val();
-        // var url = "http://www.naver.com?userId="+$(this).val();
-        var url = "memberInfo.html"
-        var title ="updatePassword";
-		var status="left=100px, top=50px, width=800px; height=700px";
+    $('.btnInfo').on("click",function(){
+        var userId = $(this).val();
+        var url = "<%=request.getContextPath()%>/admin/memberView?userId="+userId;
+        var title ="memberView";
+		var status="left=100px, top=50px, width=800px; height=600px";
 		var popup = window.open(url,title,status);
+    });
+    
+	$('.btnAllMessage').click(function(){
+    	var url = "<%=request.getContextPath()%>/admin/allMessage";
+    	var title = "allMessage";
+    	var status="left=100px, top=50px, width=800px; height=600px";
+    	var popup = window.open(url,title,status);
     });
 });
 
@@ -46,6 +71,7 @@ $(function(){
         	return false;
     	}
     });
+    
 });
 
 
@@ -56,7 +82,7 @@ $(function(){
 		<label><h3>회원리스트</h3></label>
        
         <div class="float-right pt-2">
-            <form name="fr" action="<%=request.getContextPath()%>/infoBoard/search" onsubmit="return check()">
+            <form name="fr" action="<%=request.getContextPath()%>/admin/searchUser" onsubmit="return check()">
                 <div class="input-group mb-3">
                     <div class="input-group-prepend">
                         <select class="form-control" id="sel1" name="searchType">
@@ -75,12 +101,39 @@ $(function(){
         </div>
             
 	</div>      
-            <table class="table table-hover"  style="table-layout:fixed; word-break:break-all;">
+	
+	<script>
+	<%if(searchType!=null){%>
+	var type = '<%=searchType%>';
+	var text = '<%=inputText%>';
+	document.getElementById('sel1').value=type;
+	document.getElementById('inputText2').value=text;
+
+	<%}%>
+	</script>
+	
+	<div class="pr-5 pb-4 pl-4">
+    	<button class="btn btn-danger btnAllMessage">전체쪽지 보내기</button>
+    </div>
+	
+	<%if(allUserCount!=0){%>
+    <div class='pr-5'>
+    	<p class="float-right pr-5">총 회원수 : <%=allUserCount %>명 </p>
+    </div>
+    <%}else if(searchCount!=0){ %>
+    <div class='pr-5'>
+    	<p class="float-right pr-5">검색된 회원수 : <%=searchCount %>명 </p>
+    </div>
+    <%}else{ %>
+    <div class='pr-5'>
+    	<p class="float-right pr-5">총 회원수 : 0명 </p>
+    </div>
+    <%} %>
+            <table class="table table-hover  style="table-layout:fixed; word-break:break-all;">
             <tbody>
                 
                 <tr style="background: gray">
                     <th>아이디</th>
-                    <th>비밀번호</th>
                     <th>닉네임</th>
                     <th colspan="2">이메일</th>
                 </tr>
@@ -89,10 +142,7 @@ $(function(){
                 		<tr class="btnb">
                     
                    			 <td class="align-middle"><%=u.getUserId()%></td>
-		                    <!-- 브라우저 사이즈가 폰크기초과일때ㅐ만 나오게 -->
-		                    <td class="align-middle">
-		                        <%=u.getUserPw()%>
-		                    </td>
+		                   
                     
 		                    <td class="align-middle">
 		                        <%=u.getUserNick() %>
@@ -104,7 +154,7 @@ $(function(){
 		                      자세한건 보드뷰의 답글기능을 확인해봐
 		                  -->
                     <td class="align-middle">
-                        <button class="btnc float-right" value="<%=u.getUserId()%>">상세보기</button>
+                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button class="btnInfo" value="<%=u.getUserId()%>">상세보기</button>
                     </td>
                   
                 </tr>
