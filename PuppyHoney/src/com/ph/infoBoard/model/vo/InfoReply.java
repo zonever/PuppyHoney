@@ -3,7 +3,7 @@ package com.ph.infoBoard.model.vo;
 public class InfoReply {
 	private int replyNum;
 	private int boardRef;
-	private String replyId;
+	private String replyId; 
 	private String replyDate;
 	private String replyContent;
 	private int replyGood;

@@ -14,7 +14,7 @@ public class LostBoardService {
 		Connection conn=getConnection();
 		List<LostBoard> list=new LostBoardDAO().selectAll(conn);
 		return list;
-	}
+	} 
 	
 	public LostBoard selectDetail(String userId) {
 		Connection conn=getConnection();

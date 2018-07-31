@@ -11,9 +11,9 @@
 .side-bar {
 	position: fixed; 
 	right: 220px;
-	display: inline-block;
+	display: inline-block; 
 	width: 360px;
-}
+} 
 	
  /* 모바일로 바꿨을 때 */	
 @media (max-width:450px) {

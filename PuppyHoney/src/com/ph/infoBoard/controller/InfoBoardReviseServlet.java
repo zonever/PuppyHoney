@@ -16,7 +16,7 @@ public class InfoBoardReviseServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoBoardReviseServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -36,9 +36,7 @@ public class InfoBoardReviseServlet extends HttpServlet {
 		String sort = request.getParameter("sort");
 		
 		
-		System.out.println("서블릿이 받은 수정전제목 : " + boardTitle);
-		System.out.println("서블릿이 받은 수정전내용 : " + boardContent);
-		
+
 		
 		request.setAttribute("boardNum", boardNum);
 		request.setAttribute("boardTitle", boardTitle);

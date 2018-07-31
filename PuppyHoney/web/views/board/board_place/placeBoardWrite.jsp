@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 
 
-<script>
+<script> 
           //주소api 스크립트
           function test1() {
               new daum.Postcode({

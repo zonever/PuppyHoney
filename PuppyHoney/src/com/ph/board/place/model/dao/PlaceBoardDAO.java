@@ -16,7 +16,7 @@ import com.ph.board.place.model.vo.PlaceBoard;
 public class PlaceBoardDAO {
 
 	private Properties prop;
-	public PlaceBoardDAO()
+	public PlaceBoardDAO() 
 	{
 		prop=new Properties();
 		String file=PlaceBoardDAO.class.getResource("/sql/placeboard/placeboard-sql.properties").getPath();
@@ -26,7 +26,7 @@ public class PlaceBoardDAO {
 			e.printStackTrace();
 		}
 	}
-	public int insertPlaceBoard(Connection conn, PlaceBoard plBoard) 	//로그인시 세션값 하나 받기
+	public int insertPlaceBoard(Connection conn, PlaceBoard plBoard) 	//濡쒓렇�씤�떆 �꽭�뀡媛� �븯�굹 諛쏄린
 	{
 		PreparedStatement pstmt=null;
 		int result=0;
@@ -36,7 +36,7 @@ public class PlaceBoardDAO {
 			pstmt=conn.prepareStatement(sql);
 			pstmt.setString(1,plBoard.getPlBoardTitle());
 			pstmt.setString(2,plBoard.getPlBoardContent());
-			pstmt.setString(3,plBoard.getPlBoardId());		//세션값으로 아이디 하나 받기
+			pstmt.setString(3,plBoard.getPlBoardId());		//�꽭�뀡媛믪쑝濡� �븘�씠�뵒 �븯�굹 諛쏄린
 			pstmt.setString(4,plBoard.getPlBoardArea());
 			pstmt.setString(5,plBoard.getPlBoardDogSize());
 			pstmt.setString(6,plBoard.getPlBoardBusinessType());
