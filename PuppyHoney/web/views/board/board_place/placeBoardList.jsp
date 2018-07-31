@@ -168,11 +168,7 @@
 	                   	   <th><b class='text-muted '><%=pb.getPlBoardStoreName()%></b></th>
 	                  </tr>
 	                  <hr>
-	                  <tr>
-
-	                   	   <th><b class='text-muted'><%=pb.getPlBoardStoreName()%></b></th>
-	                  </tr>
-	                  <hr>
+	               
 	                  <tr>
 	            		   <th><span class="badge badge-primary"><%=pb.getPlBoardBusinessType() %></span></th>
 	                  </tr>
