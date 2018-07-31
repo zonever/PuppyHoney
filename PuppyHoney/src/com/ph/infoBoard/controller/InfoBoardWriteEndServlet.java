@@ -13,7 +13,7 @@ import com.ph.infoBoard.model.vo.InfoBoard;
 /**
  * Servlet implementation class InfoBoardWriteEndServlet
  */
-@WebServlet("/infoBoard/writeEnd")
+@WebServlet("/freeBoard/writeEnd")
 public class InfoBoardWriteEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -41,7 +41,7 @@ public class InfoBoardWriteEndServlet extends HttpServlet {
 		int result = new InfoBoardService().insertInfoBoard(ib);
 
 		String msg="";
-		String loc="/infoBoard/boardList";
+		String loc="/freeBoard/boardList";
 		if(result>0) {
 			msg="寃뚯떆臾쇱씠 �벑濡앸릺�뿀�뒿�땲�떎.";
 		}else {

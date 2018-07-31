@@ -15,7 +15,7 @@ import com.ph.infoBoard.model.vo.InfoBoard;
 /**
  * Servlet implementation class InfoBoardListServlet
  */
-@WebServlet("/infoBoard/boardList")
+@WebServlet("/freeBoard/boardList")
 public class InfoBoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -56,7 +56,7 @@ public class InfoBoardListServlet extends HttpServlet {
 		if(pageNo==1) {
 			pageBar+="<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
 		}else {
-			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/boardList?cPage="+(pageNo-1)+"'>Previous</a></li>";
+			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/boardList?cPage="+(pageNo-1)+"'>Previous</a></li>";
 		}
 		
 		//�럹�씠吏� 踰덊샇 援ъ꽦
@@ -64,7 +64,7 @@ public class InfoBoardListServlet extends HttpServlet {
 			if(cPage==pageNo) {
 				pageBar+="<li class='page-item disabled'><a class='page-link'>"+pageNo+"</a></li>";
 			}else {
-				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/boardList?cPage="+pageNo+"'>"+pageNo+"</a></li>";
+				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/boardList?cPage="+pageNo+"'>"+pageNo+"</a></li>";
 			}
 			pageNo++;
 		}
@@ -73,7 +73,7 @@ public class InfoBoardListServlet extends HttpServlet {
 		if(pageNo>totalPage) {
 			pageBar+="<li class='page-item disabled'><a class='page-link'>Next</a></li>";
 		}else {
-			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/boardList?cPage="+(pageNo)+"'>Next</a></li>";
+			pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/boardList?cPage="+(pageNo)+"'>Next</a></li>";
 		}
 		//�럹�씠吏�諛� 援ъ꽦 �걹!
 		

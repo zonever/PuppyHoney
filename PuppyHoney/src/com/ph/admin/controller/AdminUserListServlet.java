@@ -43,10 +43,18 @@ public class AdminUserListServlet extends HttpServlet {
 				}
 				
 				List<User> list = new AdminService().allMemberdList(cPage,numPerPage);
+<<<<<<< HEAD
+				//pageBar만들기
+				//전체 회원 수
+				int userCount=new AdminService().allUserCount();
+				userCount=userCount-1;
+				//전체 페이지 수
+=======
 				//pageBar留뚮뱾湲�
 				//�쟾泥� �옄猷� �닔
 				int userCount=new AdminService().allUserCount();
 				//�쟾泥� �럹�씠吏� �닔
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
 				int totalPage=(int)Math.ceil((double)userCount/numPerPage);
 				int barSize=5;
 				String pageBar="";
@@ -81,6 +89,7 @@ public class AdminUserListServlet extends HttpServlet {
 				request.setAttribute("list", list);
 				request.setAttribute("cPage", cPage);
 				request.setAttribute("pageBar", pageBar);
+				request.setAttribute("allUserCount", userCount);
 				request.getRequestDispatcher("/views/admin/adminMemberList.jsp").forward(request, response);
 				
 	}

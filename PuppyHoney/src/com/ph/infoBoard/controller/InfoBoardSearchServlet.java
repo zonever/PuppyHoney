@@ -15,7 +15,7 @@ import com.ph.infoBoard.model.vo.InfoBoard;
 /**
  * Servlet implementation class InfoBoardSearchServlet
  */
-@WebServlet("/infoBoard/search")
+@WebServlet("/freeBoard/search")
 public class InfoBoardSearchServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -67,7 +67,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 				if(pageNo==1) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
 				}else {
-					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
+					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
 				}
 				
 				//�럹�씠吏� 踰덊샇 援ъ꽦
@@ -75,7 +75,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 					if(cPage==pageNo) {
 						pageBar+="<li class='page-item disabled'><a class='page-link'>"+pageNo+"</a></li>";
 					}else {
-						pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
+						pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
 					}
 					pageNo++;
 				}
@@ -84,7 +84,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 				if(pageNo>totalPage) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>Next</a></li>";
 				}else {
-					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
+					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
 				}
 				//�럹�씠吏�諛� 援ъ꽦 �걹!
 				
@@ -134,7 +134,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 			if(pageNo==1) {
 				pageBar+="<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
 			}else {
-				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
+				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
 			}
 			
 			//�럹�씠吏� 踰덊샇 援ъ꽦
@@ -142,7 +142,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 				if(cPage==pageNo) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>"+pageNo+"</a></li>";
 				}else {
-					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
+					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
 				}
 				pageNo++;
 			}
@@ -151,7 +151,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 			if(pageNo>totalPage) {
 				pageBar+="<li class='page-item disabled'><a class='page-link'>Next</a></li>";
 			}else {
-				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
+				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
 			}
 			//�럹�씠吏�諛� 援ъ꽦 �걹!
 			
@@ -192,7 +192,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 			if(pageNo==1) {
 				pageBar+="<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
 			}else {
-				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
+				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo-1)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Previous</a></li>";
 			}
 			
 			//�럹�씠吏� 踰덊샇 援ъ꽦
@@ -200,7 +200,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 				if(cPage==pageNo) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>"+pageNo+"</a></li>";
 				}else {
-					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
+					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+pageNo+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>"+pageNo+"</a></li>";
 				}
 				pageNo++;
 			}
@@ -209,7 +209,7 @@ public class InfoBoardSearchServlet extends HttpServlet {
 			if(pageNo>totalPage) {
 				pageBar+="<li class='page-item disabled'><a class='page-link'>Next</a></li>";
 			}else {
-				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/infoBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
+				pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/freeBoard/search?cPage="+(pageNo)+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort+"'>Next</a></li>";
 			}
 			//�럹�씠吏�諛� 援ъ꽦 �걹!
 			

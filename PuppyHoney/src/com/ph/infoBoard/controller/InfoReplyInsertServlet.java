@@ -62,7 +62,7 @@ public class InfoReplyInsertServlet extends HttpServlet implements Servlet {
 		else {
 			msg="�뙎湲��벑濡앹씠 �떎�뙣�뻽�뒿�땲�떎.";
 		}
-		loc="/infoBoard/boardView?no="+infoBoardRef+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
+		loc="/freeBoard/boardView?no="+infoBoardRef+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);
 		request.getRequestDispatcher(view).forward(request, response);

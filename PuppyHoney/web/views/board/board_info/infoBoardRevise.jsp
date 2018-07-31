@@ -34,7 +34,7 @@ if(<%=userLoggedIn==null%>){
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
-                    <form action='<%=request.getContextPath()%>/infoBoard/ReviseEnd' method="post" id="fr">
+                    <form action='<%=request.getContextPath()%>/freeBoard/ReviseEnd' method="post" id="fr">
             			<!-- 원래는 벨류값에 세션아이디가 들어갈거임 -->
             			<input type="hidden" name="boardNum" value="<%=boardNum%>"/>
             			<input type="hidden" name="cPage" value="<%=cPage%>"/>
@@ -55,11 +55,11 @@ if(<%=userLoggedIn==null%>){
                          
                          <!--버튼능력-->
                          <div class="center-block ">      
-                             <input type="button" value="수정" class="btn btn-outline-secondary" style="width: 100px; height: 50px" onclick="submitContents(this)">
+                             <input type="button" value="이전" class="btn btn-outline-secondary " style="width: 100px; height: 50px" onclick="history.back(1)">
+                             <input type="button" value="수정" class="btn btn-outline-secondary float-right" style="width: 100px; height: 50px" onclick="submitContents(this)">
                              
                              <!-- //되돌아가기에서 onclick이벤트로 history.back(1) 왔던곳에서 1만큼 back (-1을 써도 된다)  -->
                           
-                             <input type="button" value="뒤로" class="btn btn-outline-secondary  float-right" style="width: 100px; height: 50px" onclick="history.back(1)">
                          </div> 
                          
                      </form>

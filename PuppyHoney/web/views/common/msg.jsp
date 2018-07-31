@@ -10,6 +10,14 @@
 	String msg=(String)request.getAttribute("msg");
 	String loc=request.getContextPath()+(String)request.getAttribute("loc");
 	String script=(String)request.getAttribute("script");
+	
+	if(request.getAttribute("free")!=null){
+		String searchType = (String)request.getAttribute("searchType");
+		String inputText = (String)request.getAttribute("inputText");
+		String sort = (String)request.getAttribute("sort");
+		int cPage = Integer.parseInt(request.getAttribute("cPage").toString()); 
+		loc = request.getContextPath()+"/freeBoard/boardList?cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
+	}
 %>
 <body>
 	<script>

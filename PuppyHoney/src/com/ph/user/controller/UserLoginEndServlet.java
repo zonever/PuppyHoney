@@ -36,24 +36,42 @@ public class UserLoginEndServlet extends HttpServlet {
 				String msg="";
 				String loc="";
 				String view="/views/common/msg.jsp";
-				//·Î±×ÀÎÃ¼Å©
+				
+				
+				
+				
+				if(request.getParameter("free")!=null) {
+					request.setAttribute("free", "free");
+					int cPage = Integer.parseInt(request.getParameter("cPage"));
+					String searchType = request.getParameter("searchType");
+					String inputText = request.getParameter("inputText");
+					String sort = request.getParameter("sort");
+					
+					request.setAttribute("cPage", cPage);
+					request.setAttribute("searchType", searchType);
+					request.setAttribute("inputText", inputText);
+					request.setAttribute("sort", sort);
+					
+				}
+				
+				//ï¿½Î±ï¿½ï¿½ï¿½Ã¼Å©
 				if(user!=null)
 				{
-					//·Î±×ÀÎ¼º°ø
+					//ï¿½Î±ï¿½ï¿½Î¼ï¿½ï¿½ï¿½
 					if(user.getUserPw().equals(pw))
 					{
 						if(user.getUserLeave().equals("N"))
 						{
 							if(user.getUserEmailChecked()==1)
 							{
-								msg=user.getUserId()+"´Ô È¯¿µÇÕ´Ï´Ù";
+								msg=user.getUserId()+"ï¿½ï¿½ È¯ï¿½ï¿½ï¿½Õ´Ï´ï¿½";
 								loc="/";
-								//¼¼¼Ç»ý¼º
+								//ï¿½ï¿½ï¿½Ç»ï¿½ï¿½ï¿½
 								HttpSession session=request.getSession();
 								session.setAttribute("userLoggedIn",user);
-								//¾ÆÀÌµðÀúÀå Ã¼Å©¿©ºÎ ¹Þ¾Æ¿À±â
+								//ï¿½ï¿½ï¿½Ìµï¿½ï¿½ï¿½ï¿½ï¿½ Ã¼Å©ï¿½ï¿½ï¿½ï¿½ ï¿½Þ¾Æ¿ï¿½ï¿½ï¿½
 								String saveId=request.getParameter("saveId");
-								//Ã¼Å©°¡ µÈ °æ¿ì
+								//Ã¼Å©ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½
 								if(saveId!=null)
 								{
 									Cookie c= new Cookie("saveId",id);
@@ -61,7 +79,7 @@ public class UserLoginEndServlet extends HttpServlet {
 									c.setPath("/");
 									response.addCookie(c);
 								}
-								//Ã¼Å©¾ÈµÈ °æ¿ì
+								//Ã¼Å©ï¿½Èµï¿½ ï¿½ï¿½ï¿½
 								else
 								{
 									Cookie c=new Cookie("saveId",id);
@@ -72,29 +90,29 @@ public class UserLoginEndServlet extends HttpServlet {
 							}
 							else
 							{
-								msg="E-Mail ÀÎÁõ ÈÄ ·Î±×ÀÎÇØÁÖ¼¼¿ä";
+								msg="E-Mail ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Î±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö¼ï¿½ï¿½ï¿½";
 								loc="/";
 							}
 							
 						}
 						else
 						{
-							msg="Å»ÅðÇÑ È¸¿øÀÔ´Ï´Ù";
+							msg="Å»ï¿½ï¿½ï¿½ï¿½ È¸ï¿½ï¿½ï¿½Ô´Ï´ï¿½";
 							loc="/";
 						}
 						
 					}
-					//ºñ¹Ð¹øÈ£ ¿À·ù
+					//ï¿½ï¿½Ð¹ï¿½È£ ï¿½ï¿½ï¿½ï¿½
 					else
 					{
-						msg="ºñ¹Ð¹øÈ£°¡ Æ²·È½À´Ï´Ù";
+						msg="ï¿½ï¿½Ð¹ï¿½È£ï¿½ï¿½ Æ²ï¿½È½ï¿½ï¿½Ï´ï¿½";
 						loc="/";
 					}
 				}
-				//ID¿À·ù
+				//IDï¿½ï¿½ï¿½ï¿½
 				else
 				{
-					msg="ID°¡ ¾ø½À´Ï´Ù";
+					msg="IDï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ï´ï¿½";
 					loc="/";
 				}
 				request.setAttribute("msg", msg);

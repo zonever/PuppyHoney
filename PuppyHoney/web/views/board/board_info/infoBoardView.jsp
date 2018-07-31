@@ -12,7 +12,8 @@
 %>
 <%@ include file="/views/common/header.jsp" %>
 	<style>
- 		 img{max-width: 700px};
+ 		 .boardContent img{max-width: 500px; max-height: 100%;}
+ 		 .form-group img{max-width: 350px; max-height: 100%;}
  	</style>
  	<!-- Smart Editor -->
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/js/HuskyEZCreator.js" charset="utf-8"></script>
@@ -53,10 +54,16 @@ $(function(){
   
   //수정버튼의 반응
   $('.btn-revise').on('click',function(){
+<<<<<<< HEAD
+    var num = <%=infoBoard.getBoardNumber()%>;
+    reviseFrm.boardNum.value=num;
+    var url="<%=request.getContextPath()%>/freeBoard/boardRevise";
+=======
     var num = <%=infoBoard.getBoardNumber()%>; 
     reviseFrm.boardNum.value=num; 
     alert(num);
     var url="<%=request.getContextPath()%>/infoBoard/boardRevise";
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
     reviseFrm.action=url
     reviseFrm.method="post";
     reviseFrm.submit();
@@ -70,7 +77,7 @@ $(function(){
     }
     var num = <%=infoBoard.getBoardNumber()%>;
     deleteFrm.boardNum.value=num;
-    var url="<%=request.getContextPath()%>/infoBoard/boardDelete";
+    var url="<%=request.getContextPath()%>/freeBoard/boardDelete";
     deleteFrm.action=url
     deleteFrm.method="post";
     deleteFrm.submit();
@@ -84,7 +91,7 @@ $(function(){
 	<%} else{%>
     var num = $(this).val();
     recommendFrm.boardNum.value=num;
-    var url="<%=request.getContextPath()%>/infoBoard/boardRecommend";
+    var url="<%=request.getContextPath()%>/freeBoard/boardRecommend";
     recommendFrm.action=url
     recommendFrm.method="post";
     recommendFrm.submit();
@@ -124,19 +131,19 @@ $(function(){
 
 
 function fn_goWrite(){
-	location.href="<%=request.getContextPath()%>/infoBoard/write";
+	location.href="<%=request.getContextPath()%>/freeBoard/write";
 }
 
 //목록버튼
 function fn_list(){
 		<%if(searchType.equals("null")&&inputText.equals("null")&&sort.equals("null")){%>
-			var url="<%=request.getContextPath()%>/infoBoard/boardList";
+			var url="<%=request.getContextPath()%>/freeBoard/boardList";
 			listFrm2.action=url
 			listFrm2.method="get";
 			listFrm2.submit();
 			
 		<%}else{%>
-		var url="<%=request.getContextPath()%>/infoBoard/search";
+		var url="<%=request.getContextPath()%>/freeBoard/search";
 		listFrm.action=url
 		listFrm.method="get";
 		listFrm.submit();
@@ -167,7 +174,7 @@ function fn_list(){
 		</table>
 		<hr/>
 		<div class="pt-2"></div>
-		<%=infoBoard.getBoardContent() %>
+		<p class = boardContent><%=infoBoard.getBoardContent() %></p>
 		<!-- 버튼 벨류값에 보드넘버 가지고있기-->  
 		<div class="pt-5" align="center"><button class="btn btnRecommend" value="<%=infoBoard.getBoardNumber()%>">추천 <%=infoBoard.getBoardgood()%></button></div>       
 	</div>
@@ -349,8 +356,8 @@ function fn_list(){
 		<!-- 수정버튼을 적용시키기 위한 폼 -->
         <form name="reviseFrm">
             <input type="hidden" name="boardNum">
-            <input type="hidden" name="boardTitle" value="<%=infoBoard.getBoardTitle() %>">
-            <input type="hidden" name="boardContent" value="<%=infoBoard.getBoardContent() %>">
+            <input type="hidden" name="boardTitle" value='<%=infoBoard.getBoardTitle() %>'>
+            <input type="hidden" name="boardContent" value='<%=infoBoard.getBoardContent() %>'>
             <input type="hidden" name="cPage" value="<%=cPage %>">
             <input type="hidden" name="searchType" value="<%=searchType %>">
             <input type="hidden" name="inputText" value="<%=inputText %>">
