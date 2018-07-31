@@ -64,13 +64,10 @@ public class InfoBoardViewServlet extends HttpServlet {
 			}
 			else
 			{
-<<<<<<< HEAD
+
 				request.setAttribute("msg", "조회한 게시물이 없습니다.");
 				request.setAttribute("loc", "/freeBoard/boardList");
-=======
-				request.setAttribute("msg", "議고쉶�븳 寃뚯떆臾쇱씠 �뾾�뒿�땲�떎.");
-				request.setAttribute("loc", "/infoBoard/boardList");
->>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
+
 				view="/views/common/msg.jsp";
 			}
 			request.getRequestDispatcher(view).forward(request, response);
@@ -123,13 +120,10 @@ public class InfoBoardViewServlet extends HttpServlet {
 			}
 			else
 			{
-<<<<<<< HEAD
+
 				request.setAttribute("msg", "조회한 게시물이 없습니다.");
 				request.setAttribute("loc", "/freeBoard/boardList");
-=======
-				request.setAttribute("msg", "議고쉶�븳 寃뚯떆臾쇱씠 �뾾�뒿�땲�떎.");
-				request.setAttribute("loc", "/infoBoard/boardList");
->>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
+
 				view="/views/common/msg.jsp";
 			}
 			request.getRequestDispatcher(view).forward(request, response);
