@@ -19,7 +19,7 @@ public class InfoBoardRecommendServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoBoardRecommendServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -40,18 +40,18 @@ public class InfoBoardRecommendServlet extends HttpServlet {
 			int result = new InfoBoardService().checkRecommend(boardNum,userId);
 			
 			if(result>=1) {
-				request.setAttribute("msg", "이미 추천한 게시물입니다.");
+				request.setAttribute("msg", "�씠誘� 異붿쿇�븳 寃뚯떆臾쇱엯�땲�떎.");
 				request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 				request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 			}else {
 				int result2 = new InfoBoardService().insertInfoBoardGood(boardNum,userId);
 				int result3 = new InfoBoardService().countInfoBoardRecommend(boardNum);
 				if(result3>=1) {
-					request.setAttribute("msg", "추천이 완료되었습니다.");
+					request.setAttribute("msg", "異붿쿇�씠 �셿猷뚮릺�뿀�뒿�땲�떎.");
 					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}else {
-					request.setAttribute("msg", "추천에 실패했습니다..");
+					request.setAttribute("msg", "異붿쿇�뿉 �떎�뙣�뻽�뒿�땲�떎..");
 					request.setAttribute("loc","/infoBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort);
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}

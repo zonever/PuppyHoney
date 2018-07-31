@@ -18,7 +18,7 @@ import com.ph.board.place.model.vo.PlaceBoard;
 /**
  * Servlet implementation class PlaceBoardFormEndServlet
  */
-@WebServlet("/board/placeBoardFormEnd")
+@WebServlet("/board/placeBoardFormEnd") 
 
 public class PlaceBoardFormEndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
@@ -35,30 +35,30 @@ public class PlaceBoardFormEndServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-				//파일 업로드!!
-				//1. 파일이 제대로 들어왔는지 확인
-				//	  multipart제대로 왔는지
-				//2. 저장할 디렉토리를 지정
-				//3. 파일이 크기를 생성
-				//4. 파라미터값을 가져옴
-				//5. BOARD개체를 생성
-				//6. 비지니스 로직을 수행
-				//7. 응답페이지를 작성
+				//�뙆�씪 �뾽濡쒕뱶!!
+				//1. �뙆�씪�씠 �젣��濡� �뱾�뼱�솕�뒗吏� �솗�씤
+				//	  multipart�젣��濡� �솕�뒗吏�
+				//2. ���옣�븷 �뵒�젆�넗由щ�� 吏��젙
+				//3. �뙆�씪�씠 �겕湲곕�� �깮�꽦
+				//4. �뙆�씪誘명꽣媛믪쓣 媛��졇�샂
+				//5. BOARD媛쒖껜瑜� �깮�꽦
+				//6. 鍮꾩��땲�뒪 濡쒖쭅�쓣 �닔�뻾
+				//7. �쓳�떟�럹�씠吏�瑜� �옉�꽦
 				
-				//1.(파일 제대로 들어온지 확인)
+				//1.(�뙆�씪 �젣��濡� �뱾�뼱�삩吏� �솗�씤)
 				if(!ServletFileUpload.isMultipartContent(request)) 
 				{
-					request.setAttribute("msg", "게시판 작성오류[form:enctype] 관리자 문의 바람.");
+					request.setAttribute("msg", "寃뚯떆�뙋 �옉�꽦�삤瑜�[form:enctype] 愿�由ъ옄 臾몄쓽 諛붾엺.");
 					request.setAttribute("loc", "/");
 					request.getRequestDispatcher("/views/common/msg.jsp").forward(request, response);
 				}
-				//2.저장경로 설정
+				//2.���옣寃쎈줈 �꽕�젙
 				String root=getServletContext().getRealPath("/");
 				System.out.println(root);
 				String saveDir=root+"upload"+File.separator+"placeboard";
 				System.out.println(saveDir);
 				
-				//3.파일 크기 설정
+				//3.�뙆�씪 �겕湲� �꽕�젙
 				int maxSize=1024*1024*10;
 				
 				MultipartRequest mpreq = new MultipartRequest(request, saveDir,maxSize,"UTF-8",new DefaultFileRenamePolicy());
@@ -97,10 +97,10 @@ public class PlaceBoardFormEndServlet extends HttpServlet {
 				String loc="/board/placeBoardList";
 				if(result>0)
 				{
-					msg="게시판 등록 성공";
+					msg="寃뚯떆�뙋 �벑濡� �꽦怨�";
 				}else
 				{
-					msg="게시판 등록 실패";
+					msg="寃뚯떆�뙋 �벑濡� �떎�뙣";
 				}
 				
 				request.setAttribute("msg", msg);

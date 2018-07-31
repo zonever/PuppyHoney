@@ -11,7 +11,7 @@
         display: none;
     }
 </style>
-<script>
+<script> 
 	
 </script>
   <script>
@@ -48,7 +48,7 @@
               <button type="button" class="btn btn-dark m-1" data-toggle="collapse" data-target="#demo" aria-expanded="false" aria-controls="collapseExample">
                     필 터
                   </button>
-                  <%if(session.getAttribute("userLoggedIn")!=null){ %>
+                  <%if(userLoggedIn!=null){ %>
               <button class="btn col-md-1" onclick="fn_placeBoardWrite()">글쓰기</button>
               <%} %>
             </div>

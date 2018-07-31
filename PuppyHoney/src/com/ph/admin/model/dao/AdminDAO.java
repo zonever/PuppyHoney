@@ -19,7 +19,7 @@ import com.ph.user.model.vo.User;
 public class AdminDAO {
 
 private Properties prop;
-	
+	 
 	public AdminDAO() {
 		prop=new Properties();
 		try {

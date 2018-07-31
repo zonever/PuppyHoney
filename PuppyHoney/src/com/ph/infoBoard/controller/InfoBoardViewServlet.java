@@ -24,7 +24,7 @@ public class InfoBoardViewServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoBoardViewServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -34,7 +34,7 @@ public class InfoBoardViewServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//페이지넘버 받기
+		//�럹�씠吏��꽆踰� 諛쏄린
 		int infoBoardNum=Integer.parseInt(request.getParameter("no"));
 		
 		int cPage = Integer.parseInt(request.getParameter("cPage"));
@@ -58,21 +58,21 @@ public class InfoBoardViewServlet extends HttpServlet {
 				request.setAttribute("searchType", searchType);
 				request.setAttribute("inputText", inputText);
 				request.setAttribute("sort", sort);
-				List<InfoReply> replyList = new InfoBoardService().selectInfoBoardReplyList(infoBoardNum);	//댓글불러오기...
+				List<InfoReply> replyList = new InfoBoardService().selectInfoBoardReplyList(infoBoardNum);	//�뙎湲�遺덈윭�삤湲�...
 				request.setAttribute("replyList", replyList);
 				view="/views/board/board_info/infoBoardView.jsp";
 			}
 			else
 			{
-				request.setAttribute("msg", "조회한 게시물이 없습니다.");
+				request.setAttribute("msg", "議고쉶�븳 寃뚯떆臾쇱씠 �뾾�뒿�땲�떎.");
 				request.setAttribute("loc", "/infoBoard/boardList");
 				view="/views/common/msg.jsp";
 			}
 			request.getRequestDispatcher(view).forward(request, response);
 		}else {
 			
-			//조회수 같은계정 한번만 증가
-			//client가 보낸 쿠키 확인
+			//議고쉶�닔 媛숈�怨꾩젙 �븳踰덈쭔 利앷�
+			//client媛� 蹂대궦 荑좏궎 �솗�씤
 			Cookie[] cookie=request.getCookies();
 			String boardCookieVal="";
 			boolean hasRead=false;
@@ -83,7 +83,7 @@ public class InfoBoardViewServlet extends HttpServlet {
 						String value=c.getValue();
 						if("boardCookie".equals(name)) {
 							boardCookieVal=value;
-							if(value.contains("|"+infoBoardNum+"|")) { //읽언던적이있따면?
+							if(value.contains("|"+infoBoardNum+"|")) { //�씫�뼵�뜕�쟻�씠�엳�뵲硫�?
 								hasRead=true;
 								break outer;
 							}
@@ -91,11 +91,11 @@ public class InfoBoardViewServlet extends HttpServlet {
 					}
 			}
 			
-			//읽지 않았다면 쿠키를 만들어서 저장
+			//�씫吏� �븡�븯�떎硫� 荑좏궎瑜� 留뚮뱾�뼱�꽌 ���옣
 			if(!hasRead) {
 				Cookie boardCookie=new Cookie("boardCookie",boardCookieVal+"|"+infoBoardNum+"|"); //10||20||30|
-				//session끊어지면 지우기!
-				//브라우저 끊어져야 삭제
+				//session�걡�뼱吏�硫� 吏��슦湲�!
+				//釉뚮씪�슦�� �걡�뼱�졇�빞 �궘�젣
 				boardCookie.setMaxAge(-1);
 				
 				response.addCookie(boardCookie);
@@ -112,13 +112,13 @@ public class InfoBoardViewServlet extends HttpServlet {
 					request.setAttribute("inputText", inputText);
 					request.setAttribute("sort", sort);
 				
-				List<InfoReply> replyList = new InfoBoardService().selectInfoBoardReplyList(infoBoardNum);	//댓글불러오기...
+				List<InfoReply> replyList = new InfoBoardService().selectInfoBoardReplyList(infoBoardNum);	//�뙎湲�遺덈윭�삤湲�...
 				request.setAttribute("replyList", replyList);
 				view="/views/board/board_info/infoBoardView.jsp";
 			}
 			else
 			{
-				request.setAttribute("msg", "조회한 게시물이 없습니다.");
+				request.setAttribute("msg", "議고쉶�븳 寃뚯떆臾쇱씠 �뾾�뒿�땲�떎.");
 				request.setAttribute("loc", "/infoBoard/boardList");
 				view="/views/common/msg.jsp";
 			}

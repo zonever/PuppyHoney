@@ -6,7 +6,7 @@ package com.ph.freeBoard.model.vo;
 		private String boardContent;
 		private String boardId;
 		private String boardDate;
-		private int boardHit;
+		private int boardHit; 
 		private int boardgood;
 		private int boardReplyNum;
 		

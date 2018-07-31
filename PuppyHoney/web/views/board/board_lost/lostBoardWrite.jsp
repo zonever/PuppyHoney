@@ -12,7 +12,7 @@
                 <input type="text" class="form-control" name="title" id="title" placeholder="제목 입력"> 
             </div> 
         </div>  
-        <div>
+        <div> 
             <div class="form-group">
                 <form>
                     <label for="address">지역 입력</label>

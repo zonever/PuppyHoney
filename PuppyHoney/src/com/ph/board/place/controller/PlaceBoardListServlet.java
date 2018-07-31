@@ -19,7 +19,7 @@ import com.ph.board.place.model.vo.PlaceBoard;
 public class PlaceBoardListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /** 
      * @see HttpServlet#HttpServlet()
      */
     public PlaceBoardListServlet() {

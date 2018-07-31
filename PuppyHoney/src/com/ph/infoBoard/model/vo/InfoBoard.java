@@ -11,7 +11,7 @@ public class InfoBoard {
 	private int boardReplyNum;
 	
 	public InfoBoard(){}
-
+ 
 	
 
 	public InfoBoard(int boardNumber, String boardTitle, String boardContent, String boardId, String boardDate,

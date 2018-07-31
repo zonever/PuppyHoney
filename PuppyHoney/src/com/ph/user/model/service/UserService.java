@@ -11,7 +11,7 @@ import com.ph.user.model.dao.UserDAO;
 import com.ph.user.model.vo.User;
 
 public class UserService {
-
+ 
 	public int insertUser(User user)
 	{
 		Connection conn=getConnection();
@@ -57,6 +57,16 @@ public class UserService {
 	{
 		Connection conn=getConnection();
 		int result=new UserDAO().updateEmailChecked(conn,userId);
+		if(result>0) commit(conn);
+		else rollback(conn);
+		close(conn);
+		return result;
+	}
+	
+	public int updateUser(User user)
+	{
+		Connection conn=getConnection();
+		int result=new UserDAO().updateUser(conn,user);
 		if(result>0) commit(conn);
 		else rollback(conn);
 		close(conn);

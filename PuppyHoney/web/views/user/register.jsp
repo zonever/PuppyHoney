@@ -18,8 +18,10 @@
   	$(function(){
   		var idFlag=0;
   		var nickFlag=0;
-  		var pwFlag=0;
+  		var pw2Flag=0;
   		var emailFlag=0;
+  		var pw1Flag=0;
+  		var passwordRules = /^(?=.*[a-zA-Z])(?=.*[!@#$%^*+=-])(?=.*[0-9]).{8,16}$/;
   		$("#userId").keyup(function()
   		{	
   			
@@ -80,6 +82,7 @@
   						emailFlag=0;
   					}
   					else
+  						
 					{
   						$("#emailResult").html("사용 가능한 e-mail").css("color","green");
   						emailFlag=1;
@@ -87,18 +90,30 @@
   				}
   			});
   		});
+  		$("#userPw").keyup(function(){
+  			if(passwordRules.test($("#userPw").val()))
+  			{
+  				$("#pwd1Result").html("사용가능한 비밀번호입니다").css("color","green");
+  		        pw1Flag=1;
+  			}
+  			else
+  			{
+  				$("#pwd1Result").html("사용불가능한 비밀번호입니다").css("color","red");
+  		        pw1Flag=0;
+  			}
+  		});
 	    $("#userPw2").keyup(function()
 	    {   
 	    	
 	      if($("#userPw").val()!=$("#userPw2").val())
 	      {
-	          $("#pwdResult").html("비밀번호 불일치").css("color","red");
-	          pwFlag=0;
+	          $("#pwd2Result").html("비밀번호 불일치").css("color","red");
+	          pw2Flag=0;
 	      }
 	      else
 	      {
-	          $("#pwdResult").html("비밀번호 일치").css("color","green");
-	          pwFlag=1;
+	          $("#pwd2Result").html("비밀번호 일치").css("color","green");
+	          pw2Flag=1;
 	      }
 	    });
 	  	$("#registerForm").submit(function(event){
@@ -113,7 +128,7 @@
 		  			$("#userId").focus();
 		  			return;
 		  		}
-		  		else if(pwFlag==0)
+		  		else if(pw2Flag==0)
 		  		{
 		  			event.preventDefault();
 		  			alert("비밀번호를 확인해주세요.");
@@ -151,11 +166,11 @@
 	            <input type="text" class="form-control" id="userId" name="userId"  required>
 	          </div>
 	          <div class="form-group">
-	            <label for="userPw">비밀번호</label><span> *</span>
-	            <input type="password" class="form-control" id="userPw" name="userPw" placeholder="8글자이상의 영문숫자조합" required>
+	            <label for="userPw">비밀번호</label><span> *</span><label id="pwd1Result" class="float-right"></label>
+	            <input type="password" class="form-control" id="userPw" name="userPw" placeholder="8글자이상 16글자이하의 영문,숫자,특수문자조합" required>
 	          </div>
 	          <div class="form-group">
-	            <label for="userPw2">비밀번호확인</label><span> *</span><label id="pwdResult" class="float-right"></label>
+	            <label for="userPw2">비밀번호확인</label><span> *</span><label id="pwd2Result" class="float-right"></label>
 	            <input type="password" class="form-control" id="userPw2" name="userPw2" placeholder="비밀번호를 한번더 입력하세요" required>
 	          </div>
 	          <div class="form-group">
@@ -185,7 +200,7 @@
 	          
 	          <div class="form-group">
 	          <label> 프로필 사진</label>
-	          	<input type="file" class="form-control-file border" name="userImage">
+	          	<input type="file" class="form-control-file border" name="userImage" multiple accept="image/*">
 	          </div>
 	          <div class="form-group mt-3" align="center">
 	              <button type="submit" class="btn mt-2 w-25" >가입하기</button>

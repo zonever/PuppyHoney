@@ -1,137 +1,81 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.util.*, com.ph.board.news.model.vo.NewsBoard,common.*" %>
 <%@ include file="/views/common/header.jsp" %>
+<%
+	List<NewsBoard> newsList=(List<NewsBoard>)request.getAttribute("newsList");
+	ImgExtract ie=new ImgExtract();
+%>
+
+<script>
+         $(function(){
+          $(".pp").slice(0, 18).show(); // select the first ten
+          $("#load").click(function(e){ // click event for load more
+              e.preventDefault();
+
+              $(".pp:hidden").slice(0, 9).show(); // select next 10 hidden divs and show them
+              if($(".pp:hidden").length == 0){ // check if any hidden divs still exist
+                  // alert("No more divs"); // alert if there are none left
+          }
+    });
+});
+</script>
 
 <div class="container mb-5">
 	<div class="mt-4">
 	<label><h3>News</h3></label>
 	</div>
-	<div class="btn-group col-sm-6 mt-3 categorySort">
-		
-		<button type="button" class="btn">최신순</button>
-		<button type="button" class="btn">조회순</button>
-		<button type="button" class="btn">댓글순</button>
-		<button type="button" class="btn">추천순</button>	
-	</div>
-</div>
+	<%if(userLoggedIn!=null)
+	{ 
+		if(userLoggedIn.getUserId().equals("admin"))
+		{ %>
+		<div class="float-right pt-2 ml-4">
+	  		<button class="btn " onclick="location.href='<%=request.getContextPath()%>/board/newsBoardWrite'">글쓰기</button>
+	    </div>
+    	<%} 
+    }%>
+
+</div> 
 
 	
 	
 <div class="container mt-5 col-sm-11">
-<!-- Page Heading -->
-	
-	<hr>
-	<!-- Project One -->
-	<div class="row">
-		<div class="col-md-6 boardList_image">
-			<a href="#">	
-				<img class="rounded mb-3 mb-md-0" src="<%=request.getContextPath() %>/images/tt.jpg" alt="">
-			</a>
-		</div>
-		<div class="col-md-6">
-			<div class="boardList_image_title">
-				<h2><a href="#">너무 귀엽죠~</a></h2>
-			</div>
-			<div class="mt-4 mr-2">
-				<i></i><a href="#">nickname</a>
-				<div class="float-right">
-					<span><i></i>2018-07-24</span>
-					<span><i></i>6</span>
-					<span><i></i>3</span>
-					<span><i></i>10</span>
-				</div>
-			</div>
-			<div class="mt-4">
-				<p>평소에 강아지가 좋아하는 집이나 자리가 있을 것이다. 그렇다면 그 공간에서 강아지가 정신적 안정감을 느낄 수 있도록 해주자. 긴장감과 우울감 등이 환경변화에서 오는만큼 자신에게 친숙한 곳에 있으면 이내 ‘괜찮다’는 것을 깨달을 수 있기 때문이다.</p>
-			</div>
-		</div>
-	</div>
-	<!-- /.row -->
+
 	
 	<hr>
 	
-	<div class="row">
-		<div class="col-md-6 boardList_image">
-			<a href="#">	
-				<img class="rounded mb-3 mb-md-0" src="<%=request.getContextPath() %>/images/tt.jpg" alt="">
-			</a>
-		</div>
-		<div class="col-md-6">
-			<div class="boardList_image_title">
-				<h2><a href="#">너무 귀엽죠~</a></h2>
+	
+	<%if(!newsList.isEmpty()){
+		for(int i=newsList.size()-1;i>=0;i--)
+		{ %>
+		<div class="row ">
+			<div class="col-md-6 boardList_image">
+				<a href="<%=request.getContextPath()%>/board/newsBoardView?num="<%=newsList.get(i).getNewsBoardNum() %>>	
+					<img class="rounded mb-3 mb-md-0" src="<%=ie.imgExtract(newsList.get(i).getNewsBoardContent())%>" >
+				</a>
 			</div>
-			<div class="mt-4 mr-2">
-				<i></i><a href="#">nickname</a>
-				<div class="float-right">
-					<span><i></i>2018-07-24</span>
-					<span><i></i>6</span>
-					<span><i></i>3</span>
-					<span><i></i>10</span>
+			<div class="col-md-6 mt-5" align="center">
+				<div class="boardList_image_title" >
+					<h1><a href="<%=request.getContextPath()%>/board/newsBoardView?num="<%=newsList.get(i).getNewsBoardNum() %>><%=newsList.get(i).getNewsBoardTitle() %></a></h1>
 				</div>
-			</div>
-			<div class="mt-4">
-				<p>평소에 강아지가 좋아하는 집이나 자리가 있을 것이다. 그렇다면 그 공간에서 강아지가 정신적 안정감을 느낄 수 있도록 해주자. 긴장감과 우울감 등이 환경변화에서 오는만큼 자신에게 친숙한 곳에 있으면 이내 ‘괜찮다’는 것을 깨달을 수 있기 때문이다.</p>
-			</div>
-		</div>
-	</div>
-	<!-- /.row -->
-	
-	<hr>
-	
-	<div class="row">
-		<div class="col-md-6 boardList_image">
-			<a href="#">	
-				<img class="rounded mb-3 mb-md-0" src="<%=request.getContextPath() %>/images/tt.jpg" alt="">
-			</a>
-		</div>
-		<div class="col-md-6">
-			<div class="boardList_image_title">
-				<h2><a href="#">너무 귀엽죠~</a></h2>
-			</div>
-			<div class="mt-4 mr-2">
-				<i></i><a href="#">nickname</a>
-				<div class="float-right">
-					<span><i></i>2018-07-24</span>
-					<span><i></i>6</span>
-					<span><i></i>3</span>
-					<span><i></i>10</span>
+				<div class="mt-4 mr-2 ">
+					<div class="float-right">
+						<img src="<%=request.getContextPath() %>/images/fa-comment.png" alt="댓글이미지" width="20px"><%=newsList.get(i).getNewsBoardReplynum() %>&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src="<%=request.getContextPath() %>/images/thumb-up.png" alt="따봉이미지" width="20px"><%=newsList.get(i).getNewsBoardGood()%>&nbsp;&nbsp;&nbsp;&nbsp;
+						<img src="<%=request.getContextPath() %>/images/eye50.png" alt="조회이미지" width="20px"><%=newsList.get(i).getNewsBoardHits()%>
+					</div>
 				</div>
-			</div>
-			<div class="mt-4">
-				<p>평소에 강아지가 좋아하는 집이나 자리가 있을 것이다. 그렇다면 그 공간에서 강아지가 정신적 안정감을 느낄 수 있도록 해주자. 긴장감과 우울감 등이 환경변화에서 오는만큼 자신에게 친숙한 곳에 있으면 이내 ‘괜찮다’는 것을 깨달을 수 있기 때문이다.</p>
+			
 			</div>
 		</div>
-	</div>
-	<!-- /.row -->
+		
+		
+		<hr>
+		<%}
+	}%>
 	
-	<hr>
-	
-	<div class="row">
-		<div class="col-md-6 boardList_image">
-			<a href="#">	
-				<img class="rounded mb-3 mb-md-0" src="<%=request.getContextPath() %>/images/tt.jpg" alt="">
-			</a>
-		</div>
-		<div class="col-md-6">
-			<div class="boardList_image_title">
-				<h2><a href="#">너무 귀엽죠~</a></h2>
-			</div>
-			<div class="mt-4 mr-2">
-				<i></i><a href="#">nickname</a>
-				<div class="float-right">
-					<span><i></i>2018-07-24</span>
-					<span><i></i>6</span>
-					<span><i></i>3</span>
-					<span><i></i>10</span>
-				</div>
-			</div>
-			<div class="mt-4">
-				<p>평소에 강아지가 좋아하는 집이나 자리가 있을 것이다. 그렇다면 그 공간에서 강아지가 정신적 안정감을 느낄 수 있도록 해주자. 긴장감과 우울감 등이 환경변화에서 오는만큼 자신에게 친숙한 곳에 있으면 이내 ‘괜찮다’는 것을 깨달을 수 있기 때문이다.</p>
-			</div>
-		</div>
-	</div>
 	<div class="form-group mt-5" align="center">
-		<button type="button" class="btn w-50">더보기</button>
+		<button  id='load' type="button" class="btn w-50">더보기</button>
 	</div>
 	
 </div>
