@@ -1,10 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/views/common/header.jsp" %>
-<%@ page import="java.util.*,com.ph.board.place.model.vo.PlaceBoard" %>
+<%@ page import="java.util.*,com.ph.board.place.model.vo.PlaceBoard, common.ImgExtract" %>
 
 <%
-	 List<PlaceBoard> pList =(List<PlaceBoard>)request.getAttribute("pList"); 
+	 List<PlaceBoard> pList =(List<PlaceBoard>)request.getAttribute("pList");
+	
 %>
 <style>
     .pp{
@@ -22,7 +23,7 @@
 
               $(".pp:hidden").slice(0, 9).show(); // select next 10 hidden divs and show them
               if($(".pp:hidden").length == 0){ // check if any hidden divs still exist
-                  // alert("No more divs"); // alert if there are none left
+                  alert("더 보여줄 게시물이 없습니다"); // alert if there are none left
           }
     });
 });
@@ -145,25 +146,27 @@
   			
 	   <!-- Page Content 내용부분  -->
    	
-   	
+  	
 	   <div id='test1'class="row">
-		   <%for(PlaceBoard pb: pList)
-	  			{ %>
+		   <%for(PlaceBoard pb: pList){
+			   if(pb!=null&&pb.getPlBoardAcept_yn().equals("N")){
+				  
+			  %>
 	      <div class="col-lg-4 col-sm-6 petCard pp">
 	          <div class="card h-80 pp">
-	            <a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><img class="card-img-top" src="<%=request.getContextPath()%>/upload/placeboard/아자루4.png" width="700" height="230"></a>
+	            <a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><img class="card-img-top" width="700" height="230" src="<%=new ImgExtract().imgExtract(pb.getPlBoardContent())%>" ></a>
 	            <div class="card-body pp">
 	              <h4 class="card-title">
-	                <p class="text-center alert alert-secondary"><a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><%=pb.getPlBoardTitle() %></a></p>
+	                <p class="text-center alert alert-secondary"><a href="<%=request.getContextPath()%>/board/placeBoardView?plBoardNum=<%=pb.getPlBoardNum()%>"><%=pb.getPlBoardTitle()%></a></p>
 	              </h4>
 	              <table class='text-center'>
 	                  <tr>
 	                    
-	                   	   <th><%=pb.getPlBoardStoreName()%></th>
+	                   	   <th><b class='text-muted'><%=pb.getPlBoardStoreName()%></b></th>
 	                  </tr>
 	                  <hr>
 	                  <tr>
-	            		   <th><%=pb.getPlBoardBusinessType() %></th>
+	            		   <th><span class="badge badge-primary"><%=pb.getPlBoardBusinessType() %></span></th>
 	                  </tr>
 	  
 	                  <tr>        
@@ -174,12 +177,13 @@
 	            </div>
 	          </div>
 	        </div>
-	        <%} %>
+	        <%}
+			  
+	        } %>
        
 						 </div>
                        </div>
-                  
-           
+                   	       
                     
                               <br>
     <div class="form-group mt-5" align="center">

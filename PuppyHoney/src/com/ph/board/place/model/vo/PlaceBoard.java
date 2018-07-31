@@ -18,15 +18,14 @@ public class PlaceBoard {
 	private String plBoardPhone;
 	private String plBoardAddr;
 	private String plBoardAcept_yn;
-	private String plBoardImgOrigin;
-	private String plBoardImgRename;
+	
 	
 	public PlaceBoard() {}
 
 	public PlaceBoard(int plBoardNum, String plBoardTitle, String plBoardContent, String plBoardId, Date plBoardDate,
 			int plBoardHits, int plBoardGood, String plBoardArea, String plBoardDogSize, String plBoardBusinessType,
 			String plBoardStoreName, String plBoardTime, String plBoardPhone, String plBoardAddr,
-			String plBoardAcept_yn, String plBoardImgOrigin, String plBoardImgRename) {
+			String plBoardAcept_yn) {
 		super();
 		this.plBoardNum = plBoardNum;
 		this.plBoardTitle = plBoardTitle;
@@ -43,8 +42,6 @@ public class PlaceBoard {
 		this.plBoardPhone = plBoardPhone;
 		this.plBoardAddr = plBoardAddr;
 		this.plBoardAcept_yn = plBoardAcept_yn;
-		this.plBoardImgOrigin = plBoardImgOrigin;
-		this.plBoardImgRename = plBoardImgRename;
 	}
 
 	public int getPlBoardNum() {
@@ -167,21 +164,6 @@ public class PlaceBoard {
 		this.plBoardAcept_yn = plBoardAcept_yn;
 	}
 
-	public String getPlBoardImgOrigin() {
-		return plBoardImgOrigin;
-	}
-
-	public void setPlBoardImgOrigin(String plBoardImgOrigin) {
-		this.plBoardImgOrigin = plBoardImgOrigin;
-	}
-
-	public String getPlBoardImgRename() {
-		return plBoardImgRename;
-	}
-
-	public void setPlBoardImgRename(String plBoardImgRename) {
-		this.plBoardImgRename = plBoardImgRename;
-	}
 
 	@Override
 	public String toString() {
@@ -191,7 +173,7 @@ public class PlaceBoard {
 				+ plBoardDogSize + ", plBoardBusinessType=" + plBoardBusinessType + ", plBoardStoreName="
 				+ plBoardStoreName + ", plBoardTime=" + plBoardTime + ", plBoardPhone=" + plBoardPhone
 				+ ", plBoardAddr=" + plBoardAddr + ", plBoardAcept_yn=" + plBoardAcept_yn + ", plBoardImgOrigin="
-				+ plBoardImgOrigin + ", plBoardImgRename=" + plBoardImgRename + "]";
+				 + ", plBoardImgRename=]";
 	}
 
 
