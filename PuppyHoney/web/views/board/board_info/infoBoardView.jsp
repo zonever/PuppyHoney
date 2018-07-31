@@ -8,14 +8,7 @@
 	String searchType = request.getAttribute("searchType").toString();
 	String inputText = request.getAttribute("inputText").toString();
 	String sort = request.getAttribute("sort").toString();
-	
-	System.out.println(cPage);
-	System.out.println(searchType);
-	System.out.println(inputText);
-	System.out.println(sort);
-
-	
-	
+	 
 %>
 <%@ include file="/views/common/header.jsp" %>
 	<style>
@@ -61,9 +54,16 @@ $(function(){
   
   //수정버튼의 반응
   $('.btn-revise').on('click',function(){
+<<<<<<< HEAD
     var num = <%=infoBoard.getBoardNumber()%>;
     reviseFrm.boardNum.value=num;
     var url="<%=request.getContextPath()%>/freeBoard/boardRevise";
+=======
+    var num = <%=infoBoard.getBoardNumber()%>; 
+    reviseFrm.boardNum.value=num; 
+    alert(num);
+    var url="<%=request.getContextPath()%>/infoBoard/boardRevise";
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
     reviseFrm.action=url
     reviseFrm.method="post";
     reviseFrm.submit();

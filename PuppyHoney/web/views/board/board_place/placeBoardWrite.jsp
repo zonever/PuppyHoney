@@ -9,7 +9,7 @@
 <script type="text/javascript" src="<%=request.getContextPath()%>/se2/photo_uploader/plugin/hp_SE2M_AttachQuickPhoto.js" charset="utf-8"></script>
 
 
-<script>
+<script> 
           //주소api 스크립트
           function test1() {
               new daum.Postcode({
@@ -63,7 +63,7 @@
     <h1 class="mt-4 mb-3">글쓰기</h1>  
 
     <div class="ml-5 mr-5">
-		<form name="placeform"action="<%=request.getContextPath()%>/board/placeBoardFormEnd?userId=<%=userLoggedIn.getUserId()%>" method="post" enctype="multipart/form-data">
+		<form name="placeform"action="<%=request.getContextPath()%>/board/placeBoardFormEnd?userId=<%=userLoggedIn.getUserId()%>" method="post">
         <div>
             <div class="form-group"> 
                 <label for="title">제목</label> 
@@ -152,11 +152,6 @@
             </div>
         </div>  
         
-        <div class="form-group">
-	          <label>대표이미지</label>
-	          	<input type="file" name="Image">
-         </div>
-         
         <div>
             <div class="form-group"> 
                 <label>상세 내용</label> 

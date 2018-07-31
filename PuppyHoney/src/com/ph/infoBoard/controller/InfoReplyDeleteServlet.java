@@ -18,7 +18,7 @@ public class InfoReplyDeleteServlet extends HttpServlet {
        
     /**
      * @see HttpServlet#HttpServlet()
-     */
+     */ 
     public InfoReplyDeleteServlet() {
         super();
         // TODO Auto-generated constructor stub
@@ -40,9 +40,9 @@ public class InfoReplyDeleteServlet extends HttpServlet {
 		String msg="";
 		String loc="/freeBoard/boardView?no="+boardNum+"&cPage="+cPage+"&searchType="+searchType+"&inputText="+inputText+"&sort="+sort;
 		if(result>0) {
-			msg="댓글이 삭제되었습니다.";
+			msg="�뙎湲��씠 �궘�젣�릺�뿀�뒿�땲�떎.";
 		}else {
-			msg="댓글 삭제에 실패했습니다.";
+			msg="�뙎湲� �궘�젣�뿉 �떎�뙣�뻽�뒿�땲�떎.";
 		}
 		request.setAttribute("msg", msg);
 		request.setAttribute("loc", loc);

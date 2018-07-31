@@ -14,7 +14,7 @@
 if(<%=userLoggedIn==null%>){
 	alert("잘못된 경로로 접근했습니다.");
 	location.href="/PuppyHoney/index.jsp";
-}
+} 
 
 
 
@@ -28,7 +28,11 @@ if(<%=userLoggedIn==null%>){
             
                 <div class="container"> 
                     <!-- board테이블에 저장하기 위한 form.  -->
+<<<<<<< HEAD
                     <form action='<%=request.getContextPath()%>/freeBoard/writeEnd' method="post" id="fr">
+=======
+                    <form action='<%=request.getContextPath()%>/infoBoard/writeEnd?user' method="post" id="fr">
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
             			<!-- 원래는 벨류값에 세션아이디가 들어갈거임 -->
             			<input type="hidden" name="id" value="<%=userLoggedIn.getUserId() %>"/>
                          <!-- //글제목 입력 폼 -->

@@ -36,4 +36,26 @@ public class PlaceBoardService {
 		
 		return pList;
 	}
+
+	public PlaceBoard selectOne(int plBoardNum) {
+		Connection conn=getConnection();
+		PlaceBoard plBoard=new PlaceBoardDAO().selectOne(conn,plBoardNum);
+		close(conn);
+		return plBoard;
+	}
+
+	public int updatePlaceBoard(PlaceBoard plBoard) {
+		Connection conn=getConnection();
+		int result=new PlaceBoardDAO().updatePlaceBoard(conn,plBoard);
+		if(result>0)
+		{
+			commit(conn);
+		}else
+		{
+			rollback(conn);
+		}
+		close(conn);
+		return result;
+		
+	}
 }

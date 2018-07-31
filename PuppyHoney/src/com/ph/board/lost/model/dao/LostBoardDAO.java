@@ -14,25 +14,49 @@ import java.util.Properties;
 import com.ph.board.lost.model.vo.LostBoard;
 
 public class LostBoardDAO {
-	/*private Properties prop=new Properties();
+	private Properties prop=new Properties();
 	
 	public LostBoardDAO()
 	{
-		try
+		try 
 		{
-			prop.load(new FileReader(LostBoardDAO.class.getResource("/sql/admin/admin-sql.properties").getPath()));
+			prop.load(new FileReader(LostBoardDAO.class.getResource("/sql/lostBoard/lostboard_query.properties").getPath()));
 		}
 		catch(IOException e)
 		{
 			e.printStackTrace();
 		}
-	}*/
+	}
+	public int insertBoard(Connection conn, LostBoard lb) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("insertLostBoard");;
+		
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, lb.getLostBoardTitle());
+			pstmt.setString(2, lb.getLostBoardContent());
+			pstmt.setString(3, lb.getLostBoardId());
+			pstmt.setString(4, lb.getLostBoardArea());
+			pstmt.setString(5, lb.getLostBoardPhone());
+			pstmt.setString(6, lb.getLostBoardType());
+			pstmt.setString(7, lb.getThumbnail());
+			result=pstmt.executeUpdate();
+		}
+		catch (Exception e) {
+			e.printStackTrace();
+		}
+		close(pstmt);
+		
+		return result;
+		
+	}
 	
 	public List<LostBoard> selectAll(Connection conn) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		LostBoard lb=null;
-		String sql="select * from lost_board";
+		String sql=prop.getProperty("selectLostBoardAll");;
 		ArrayList<LostBoard> list=new ArrayList<LostBoard>();
 		
 		try {
@@ -47,11 +71,10 @@ public class LostBoardDAO {
 				lb.setLostBoardDate(rs.getDate("lost_board_date"));
 				lb.setLostBoardHits(rs.getInt("lost_board_hits"));
 				lb.setLostBoardGood(rs.getInt("lost_board_good"));
-				/*lb.setLostBoardImageOrigin(rs.getString("lost_board_image_origin"));
-				lb.setLostBoardImageRename(rs.getString("lost_board_image_rename"));*/
 				lb.setLostBoardArea(rs.getString("lost_board_area"));
 				lb.setLostBoardPhone(rs.getString("lost_board_phone"));
 				lb.setLostBoardType(rs.getString("lost_board_type"));
+				lb.setThumbnail(rs.getString("lost_board_thumbnail"));
 				list.add(lb);
 			}
 		}
@@ -60,21 +83,20 @@ public class LostBoardDAO {
 		}
 		close(rs);
 		close(pstmt);
-		System.out.println(list);
 		
 		return list;
 	}
 	
-	public LostBoard selectDetail(Connection conn, String userId) {
+	public LostBoard selectDetail(Connection conn, int num) {
 		PreparedStatement pstmt=null;
 		ResultSet rs=null;
 		LostBoard lb=null;
-		String sql="select * from lost_board where lost_board_id=?";
+		String sql=prop.getProperty("selectLostBoardDetail");
 		ArrayList<LostBoard> list=new ArrayList<LostBoard>();
 		
 		try {
 			pstmt=conn.prepareStatement(sql);
-			pstmt.setString(1, userId);
+			pstmt.setInt(1, num);
 			rs=pstmt.executeQuery();
 			while(rs.next()) {
 				lb=new LostBoard();
@@ -85,8 +107,6 @@ public class LostBoardDAO {
 				lb.setLostBoardDate(rs.getDate("lost_board_date"));
 				lb.setLostBoardHits(rs.getInt("lost_board_hits"));
 				lb.setLostBoardGood(rs.getInt("lost_board_good"));
-				/*lb.setLostBoardImageOrigin(rs.getString("lost_board_image_origin"));
-				lb.setLostBoardImageRename(rs.getString("lost_board_image_rename"));*/
 				lb.setLostBoardArea(rs.getString("lost_board_area"));
 				lb.setLostBoardPhone(rs.getString("lost_board_phone"));
 				lb.setLostBoardType(rs.getString("lost_board_type"));
@@ -98,7 +118,7 @@ public class LostBoardDAO {
 		}
 		close(rs);
 		close(pstmt);
-		
+		System.out.println(lb);
 		
 		return lb;
 	}

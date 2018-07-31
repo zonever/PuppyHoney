@@ -9,32 +9,41 @@ public class LostBoard {
 	private String lostBoardContent;
 	private String lostBoardId;
 	private Date lostBoardDate;
-	private int lostBoardHits;
+	private int lostBoardHits; 
 	private int lostBoardGood;
 	/*private String lostBoardImageOrigin;
 	private String lostBoardImageRename;*/
 	private String lostBoardArea;
 	private String lostBoardPhone;
 	private String lostBoardType;
+	private String thumbnail;
 	
 	public LostBoard() {}
-
-	public LostBoard(int lostBoardNum, String lostBoardTitle, String lostBoardContent, String lostBoardNick,
-			Date lostBoardDate, int lostBoardHits, int lostBoardGood,
+	public LostBoard(String lostBoardTitle, String lostBoardContent, String lostBoardId, 
 			String lostBoardArea, String lostBoardPhone, String lostBoardType) {
+		this.lostBoardTitle = lostBoardTitle;
+		this.lostBoardContent = lostBoardContent;
+		this.lostBoardId = lostBoardId;
+		this.lostBoardArea = lostBoardArea;
+		this.lostBoardPhone = lostBoardPhone;
+		this.lostBoardType = lostBoardType;
+	}
+
+	public LostBoard(int lostBoardNum, String lostBoardTitle, String lostBoardContent, String lostBoardId,
+			Date lostBoardDate, int lostBoardHits, int lostBoardGood,
+			String lostBoardArea, String lostBoardPhone, String lostBoardType, String thumbnail) {
 		super();
 		this.lostBoardNum = lostBoardNum;
 		this.lostBoardTitle = lostBoardTitle;
 		this.lostBoardContent = lostBoardContent;
-		this.lostBoardId = lostBoardNick;
+		this.lostBoardId = lostBoardId;
 		this.lostBoardDate = lostBoardDate;
 		this.lostBoardHits = lostBoardHits;
 		this.lostBoardGood = lostBoardGood;
-		/*this.lostBoardImageOrigin = lostBoardImageOrigin;
-		this.lostBoardImageRename = lostBoardImageRename;*/
 		this.lostBoardArea = lostBoardArea;
 		this.lostBoardPhone = lostBoardPhone;
 		this.lostBoardType = lostBoardType;
+		this.thumbnail = thumbnail;
 	}
 
 	public int getLostBoardNum() {
@@ -93,22 +102,6 @@ public class LostBoard {
 		this.lostBoardGood = lostBoardGood;
 	}
 
-	/*public String getLostBoardImageOrigin() {
-		return lostBoardImageOrigin;
-	}
-
-	public void setLostBoardImageOrigin(String lostBoardImageOrigin) {
-		this.lostBoardImageOrigin = lostBoardImageOrigin;
-	}
-
-	public String getLostBoardImageRename() {
-		return lostBoardImageRename;
-	}
-
-	public void setLostBoardImageRename(String lostBoardImageRename) {
-		this.lostBoardImageRename = lostBoardImageRename;
-	}*/
-
 	public String getLostBoardArea() {
 		return lostBoardArea;
 	}
@@ -132,13 +125,22 @@ public class LostBoard {
 	public void setLostBoardType(String lostBoardType) {
 		this.lostBoardType = lostBoardType;
 	}
+	
+	public String getThumbnail() {
+		return thumbnail;
+	}
+	
+	public void setThumbnail(String thumbnail) {
+		this.thumbnail = thumbnail;
+	}
 
 	@Override
 	public String toString() {
 		return "LostBoard [lostBoardNum=" + lostBoardNum + ", lostBoardTitle=" + lostBoardTitle + ", lostBoardContent="
 				+ lostBoardContent + ", lostBoardNick=" + lostBoardId + ", lostBoardDate=" + lostBoardDate
 				+ ", lostBoardHits=" + lostBoardHits + ", lostBoardGood=" + lostBoardGood + ", lostBoardArea="
-				+ lostBoardArea + ", lostBoardPhone=" + lostBoardPhone + ", lostBoardType=" + lostBoardType + "]";
+				+ lostBoardArea + ", lostBoardPhone=" + lostBoardPhone + ", lostBoardType=" + lostBoardType 
+				+ ", thumbnail=" + thumbnail + "]";
 	}
 	
 	

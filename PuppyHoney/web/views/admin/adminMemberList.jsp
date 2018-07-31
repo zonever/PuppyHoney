@@ -5,6 +5,7 @@
 	List<User> list = (List<User>)request.getAttribute("list");
 	int cPage = Integer.parseInt(request.getAttribute("cPage").toString());
 	String pageBar = request.getAttribute("pageBar").toString();
+<<<<<<< HEAD
 	String searchType = "no";
 	String inputText ="";
 	if( request.getAttribute("searchType")!=null&&request.getAttribute("inputText")!=null){
@@ -20,6 +21,10 @@
 		searchCount = Integer.parseInt(request.getAttribute("searchCount").toString());
 	}
 
+=======
+
+ 
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
 %>
 <script>
 

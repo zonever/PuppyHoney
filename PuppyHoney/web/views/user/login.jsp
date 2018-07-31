@@ -70,7 +70,7 @@
 	             <button type="submit" class="btn w-25 "  align="center">로그인</button>
 	             <div class="float-right">
 		             <a href="<%=request.getContextPath() %>/user/register"  class="p-2">회원가입</a>
-		             <a href="#"  class="p-2">비밀번호찾기</a>
+		             <a href="<%=request.getContextPath() %>/user/findPwd"  class="p-2">비밀번호찾기</a>
 	             </div>
 	           </div>
 	           

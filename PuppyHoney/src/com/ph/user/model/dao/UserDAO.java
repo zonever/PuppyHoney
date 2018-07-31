@@ -11,7 +11,7 @@ import static common.JDBCTemplate.close;
 import com.ph.user.model.vo.User;
 
 public class UserDAO {
-
+ 
 	private Properties prop;
 	
 	public UserDAO()
@@ -186,6 +186,53 @@ public class UserDAO {
 		}
 		catch(SQLException e)
 		{
+			e.printStackTrace();
+		}
+		close(pstmt);
+		return result;
+	}
+	
+<<<<<<< HEAD
+	public int updateUser(Connection conn, User u) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("updateUser");
+		
+		try {
+			
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1, u.getUserPw());
+			pstmt.setString(2, u.getUserNick());
+			pstmt.setString(3, u.getUserEmail());
+			pstmt.setString(4, u.getUserId());
+			result=pstmt.executeUpdate();
+		}
+		catch (Exception e) {
+=======
+	public int updateUser(Connection conn, User user)
+	{
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("updateUser");
+		try
+		{
+			pstmt=conn.prepareStatement(sql);
+			
+			pstmt.setString(1, user.getUserPw());
+			pstmt.setString(2, user.getUserNick());
+			pstmt.setString(3, user.getUserEmail());
+			pstmt.setString(4, user.getUserName());
+			pstmt.setDate(5, user.getUserBirth());
+			pstmt.setString(6, user.getUserImageOrigin());
+			pstmt.setString(7, user.getUserImageRename());
+			pstmt.setString(8, user.getUserBookmark());
+			pstmt.setString(9, user.getUserEmailHash());
+			pstmt.setString(10, user.getUserId());
+			result=pstmt.executeUpdate();
+		}
+		catch(SQLException e)
+		{
+>>>>>>> master
 			e.printStackTrace();
 		}
 		close(pstmt);

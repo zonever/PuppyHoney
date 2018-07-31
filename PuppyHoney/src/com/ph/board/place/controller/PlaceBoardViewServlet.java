@@ -1,7 +1,6 @@
-package com.ph.board.lost.controller;
+package com.ph.board.place.controller;
 
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,20 +8,20 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import com.ph.board.lost.model.vo.LostBoard;
-import com.ph.board.lost.service.LostBoardService;
+import com.ph.board.place.model.service.PlaceBoardService;
+import com.ph.board.place.model.vo.PlaceBoard;
 
 /**
- * Servlet implementation class LostBoardDetailpage
+ * Servlet implementation class PlaceBoardViewServlet
  */
-@WebServlet("/detailPage")
-public class LostBoardDetailpage extends HttpServlet {
+@WebServlet("/board/placeBoardView")
+public class PlaceBoardViewServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public LostBoardDetailpage() {
+    public PlaceBoardViewServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -31,11 +30,24 @@ public class LostBoardDetailpage extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		String userId=request.getParameter("userId");
-		LostBoard lb=new LostBoardService().selectDetail(userId);
-		request.setAttribute("lb", lb);
-		request.getRequestDispatcher("/views/board/board_lost/lostBoardView.jsp").forward(request, response);
+		int plBoardNum=Integer.parseInt(request.getParameter("plBoardNum"));
 		
+		PlaceBoard plBoard = new PlaceBoardService().selectOne(plBoardNum);
+		
+		String view="";
+		String msg="";
+		String loc="";
+		if(plBoard!=null)
+		{
+			request.setAttribute("plBoard", plBoard);
+			view="/views/board/board_place/placeBoardView.jsp";
+		}else
+		{
+			request.setAttribute("msg", "조회한 게시물이 없습니다");
+			request.setAttribute("loc", "/board/boardList.jsp");
+			view="/views/common/msg.jsp";
+		}
+		request.getRequestDispatcher(view).forward(request, response);
 	}
 
 	/**

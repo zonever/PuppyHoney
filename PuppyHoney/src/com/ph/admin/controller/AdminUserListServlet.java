@@ -21,7 +21,7 @@ import com.ph.user.model.vo.User;
 public class AdminUserListServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
-    /**
+    /** 
      * @see HttpServlet#HttpServlet()
      */
     public AdminUserListServlet() {
@@ -33,7 +33,7 @@ public class AdminUserListServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		//페이징 처리
+		//�럹�씠吏� 泥섎━
 				int numPerPage=10;
 				int cPage;
 				try {
@@ -43,25 +43,32 @@ public class AdminUserListServlet extends HttpServlet {
 				}
 				
 				List<User> list = new AdminService().allMemberdList(cPage,numPerPage);
+<<<<<<< HEAD
 				//pageBar만들기
 				//전체 회원 수
 				int userCount=new AdminService().allUserCount();
 				userCount=userCount-1;
 				//전체 페이지 수
+=======
+				//pageBar留뚮뱾湲�
+				//�쟾泥� �옄猷� �닔
+				int userCount=new AdminService().allUserCount();
+				//�쟾泥� �럹�씠吏� �닔
+>>>>>>> 50fcb8f3119fbf0e0e3a920c29fb520dcd76665d
 				int totalPage=(int)Math.ceil((double)userCount/numPerPage);
 				int barSize=5;
 				String pageBar="";
 				int pageNo=((cPage-1)/barSize)*barSize+1;
 				int pageEnd=pageNo+barSize-1;
 				
-				//pagebar만들기!!
+				//pagebar留뚮뱾湲�!!
 				if(pageNo==1) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>Previous</a></li>";
 				}else {
 					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/admin/userList?cPage="+(pageNo-1)+"'>Previous</a></li>";
 				}
 				
-				//페이지 번호 구성
+				//�럹�씠吏� 踰덊샇 援ъ꽦
 				while(!(pageNo>pageEnd||pageNo>totalPage)) {
 					if(cPage==pageNo) {
 						pageBar+="<li class='page-item disabled'><a class='page-link'>"+pageNo+"</a></li>";
@@ -71,13 +78,13 @@ public class AdminUserListServlet extends HttpServlet {
 					pageNo++;
 				}
 				
-				//다음만들기
+				//�떎�쓬留뚮뱾湲�
 				if(pageNo>totalPage) {
 					pageBar+="<li class='page-item disabled'><a class='page-link'>Next</a></li>";
 				}else {
 					pageBar+="<li class='page-item'><a class='page-link' href='"+request.getContextPath()+"/admin/userList?cPage="+(pageNo)+"'>Next</a></li>";
 				}
-				//페이지바 구성 끝!
+				//�럹�씠吏�諛� 援ъ꽦 �걹!
 				
 				request.setAttribute("list", list);
 				request.setAttribute("cPage", cPage);
