@@ -60,8 +60,9 @@ $(function(){
   
   //수정버튼의 반응
   $('.btn-revise').on('click',function(){
-    var num = <%=infoBoard.getBoardNumber()%>;
-    reviseFrm.boardNum.value=num;
+    var num = <%=infoBoard.getBoardNumber()%>; 
+    reviseFrm.boardNum.value=num; 
+    alert(num);
     var url="<%=request.getContextPath()%>/infoBoard/boardRevise";
     reviseFrm.action=url
     reviseFrm.method="post";

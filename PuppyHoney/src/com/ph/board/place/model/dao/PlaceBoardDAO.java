@@ -7,6 +7,7 @@ import java.io.IOException;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
@@ -44,8 +45,6 @@ public class PlaceBoardDAO {
 			pstmt.setString(8,plBoard.getPlBoardTime());
 			pstmt.setString(9,plBoard.getPlBoardPhone());
 			pstmt.setString(10,plBoard.getPlBoardAddr());
-			pstmt.setString(11,plBoard.getPlBoardImgOrigin());
-			pstmt.setString(12,plBoard.getPlBoardImgRename());
 			
 			result=pstmt.executeUpdate();
 			
@@ -71,6 +70,7 @@ public class PlaceBoardDAO {
 				plBoard=new PlaceBoard();
 				plBoard.setPlBoardNum(rs.getInt("place_board_num"));
 				plBoard.setPlBoardTitle(rs.getString("place_board_title"));
+				plBoard.setPlBoardId(rs.getString("place_board_id"));
 				plBoard.setPlBoardContent(rs.getString("place_board_content"));
 				plBoard.setPlBoardDate(rs.getDate("place_board_date"));
 				plBoard.setPlBoardHits(rs.getInt("place_board_hits"));
@@ -82,18 +82,78 @@ public class PlaceBoardDAO {
 				plBoard.setPlBoardTime(rs.getString("place_board_time"));
 				plBoard.setPlBoardPhone(rs.getString("place_board_phone"));
 				plBoard.setPlBoardAddr(rs.getString("place_board_address"));
-				plBoard.setPlBoardImgOrigin(rs.getString("place_board_image_origin"));
-				plBoard.setPlBoardImgRename(rs.getString("place_board_image_rename"));
+				plBoard.setPlBoardAcept_yn(rs.getString("place_board_accept_yn"));
 				pList.add(plBoard);
 			}
 		}catch(Exception e)
 		{
 			e.printStackTrace();
 		}
-		System.out.println(pList.size());
+		
 		close(rs);
 		close(pstmt);
 		return pList;
+	}
+	public PlaceBoard selectOne(Connection conn, int plBoardNum) {
+		PreparedStatement pstmt=null;
+		ResultSet rs=null;
+		PlaceBoard plBoard=null;
+		String sql=prop.getProperty("plBoardSelectOne");
+		try {
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setInt(1, plBoardNum);
+			rs=pstmt.executeQuery();
+			if(rs.next())
+			{
+				plBoard=new PlaceBoard();
+				plBoard.setPlBoardNum(rs.getInt("place_board_num"));
+				plBoard.setPlBoardTitle(rs.getString("place_board_title"));
+				plBoard.setPlBoardContent(rs.getString("place_board_content"));
+				plBoard.setPlBoardId(rs.getString("user_nick"));
+				plBoard.setPlBoardDate(rs.getDate("place_board_date"));
+				plBoard.setPlBoardHits(rs.getInt("place_board_hits"));
+				plBoard.setPlBoardGood(rs.getInt("place_board_good"));
+				plBoard.setPlBoardArea(rs.getString("place_board_area"));
+				plBoard.setPlBoardDogSize(rs.getString("place_board_dogsize"));
+				plBoard.setPlBoardBusinessType(rs.getString("place_board_business_type"));
+				plBoard.setPlBoardStoreName(rs.getString("place_board_name"));
+				plBoard.setPlBoardTime(rs.getString("place_board_time"));
+				plBoard.setPlBoardPhone(rs.getString("place_board_phone"));
+				plBoard.setPlBoardAddr(rs.getString("place_board_address"));
+				plBoard.setPlBoardAcept_yn(rs.getString("place_board_accept_yn"));
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		close(rs);
+		close(pstmt);
+		return plBoard;
+	}
+	public int updatePlaceBoard(Connection conn, PlaceBoard plBoard) {
+		PreparedStatement pstmt=null;
+		int result=0;
+		String sql=prop.getProperty("updatePlaceBoard");
+		try
+		{
+			pstmt=conn.prepareStatement(sql);
+			pstmt.setString(1,plBoard.getPlBoardTitle());
+			pstmt.setString(2,plBoard.getPlBoardContent());
+			pstmt.setString(3,plBoard.getPlBoardArea());
+			pstmt.setString(4,plBoard.getPlBoardDogSize());
+			pstmt.setString(5,plBoard.getPlBoardBusinessType());
+			pstmt.setString(6,plBoard.getPlBoardStoreName());
+			pstmt.setString(7,plBoard.getPlBoardTime());
+			pstmt.setString(8,plBoard.getPlBoardPhone());
+			pstmt.setString(9,plBoard.getPlBoardAddr());
+			pstmt.setInt(10,plBoard.getPlBoardNum());
+			
+			result=pstmt.executeUpdate();
+		}catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+		
+		return result;
 	}
 
 }
